@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Project List | Aishalaya</title>
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+    
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- End layout styles -->
+  
+    <style>
+      /* Adjust the modal size */
+      .modal-dialog {
+        max-width: 1100px; /* Set your desired maximum width */
+      }
+    
+      /* Adjust the form size */
+      .form-sample {
+        max-width: 100%; /* Set your desired maximum width */
+      }
+      @media (min-width: 576px){
+        .col-sm-9{
+              -webkit-box-flex: 0;
+              -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+            width: 100% !important;
+        }}
+        
+    </style>
+
+
+  </head>
+  <body>
+    <div class="container-scroller">
+      
+      <!-- partial:../../partials/_navbar.html -->
+      <nav
+      class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+    >
+      <div
+        class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+      >
+      <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button
+          class="navbar-toggler navbar-toggler align-self-center"
+          type="button"
+          data-toggle="minimize"
+        >
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link"  onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button
+          class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+          type="button"
+          data-toggle="offcanvas"
+        >
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <div class="preloader">
+            <!-- You can use any kind of loading animation here, such as an animated gif or spinner -->
+            <!-- <img src="/assets/images/load.gif" alt="Loading..."> -->
+          </div>
+            <!-- partial:../../partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+              <ul class="nav">
+                <li class="nav-item nav-profile">
+                  <a href="#" class="nav-link">
+                   <!-- <div class="nav-profile-image">
+                      <img src="../../assets/images/faces/face1.jpg" alt="profile">
+                      <span class="login-status online"></span>class="text-secondary text-small"
+                      //change to offline or busy as needed
+                    </div>-->
+                    <div class="nav-profile-text d-flex flex-column">
+                      <span class="font-weight-bold mb-2" id="employeeNameSpan"></span>
+                      <span class="text-secondary text-small" id="employeeDesignation"></span>
+                    </div>
+                    <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+                  </a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="dashboard.html">
+                    <img src="../../assets/images/2.png" alt="logo" style="height: 15%;width: 15%;"/>
+                    <span class="menu-title" style="margin-left: 10px;">Dashboard</span>
+                  </a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="project.html">
+                      <img src="../../assets/images/2.png" alt="logo" style="height: 15%;width: 15%;"/>
+                      <span class="menu-title" style="margin-left: 10px;">Project</span>
+                    </a>
+                  </li>
+        
+                  <li class="nav-item">
+                    <a class="nav-link" href="profile.html">
+                      <img src="../../assets/images/2.png" alt="logo" style="height: 15%;width: 15%;"/>
+                      <span class="menu-title" style="margin-left: 10px;">Profile</span>
+                    </a>
+                  </li>
+            
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">
+                      <img src="../../assets/images/10.png" alt="logo" style="height: 15%;width: 15%;"/>
+                      <span class="menu-title" style="margin-left: 10px;">Logout</span>
+                     
+                    </a>
+                  </li> -->
+              </ul>
+            </nav>
+
+        <!-- <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true" >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel">Edit Project</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeForm()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header" style="margin:2rem 0 1.5rem 0">
+              <h3 class="page-title">Project List</h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Project List</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                         
+                            <div class="table-responsive">
+                                <table id="dataTable" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Launch Date</th>
+                                            <th>District</th>
+                                            <th>Taluk</th>
+                                            <th>Village</th>
+                                            <th>Total Plot</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Your table content -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <ul id="pagination" class="pagination"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid d-flex justify-content-between">
+                  <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright<a href="www.aishalaya.com" target="_blank"> © aishalaya.com</a> </span>
+                </div>
+              </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+    <script>
+
+let isContentLoaded = false;
+
+// Vanilla JavaScript for DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', async function () {
+  if (isContentLoaded) return; // Prevent multiple executions
+  isContentLoaded = true;
+
+  try {
+    const customerEmail = localStorage.getItem('customerEmail');
+    
+    console.log('Customer email:', customerEmail); // Log customer email
+    
+    if (!customerEmail) {
+      throw new Error('Customer email not found in localStorage');
+    }
+    
+    // Fetch customer details to get associated company ID
+    const responseCustomer = await fetch(`http://localhost:8080//api/User/getCustomerByEmail/${customerEmail}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!responseCustomer.ok) {
+      throw new Error('Failed to fetch customer details');
+    }
+
+    const dataCustomer = await responseCustomer.json();
+
+    // Ensure that the company object and companyId are properly fetched
+    if (!dataCustomer.companyId || !dataCustomer.companyId) {
+      throw new Error('Company ID not found in customer details');
+    }
+
+    const companyId = dataCustomer.companyId;
+
+    // Check if the current URL already contains the company ID parameter
+    if (!window.location.href.includes(`companyId=${companyId}`)) {
+      // Redirect to the EmployeeForm page with company ID query parameter
+      const formUrl = `project.html?companyId=${companyId}`;
+      window.location.href = formUrl;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    // Handle error
+  }
+});
+
+// jQuery for document ready event
+$(document).ready(function () {
+  // Fetch the company name using the company ID from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const companyId = urlParams.get('companyId');
+
+  // Check if companyId is available in URL
+  if (companyId) {
+    $.ajax({
+      url: `http://localhost:8080//api/User/getCompaniesById/${companyId}`,
+      type: 'GET',
+      dataType: 'json',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      success: function (companyData) {
+        // Fetch project details based on the company name
+        const companyName = companyData.companyName;
+
+        $.ajax({
+          url: `http://localhost:8080//api/User/getAllProjectDetail`,
+          type: 'GET',
+          dataType: 'json',
+          headers: {
+            'Content-Type': 'application/json',
+            // Assuming accessToken is defined elsewhere
+            
+          },
+          success: function (projects) {
+            // Filter projects based on companyName
+            const filteredProjects = projects.filter(project => project.companyName === companyName);
+
+            // Clear existing table rows
+            $('#dataTable tbody').empty();
+
+            // Populate table with fetched data
+            filteredProjects.forEach(function (project) {
+              $('#dataTable tbody').append(`
+                <tr>
+                  <td>${project.projectName}</td>
+                  <td>${project.launchDate}</td>
+                  <td>${project.district}</td>
+                  <td>${project.taluk}</td>
+                  <td>${project.village}</td>
+                  <td>${project.totalPlots}</td>
+                  <td>
+                    <button type="button" class="btn btn-info btn-sm edit-btn" onclick="openEditPage(${project.id})">Details</button>
+                  </td>
+                </tr>
+              `);
+            });
+
+            $('#projectModal').modal('hide');
+          },
+          error: function (xhr, status, error) {
+            console.error('Error:', error);
+            // Handle error
+          }
+        });
+      },
+      error: function (xhr, status, error) {
+        console.error('Error:', error);
+        // Handle error
+      }
+    });
+  } else {
+    console.error('Company ID not found in URL');
+    // Handle error
+  }
+});
+
+     
+function closeForm() {
+        // Assuming 'employeeModal' is the ID of your modal
+        $('#projectModal').modal('hide');
+      }
+
+
+        function logout() {
+                      // Clear local storage
+                      localStorage.clear();
+                      
+                      // Redirect to the logout page or perform other logout actions
+                      window.location.href = '../../login.html';
+                  }    
+                  
+                  function openEditPage(projectId) {
+    // Assuming 'project_layout_edit.html' is in the same directory
+    window.location.href = `projectLayout_User.html?projectId=${projectId}`;
+} 
+
+  </script>
+
+
+
+
+
+
+    
+    <!-- plugins:js -->
+   <!--<script src="../../<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+ 
+ .js"></script> -->
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->  
+    <script src="../../assets/js/menu_active.js"></script>
+   <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+    <!-- End custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>

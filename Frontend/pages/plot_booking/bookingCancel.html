@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Booking Cancel | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- Include Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <!--showalert Message-->
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+  <style>
+    /* Custom CSS for tabs */
+    .nav-tabs .nav-link {
+      color: #000;
+      /* Change the color of the tab text */
+    }
+
+    .nav-tabs .nav-link.active {
+      color: #007bff;
+      /* Change the color of the active tab text */
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-scroller">
+      
+    <!-- partial:../../partials/_navbar.html -->
+    <nav
+    class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+  >
+    <div
+      class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+    >
+    <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+    <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+      <button
+        class="navbar-toggler navbar-toggler align-self-center"
+        type="button"
+        data-toggle="minimize"
+      >
+        <span class="mdi mdi-menu"></span>
+      </button>
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item d-none d-lg-block full-screen-link">
+          <a class="nav-link">
+            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+          </a>
+        </li>
+        <li class="nav-item nav-logout d-none d-lg-block">
+          <a class="nav-link"  onclick="logout()">
+            <i class="mdi mdi-power"></i>
+          </a>
+        </li>
+      </ul>
+      <button
+        class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+        type="button"
+        data-toggle="offcanvas"
+      >
+        <span class="mdi mdi-menu"></span>
+      </button>
+    </div>
+  </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Booking Cancel</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="pages/dashboard/dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                 Booking Cancel
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <form class="form-sample" id="BookCancelForm">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="customerid">Customer ID</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="customerid" type="text" id="customerid" name="customerid" readonly />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="customername">Customer Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="Customer Name" type="text" id="customername"
+                              name="customername" readonly />
+                          </div>
+                        </div>
+                      </div>
+                     
+                     
+                    
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="bookingCancelEmployeeId">Booking Cancel Employee ID</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="blockEmployeeName" type="text"
+                              id="bookingCancelEmployeeId" name="bookingCancelEmployeeId" readonly />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="bookingCancelEmployeeName">Booking Cancel Employee Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="booking Employee Name" type="text"
+                              id="bookingCancelEmployeeName" name="bookingCancelEmployeeName" readonly />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="bookingEmployeeID">Booking Employee ID</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="bookingEmployeeID" type="text"
+                              id="bookingEmployeeID" name="bookingEmployeeID" readonly />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="bookingEmployeeName">Booking Employee Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="booking Employee Name" type="text"
+                              id="bookingEmployeeName" name="bookingEmployeeName" readonly />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="icon-tab-0" data-bs-toggle="tab" href="#icon-tabpanel-0"
+                          role="tab" aria-controls="icon-tabpanel-0" aria-selected="true">Site Visit</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-1" data-bs-toggle="tab" href="#icon-tabpanel-1" role="tab"
+                          aria-controls="icon-tabpanel-1" aria-selected="false"> Bill Information</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-2" data-bs-toggle="tab" href="#icon-tabpanel-2" role="tab"
+                          aria-controls="icon-tabpanel-2" aria-selected="false">Plot</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-4" data-bs-toggle="tab" href="#icon-tabpanel-4" role="tab"
+                          aria-controls="icon-tabpanel-4" aria-selected="false">Payment History</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-3" data-bs-toggle="tab" href="#icon-tabpanel-3" role="tab"
+                          aria-controls="icon-tabpanel-3" aria-selected="false">Payment</a>
+                      </li>
+
+                    </ul>
+                    <div class="tab-content pt-5" id="tab-content">
+                      <div class="tab-pane active" id="icon-tabpanel-0" role="tabpanel" aria-labelledby="icon-tab-0">
+                        <table id="siteVisitTable" class="table table-hover">
+                          <tbody>
+                            <tr>
+                              <td>Customer Code:</td>
+                              <td id="customCode"></td>
+                            </tr>
+                            <tr>
+                              <td>Mobile Number:</td>
+                              <td id="mobileNumber"></td>
+                            </tr>
+                            <tr>
+                              <td>Preferred Location:</td>
+                              <td id="location"></td>
+                            </tr>
+                            <!-- <tr>
+                                    <td>Preferred Budget:</td>
+                                    <td id="preferredBudget"></td>
+                                </tr> -->
+                            <tr>
+                              <td>Email:</td>
+                              <td id="email"></td>
+                            </tr>
+
+                            <tr>
+                              <td>Employee Type:</td>
+                              <td id="employeeType"></td>
+                            </tr>
+                            <tr>
+                              <td>Work Place:</td>
+                              <td id="workPlace"></td>
+                            </tr>
+                            <tr>
+                              <td>Address:</td>
+                              <td id="address"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-1" role="tabpanel" aria-labelledby="icon-tab-1">
+                        <div class="row">
+
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="customerName">Customer Name</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="customerName" name="customerName" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="mobileNumber1">Mobile Number</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="mobileNumber1" name="mobileNumber1" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="email1">Email</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="email1" name="email1" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="houseName">Door No. / House Name</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="houseName" name="houseName" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="streetName">Street Name</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="streetName" name="streetName" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="area">Area</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="area" name="area" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="city">City</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="city" name="city" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="district">District</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="district" name="district" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="state">State</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="state" name="state" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="postalCode">Postal Code</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="postalCode" name="postalCode" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-2" role="tabpanel" aria-labelledby="icon-tab-2">
+                        <h4 class="card-title" style="margin-top: 2em;">Purchased Plot </h4>
+                        <div class="container mt-5">
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                              <thead>
+                                <tr>
+                                  <th>Project</th>
+                                  <th>Plot No </th>
+                                  <th>Total SQFT</th>
+                                  <th>Rate Per SQFT</th>
+                                  <th>Total Values</th>
+                                  <th>Description</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <input type="text" class="form-control" id="siteVisitProjectName"
+                                      name="siteVisitProjectName" readonly>
+
+                                  </td>
+                                  <td> <input type="text" id="plotNumber" name="plotNumber" class="form-control" readonly
+                                    placeholder="Total sqrt">
+                                  </td>
+                                  <td><input type="text" class="form-control" id="totalsqrt" name="totalsqrt" readonly
+                                      placeholder="Total sqrt"></td>
+                                  <td><input type="text" class="form-control" id="rate" name="rate" readonly
+                                      placeholder="rate"></td>
+                                  <td><input type="text" class="form-control" id="totalValues" name="totalValues"
+                                      readonly placeholder="total values" readonly></td>
+                                  <td><input type="text" class="form-control" id="description" name="description"
+                                      readonly placeholder="description"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <h4 class="card-title" style="margin-top: 2em;margin-bottom: 2em;">Purchased Rate </h4>
+                        <div class="container mt-5" style="margin-bottom: 2em;">
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                              <thead>
+                                <tr>
+                                  <th>Project</th>
+                                  <th>Plot No </th>
+                                  <th>Total SQFT</th>
+                                  <th>Rate Per SQFT</th>
+                                  <th>Total Values</th>
+                                  <th>Discount</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <input type="text" class="form-control" id="bookedProjectName"name="bookedProjectName" readonly>
+                                  </td>
+                                  <td><input type="text" class="form-control" id="bookedPlotNo" name="bookedPlotNo"
+                                      readonly placeholder="plotNo"></td>
+                                  <td><input type="text" class="form-control" id="blockedTotalsqrt"
+                                      name="blockedTotalsqrt" readonly placeholder="blockedTotalsqrt"></td>
+                                  <td><input type="text" class="form-control" id="blockedRate" name="blockedRate"
+                                      readonly placeholder="blockedRate"></td>
+                                  <td><input type="text" class="form-control" id="blockedTotalValues"
+                                      name="blockedTotalValues" readonly placeholder="total values"></td>
+                                  <td><input type="text" class="form-control" id="blockedDiscount"
+                                      name="blockedDiscount" readonly placeholder="blockedDiscount"></td>
+                                     
+                                 
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-4" role="tabpanel" aria-labelledby="icon-tab-4">
+                        <!-- <h4 class="card-title" style="margin-top: 2em;margin-bottom: 2em;">Payment History </h4> -->
+                        <div class="container mt-5" style="margin-bottom: 2em;">
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTableForPaymentHistory">
+                              <thead>
+                                <tr>
+                                    					
+                                  <th>Receipt No</th>
+                                  <th>Receipt Date</th>
+                                  <th>Paid Amount ₹</th>
+                                  <th>Paid By</th>
+                                  <th>Total Values</th>
+                                  <th>Received By</th>
+                                  <th>Print Receipt </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                               
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-3" role="tabpanel" aria-labelledby="icon-tab-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-9 col-form-label" for="paidAmountInBilling">Paid Amount</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="text" id="paidAmountInBilling"
+                                      name="paidAmountInBilling" placeholder="Paid Amount" />
+                                  </div>
+                                </div>
+                              </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="deductionAmountInBilling">Deduction Amount</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="deductionAmountInBilling"
+                                  name="deductionAmountBilling" placeholder="Deduction Amount" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="refundAmountInBilling">Refund Amount</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="refundAmountInBilling"
+                                  name="refundAmountInBilling" placeholder="Refund Amount" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="refundDateInBilling">Refund Date</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="date" id="refundDateInBilling"
+                                  name="refundDateInBilling" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaymentType">Payment Type</label>
+                              <div class="col-sm-9">
+                                <select class="form-control" id="PaymentType" name="PaymentType">
+                                  <option value="" disabled selected>Select Payment Type</option>
+                                  <option value="Credit Card">Credit Card</option>
+                                  <option value="Debit Card">Debit Card</option>
+                                  <option value="Cash">Cash</option>
+                                  <option value="Bank Transfer">Bank Transfer</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaymentMode">Payment Mode</label>
+                              <div class="col-sm-9">
+                                <select class="form-control" id="PaymentMode" name="PaymentMode">
+                                  <option value="" disabled selected>Select Payment Mode</option>
+                                  <option value="Part Payment">Part Payment</option>
+                                  <option value="Full Payment">Full Payment</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaidBy">Paid By</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="PaidBy" name="PaidBy"
+                                  placeholder="Paid By" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="ReceivedBy">Received By</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="ReceivedBy" name="ReceivedBy"
+                                  placeholder="Received By" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div id="denominationTableContainer" style="display: none;" class="row">
+                            <h5>Denomination</h5>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>S.no</th>
+                                    <th>Rupees</th>
+                                    <th>No.of.Notes</th>
+                                    <th>Total Amount</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>500</td>
+                                    <td><input class="form-control" type="text" name="row1col3" id="row1col3"></td>
+                                    <td><input class="form-control" type="text" name="row1col4" id="row1col4" readonly>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>200</td>
+                                    <td><input class="form-control" type="text" name="row2col3" id="row2col3"></td>
+                                    <td><input class="form-control" type="text" name="row2col4" id="row2col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>100</td>
+                                    <td><input class="form-control" type="text" name="row3col3" id="row3col3"></td>
+                                    <td><input class="form-control" type="text" name="row3col4" id="row3col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>4</td>
+                                    <td>50</td>
+                                    <td><input class="form-control" type="text" name="row4col3" id="row4col3"></td>
+                                    <td><input class="form-control" type="text" name="row4col4" id="row4col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>5</td>
+                                    <td>20</td>
+                                    <td><input class="form-control" type="text" name="row5col3" id="row5col3"></td>
+                                    <td><input class="form-control" type="text" name="row5col4" id="row5col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>6</td>
+                                    <td>10</td>
+                                    <td><input class="form-control" type="text" name="row6col3" id="row6col3"></td>
+                                    <td><input class="form-control" type="text" name="row6col4" id="row6col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td>Total</td>
+                                    <td><input class="form-control" type="text" name="denoTotalNotes"
+                                        id="denoTotalNotes"></td>
+                                    <td><input class="form-control" type="text" name="denoTotalAmount"
+                                        id="denoTotalAmount"></td>
+                                  </tr>
+
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div id="BankTableContainer" style="display:none;" class="row">
+                            <h5>Bank Details :
+
+                            </h5>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-5 col-form-label" for="bankName">Bank Name</label>
+                                  <div class="col-sm-5">
+                                    <input class="form-control" type="text" id="bankName" name="bankName" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-5 col-form-label" for="cdtNo">Cheque / DD No / Transaction
+                                    ID</label>
+                                  <div class="col-sm-5">
+                                    <input class="form-control" type="text" id="cdtNo" name="cdtNo" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="cdtDate">
+                                  Date</label>
+                                <div class="col-sm-5">
+                                  <input class="form-control" type="date" id="cdtDate" name="cdtDate" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="btn-group">
+                            <div class="col">
+                              <button type="button" id="toggleTableBtnDenomination" class="btn btn-sm btn btn-primary"
+                                onclick="toggleDenominationTable()">Cash Denomination Table</button>
+
+
+                              <button type="button" id="toggleTableBtnCardTransaction"
+                                class="btn btn-sm btn btn-primary" onclick="toggleCardTransactionTable()">card
+                                Denomination Table</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-end">
+                        <!-- <button type="button" class="btn back custom-width"
+                          onclick="window.location.href='employee_list.html';">Back</button> -->
+                        <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                        <button class="btn btn-light ">Cancel</button>
+
+                      </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div id="includeFooder"></div>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- Bootstrap Bundle with Popper.js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/file-upload.js"></script>
+
+  <!-- End custom js for this page -->
+  <script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+    $(document).ready(function () {
+//newly added
+
+      // fetching datas from local storage(login credentials: Name,email id)
+      const BookEmployeeEmailId = localStorage.getItem('employeeEmail');
+      const BookEmployeeName = localStorage.getItem('employeeName');
+      const initialBookEmployeeEmailId = BookEmployeeEmailId;
+      const initialBookEmployeeName = BookEmployeeName;
+
+      // fetching datas from URL(URL params: visitId,phoneNumber,Project name)
+      //console.log(employeeNamenew,'hi0');
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const phoneNumber = urlParams.get('phoneNumber');
+      let currentBookingId = urlParams.get('id');
+      const currentProjectName = urlParams.get('projectName');
+     
+      //displaying the fetched values in the form
+      document.getElementById('siteVisitProjectName').value = currentProjectName;
+      document.getElementById('bookingCancelEmployeeId').value = BookEmployeeEmailId;
+     document.getElementById('bookingCancelEmployeeName').value = BookEmployeeName;
+     // document.getElementById('bookingCancelEmployeeID').value = BookEmployeeEmailId;
+      document.getElementById('bookedProjectName').value = currentProjectName;
+      document.getElementById('siteVisitProjectName').value = currentProjectName;
+     
+
+     
+      const accessToken = localStorage.getItem('accessToken');
+      $.ajax({
+        url: `http://localhost:8080/api/customer/getCustomerByPhoneNumber/${phoneNumber}`,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+          },
+        success: function (data) {
+          console.log("data:",data);
+          const customersId = data.customCode;
+          const customersName = data.customerName;
+          const customerEmail = data.customerEmail;
+          const customerHouseName = data.address;
+          const customerStreet = data.streetName;
+          const customerArea = data.area;
+          const customerCity = data.city;
+          const customerDistrict = data.district;
+          const customerState = data.state;
+          const customerPostalCode = data.postalCode;
+
+
+
+          document.getElementById('customerid').value = customersId;
+          document.getElementById('customername').value = customersName;// this is for seconmd field
+          document.getElementById('customerName').value = customersName;// this is for below tab customer details
+          document.getElementById('mobileNumber1').value = phoneNumber;
+          document.getElementById('email1').value = customerEmail;
+          document.getElementById('houseName').value = customerHouseName;
+          document.getElementById('streetName').value = customerStreet;
+          document.getElementById('area').value = customerArea;
+
+          document.getElementById('city').value = customerCity;
+          document.getElementById('district').value = customerDistrict;
+
+          document.getElementById('state').value = customerState;
+          document.getElementById('postalCode').value = customerPostalCode;
+
+          console.log(phoneNumber, 'hi0');
+
+          $('#customCode').text(data.customCode);
+          $('#mobileNumber').text(data.mobileNumber);
+          $('#location').text(data.location);
+          $('#email').text(data.customerEmail);
+          $('#employeeType').text(data.employeeType);
+          $('#workPlace').text(data.workPlace);
+          $('#address').text(data.address);
+
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+      let projectId;
+      let plotNumber;
+      let blockId;
+     
+      $.ajax({
+        url: `http://localhost:8080/api/booking/getBookingDetailsById/${currentBookingId}`,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+          },
+        success: function (data) {
+        
+          document.getElementById('bookingEmployeeID').value = data.bookingEmpId;
+          document.getElementById('bookingEmployeeName').value = data.bookingEmpNAme;
+          document.getElementById('bookedPlotNo').value =data.plotNumber;
+          document.getElementById('blockedTotalsqrt').value = data.totalSqft;
+          document.getElementById('blockedRate').value =data.sellingRate;
+          document.getElementById('blockedTotalValues').value =data.originalRate;
+          document.getElementById('blockedDiscount').value = data.discount;
+          projectId = data.projectId;
+          
+          plotNumber = data.plotNumber;
+          const paidAmountInBooking=data.paidAmount;
+          const visitId=data.visitId;
+          console.log("visitId:",visitId);
+          if(paidAmountInBooking>0)
+          {
+            bookDatas(data);
+          }
+          console.log(projectId,plotNumber);
+          // document.getElementById('plotNumber').value = PlotNumberValue;
+          // document.getElementById('customername').value = customerNames;
+       //   blockDatas(visitId);
+          $.ajax({
+            url: `http://localhost:8080/api/blocks/getBlockDetailsByVisitIdAndProjectName/${visitId}/${currentProjectName}`,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': accessToken,
+              },
+            success: function (data) {
+              blockId = data.blocksId;
+            const paidAmountInBlockingPlot=data.paidAmount;
+             if(paidAmountInBlockingPlot>0)
+      {
+        
+        blockDatas(data);
+      }
+            },
+            error: function (xhr, status, error) {
+              console.error(xhr.responseText); // Log the error response
+              console.error(error); // Log the error message
+              showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+            }
+          });
+          $.ajax({
+            url: `http://localhost:8080/api/project/getProjectLayoutDetailsByProjectNameAndPlotNumber/${currentProjectName}/${plotNumber}`,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': accessToken,
+              },
+            success: function (data) {
+              document.getElementById('plotNumber').value = data.plotNumber;
+              document.getElementById('totalsqrt').value = data.totalSqft;
+              document.getElementById('rate').value =data.rate;
+              document.getElementById('totalValues').value = data.totalValue;
+              document.getElementById('description').value =data.descrip;   
+            },
+          })
+        },
+      })
+
+      function bookDatas(responseData) {
+        console.log("responseData:", responseData);
+    
+        // Extracting date from responseData
+        const dateStr = responseData.createdOn.substring(0, 10);
+        const receiptNo = responseData.receiptNo; 
+        const mobileNumber = responseData.mobileNumber;
+        const plotNumber = responseData.plotNumber;
+        const projectName = responseData.projectName;
+        const currentBlockId = responseData.blocksId;
+     
+        console.log("sri:",responseData);
+        // Clear existing rows in the table
+        // $('#dataTableForPaymentHistory tbody').empty();
+    
+        // Append a row to the table for the single data object
+        $('#dataTableForPaymentHistory tbody').append(`
+            <tr>
+                <td>${1}</td>
+                <td>${dateStr}</td>
+                <td>${responseData.paidAmount}</td>
+                <td>${responseData.paidBy}</td>
+                <td>${responseData.netAmount}</td>
+                <td>${responseData.receivedBy}</td>
+                <td><a href="invoice.html?mobileNumber=${responseData.mobileNumber}&receiptNo=${receiptNo}&dateStr=${dateStr}&plotNumber=${plotNumber}&projectName=${projectName}&bookingId=${responseData.bookingId}" style="text-align: center;">Print</a></td>
+            </tr>
+        `);
+    }
+   function blockDatas(responseData)
+    {
+      console.log("data:", responseData);
+    
+      // Extracting date from responseData
+      const dateStr = responseData.paidDate.substring(0, 10);
+      const receiptNo = responseData.receiptNo; 
+      const mobileNumber = responseData.mobileNumber;
+      const plotNumber = responseData.plotNumber;
+      const projectName = responseData.projectName;
+      //const currentBookingId = responseData.currentBookingId;
+     const newCurrentBookingId = urlParams.get('id');
+      
+      // Clear existing rows in the table
+      // $('#dataTableForPaymentHistory tbody').empty();
+  
+      // Append a row to the table for the single data object
+      $('#dataTableForPaymentHistory tbody').append(`
+          <tr>
+              <td>${2}</td>
+              <td>${dateStr}</td>
+              <td>${responseData.paidAmount}</td>
+              <td>${responseData.paidBy}</td>
+              <td>${responseData.netAmount}</td>
+              <td>${responseData.receivedBy}</td>
+              <td><a href="invoice.html?mobileNumber=${responseData.mobileNumber}&receiptNo=${receiptNo}&dateStr=${dateStr}&plotNumber=${plotNumber}&projectName=${projectName}&currentBlockedIds=${responseData.blocksId}" style="text-align: center;">Print</a></td>
+          </tr>
+      `);
+  }
+       document.getElementById('BookCancelForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+
+        var currentDate = new Date();
+        var formattedDate = currentDate.toISOString();
+        const teamIdForForm=localStorage.getItem('teamId');
+        // Assign the formatted date to the paidDate variable
+        var paidDate = formattedDate;
+      //  const blockedId = blockedEmployeeId;
+       // const originalAmountOfThePlotToForm =  originaLAmountOfThePlot;
+        //const sellingRateInBilling = sellingRateBilling;
+
+        // const startingTimeInput = document.getElementById('startingTime');
+        //console.log(startingTimeInput,'hi');
+        //const startingTimeValue = new Date(startingTimeInput.value).toISOString().slice(0, 19).replace('T', ' ');
+const companyId=localStorage.getItem('companyId');
+          const booking = {
+   
+          createdOn: paidDate,// 
+          customerId: document.getElementById('customerid').value,//
+          customerName: document.getElementById('customerName').value,
+          bookCancelEmpId: document.getElementById('bookingCancelEmployeeId').value, 
+          bookCancelEmpName: document.getElementById('bookingCancelEmployeeName').value,
+          bookingEmpId: document.getElementById('bookingEmployeeID').value,
+          bookingEmpNAme: document.getElementById('bookingEmployeeName').value,
+          customerCode:document.getElementById('customCode').value, //
+
+          mobileNumber: document.getElementById('mobileNumber1').value,
+          project: document.getElementById('bookedProjectName').value,
+          plotNumber: document.getElementById('plotNumber').value,
+          totalSqft: document.getElementById('blockedTotalsqrt').value,
+
+          ratePerSqft: document.getElementById('blockedRate').value,
+
+          totalValues: document.getElementById('blockedTotalValues').value,
+          description: document.getElementById('description').value,
+          rateProject: document.getElementById('blockedRate').value,//
+          purchasedPlotNo: document.getElementById('bookedPlotNo').value,//
+
+          purchasedTotalSqft: document.getElementById('blockedTotalsqrt').value,//
+          purchasedRatePerSqft: document.getElementById('blockedRate').value,//
+          purchasedTotalValues: document.getElementById('blockedTotalValues').value,//
+          purchasedDiscount: document.getElementById('blockedDiscount').value,//
+
+          paymentType: document.getElementById('PaymentType').value,
+          paymentMode: document.getElementById('PaymentMode').value,
+          deno500: document.getElementById('row1col3').value,
+          denoa500: document.getElementById('row1col4').value,
+          deno200: document.getElementById('row2col3').value,
+          denoa200: document.getElementById('row2col4').value,
+          deno100: document.getElementById('row3col3').value,
+          denoa100: document.getElementById('row3col4').value,
+          deno50: document.getElementById('row4col3').value,
+          denoa50: document.getElementById('row4col4').value,
+          deno20: document.getElementById('row5col3').value,
+          denoa20: document.getElementById('row5col4').value,
+          deno10: document.getElementById('row6col3').value,
+          denoa10: document.getElementById('row6col4').value,
+          denoTotalNotes: document.getElementById('denoTotalNotes').value,
+          denoTotalAmount: document.getElementById('denoTotalAmount').value,
+          bankName: document.getElementById('bankName').value,
+          cdtNo: document.getElementById('cdtNo').value,
+          cdtDate: document.getElementById('cdtDate').value,
+          refundAmount: document.getElementById('refundAmountInBilling').value,
+          paidAmount: document.getElementById('paidAmountInBilling').value,
+          deductionAmount: document.getElementById('deductionAmountInBilling').value,
+          refundDate: document.getElementById('refundDateInBilling').value,
+          
+          paidBy: document.getElementById('PaidBy').value,
+          receivedBy: document.getElementById('ReceivedBy').value,
+          companyId : companyId,
+          teamId:teamIdForForm
+
+        };
+        console.log("book cancel:",booking);
+        //formData.append('blocks', new Blob([JSON.stringify(blocks)], { type: 'application/json' }));
+        // ... (remaining file upload logic)
+
+        try {
+          const response = await fetch('http://localhost:8080/api/booking/addBookCancel', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': accessToken, // Specify the content type as JSON
+            },
+            body: JSON.stringify(booking), // Convert the JavaScript object to JSON string
+
+            credentials: 'include'
+          });
+
+          if (!response.ok) {
+
+            throw new Error('Failed to cancel the booking');
+            showalert('Failed to cancel the Booking');
+          }
+
+          showalert('Booking Cancelled successfully');
+          $.ajax({
+            url: 'http://localhost:8080/api/booking/deleteBookById/' + currentBookingId, // Assuming visitId is the blockId
+            type: 'DELETE',
+            contentType: 'application/json',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': accessToken,
+            },
+            success: function (response) {
+              window.location.reload();
+              // Handle success
+            },
+            error: function (xhr, status, error) {
+
+              // Handle error
+            }
+          });
+          window.location.href = 'booking_list.html';
+
+          // Optionally, redirect or perform any other action upon successful submission
+        } 
+        catch (error) {
+          console.error('Error:', error);
+          showalert('Failed to add Book Details');
+        }
+      });
+    
+      $('#paidAmountInBilling, #deductionAmountInBilling').change(function () {
+        var currentPaidAmountInBilling = parseFloat($('#paidAmountInBilling').val()); // Fetch total square footage
+        var currentDeductionAmountInBilling = parseFloat($('#deductionAmountInBilling').val()); // Fetch rate
+       
+        // Check if both values are valid numbers
+        if (!isNaN(currentPaidAmountInBilling) && !isNaN(currentDeductionAmountInBilling)) {
+            // Calculate refund amount by adding the paid amount and deduction amount
+            var currentRefundAmount = currentPaidAmountInBilling + currentDeductionAmountInBilling;
+            console.log(currentRefundAmount, "jii");
+            
+            // Set the calculated refund amount to the refundAmountInBilling field
+            $('#refundAmountInBilling').val(currentRefundAmount);
+        } else {
+            // Handle case where one or both values are not valid numbers
+            console.error("Invalid input values");
+        }
+    });
+
+      $('input[name^="row"][name$="col3"]').change(function () {
+        var totalNotes = 0;
+        $('input[name^="row"][name$="col3"]').each(function () {
+          var value = parseFloat($(this).val());
+          if (!isNaN(value)) {
+            console.log(totalNotes, "shanmathi");
+            totalNotes += value;
+          }
+        });
+        $('#denoTotalNotes').val(totalNotes);
+      });
+      $('input[name^="row"][name$="col3"]').change(function () {
+        var totalNotes = 0;
+        var totalAmounts = 0;
+
+        // Iterate over all col3 inputs to calculate totalNotes and update corresponding col4 values
+        $('input[name^="row"][name$="col3"]').each(function () {
+          var value = parseFloat($(this).val());
+          if (!isNaN(value)) {
+            var currentRow = $(this).closest('tr');
+            var rupees = parseFloat(currentRow.find('td:nth-child(2)').text());
+
+            // Calculate total amount for the corresponding col4 input
+            if (!isNaN(rupees)) {
+              var totalAmount = rupees * value;
+              currentRow.find('input[name$="col4"]').val(totalAmount);
+              totalAmounts += totalAmount;
+            }
+
+            // Update totalNotes
+            totalNotes += value;
+          }
+        });
+
+        // Set the calculated totalNotes and totalAmounts to their respective input fields
+        $('#denoTotalNotes').val(totalNotes);
+        $('#denoTotalAmount').val(totalAmounts);
+      });
+
+    });
+
+  </script>
+  <script>
+    // Define the function outside of $(document).ready() scope
+    function toggleDenominationTable() {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Toggle the visibility of the denomination table
+      var tableContainer = document.getElementById("denominationTableContainer");
+      if (tableContainer.style.display === "none") {
+        tableContainer.style.display = "block";
+      } else {
+        tableContainer.style.display = "none";
+      }
+    }
+    function toggleCardTransactionTable() {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Toggle the visibility of the denomination table
+      var tableContainer = document.getElementById("BankTableContainer");
+      if (tableContainer.style.display === "none") {
+        tableContainer.style.display = "block";
+      } else {
+        tableContainer.style.display = "none";
+      }
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+1.Now all the controller methods are accessible respect the users roles in their database for
+achieving Custom Role allotment Feature(admin);
+
+2.The roles of the user from SecurityContextHolder and Their database will be compared , if it is same then only user
+can access the requested endpoint. If suddenly UserRole has been changed(Due Hacked or UnAuthorized Access) in database or SecurityHolder
+It may throw Forbidden or UnAuthorized Error.
+
+3.It it occurs We can create a service to make both role are same. It provide More Security to our application.
+NOTE: If hackers try to hack,they may have to hack SecurityContextHolder And as well as Database and they may hack an endpoint that make roles to be same.
+
+
+
+

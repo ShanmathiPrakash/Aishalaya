@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Project List / Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End Plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- End layout styles -->
+<!--showalert Message-->
+<script src="assets/js/alertMessages.js"></script>
+   
+  <style>
+    /* Adjust the modal size */
+    .modal-dialog {
+      max-width: 1100px;
+      /* Set your desired maximum width */
+    }
+
+    /* Adjust the form size */
+    .form-sample {
+      max-width: 100%;
+      /* Set your desired maximum width */
+    }
+
+    @media (min-width: 576px) {
+      .col-sm-9 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 100% !important;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <!-- partial -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo"
+            style="height: 100%;" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png"
+            alt="logo" style="height: 100%;" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Your HTML content here -->
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Your custom JavaScript code here -->
+
+    <div class="container-fluid page-body-wrapper">
+      <div id="includeHtml"></div>
+
+      <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="projectModalLabel">Edit Project</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeForm()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Employee Form -->
+              <form class="form-sample" id="projectForm">
+                <p class="card-description">Project Info</p>
+                <div class="row">
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="companyName">Company Name</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="companyName" name="companyName"><br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="projectName">Project Name</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="projectName" name="projectName"
+                          oninput="validateInput('projectName')" required><br>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="launchDate">Launch Date</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="launchDate" name="launchDate"><br>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="landType">LandType</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="landType" name="landType"
+                          oninput="validateNo('landType')" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="district">
+                      <label class="col-sm-4 col-form-label">District</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="district" name="district"
+                          oninput="validateInput('district')" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="taluk">
+                      <label class="col-sm-4 col-form-label">Taluk</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="taluk" name="taluk" oninput="validateNo('taluk')"
+                          required />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="village">
+                      <label class="col-sm-4 col-form-label">Village</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="village" name="village" />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="extent">Extent</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="extent" name="extent"
+                          oninput="validatesNumberInput(event)" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="address">Address</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="address" name="address" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="geoLocation">Geo Location</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="geoLocation" name="geoLocation" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="totalSiteSqft">Total Site Sqft</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="totalSiteSqft" name="totalSiteSqft"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="totalSiteCent">Total Site Cent</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="totalSiteCent" name="totalSiteCent" class="form-control"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="saleableSqft">Saleable Sqft</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="saleableSqft" name="saleableSqft" class="form-control"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="saleableCent">Saleable Cent</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="saleableCent" name="saleableCent" class="form-control"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="roadSqft">Road Sqft</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="roadSqft" name="roadSqft" class="form-control"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="roadCent">Road Cent</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="roadCent" name="roadCent" class="form-control"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="totalPlots">Total Plots</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="totalPlots" name="totalPlots" class="form-control"
+                          oninput="validatesNumberInput(event)" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="eastDetails">East Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="eastDetails" name="eastDetails" class="form-control"
+                          oninput="validateNo('eastDetails')" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="westDetails">West Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="westDetails" name="westDetails" class="form-control"
+                          oninput="validateNo('westDetails')" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="northDetails">North Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="northDetails" name="northDetails" class="form-control"
+                          oninput="validateNo('northDetails')" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="southDetails">South Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="southDetails" name="southDetails" class="form-control"
+                          oninput="validateNo('southDetails')" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="prevOwnerName">PrevOwner Name</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="prevOwnerName" name="prevOwnerName" class="form-control"
+                          oninput="validateInput('prevOwnerName')" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="prevOwnerContact">PrevOwner Contact</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="prevOwnerContact" name="prevOwnerContact" class="form-control"
+                          oninput="validateMobile(event)" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="prevOwnerAddress">PrevOwner Address</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="prevOwnerAddress" name="prevOwnerAddress" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="agreementDetails">Agreement Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="agreementDetails" name="agreementDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="draftDetails">Draft Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="draftDetails" name="draftDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalDetails">Legal Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="legalDetails" name="legalDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="documentDetails">Document Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="documentDetails" name="documentDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalBookDetails">LegalBook Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="legalBookDetails" name="legalBookDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="dtcpDetails">dtcp Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="dtcpDetails" name="dtcpDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="corporationDetails">Corporation Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="corporationDetails" name="corporationDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="registrationDetails">Registration Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="registrationDetails" name="registrationDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="agreementDocuments">agreement Documents</label>
+                      <div class="col-sm-5">
+                        <div id="agreementDocumentsPath"></div>
+                        <img id="agreementDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="agreementDocuments" name="agreementDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="draftDocuments">draft<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="draftDocumentsPath"></div>
+                        <img id="draftDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="draftDocuments" name="draftDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalDocuments">legal<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="legalDocumentsPath"></div>
+                        <img id="legalDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="legalDocuments" name="legalDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="documentDocuments">document<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="documentDocumentsPath"></div>
+                        <img id="documentDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="documentDocuments" name="documentDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalBookDocuments">legalBook<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="legalBookDocumentsPath"></div>
+                        <img id="legalBookDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="legalBookDocuments" name="legalBookDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="dtcpDocuments">dtcpDocuments<br>Preview</label>
+                      <div class="col-sm-5">
+                        <div id="dtcpDocumentsPath"></div>
+                        <img id="dtcpDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="dtcpDocuments" name="dtcpDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="corporationDocuments">corporation<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="corporationDocumentsPath"></div>
+                        <img id="corporationDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="corporationDocuments" name="corporationDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="layout">layout</label>
+                      <div class="col-sm-5">
+                        <div id="layoutPath"></div>
+                        <img id="layoutPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="layout" name="layout" />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+                <!-- Form buttons -->
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                  <button type="button" class="btn btn-light" data-dismiss="modal" onclick="closeForm()">Cancel</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header" style="margin:2rem 0 1.5rem 0">
+            <h3 class="page-title">Project List</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Project List</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="template-demo">
+                    <button type="button" class="btn btn-gradient-danger btn-rounded btn-fw "
+                      onclick="window.location.href='project_form.html';">Add New</button>
+                  </div>
+                  <div class="table-responsive">
+                    <table id="dataTable" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Action</th>
+
+                          <th>Project Name</th>
+
+                          <th>Launch Date</th>
+                          <th>Comapany</th>
+                          <th>District</th>
+
+                          <th>Village</th>
+                          <th>Total Plot</th>
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                  <ul id="pagination" class="pagination"></ul>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div id="includeFooder"></div>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+
+    let isContentLoaded = false;
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (isContentLoaded) return; // Prevent multiple executions
+      isContentLoaded = true;
+
+      try {
+        const accessToken = localStorage.getItem('accessToken');
+        const employeeEmail = localStorage.getItem('employeeEmail');
+
+        // Fetch employee details to get associated company ID
+        const responseEmployee = await fetch('http://localhost:8080/api/employee/getEmployeeByEmail/' + employeeEmail, {
+          method: 'GET',
+          headers: {
+
+            'Authorization': accessToken
+          },
+        });
+
+        if (!responseEmployee.ok) {
+          throw new Error('Failed to fetch employee details');
+        }
+
+        const dataEmployee = await responseEmployee.json();
+
+        // Ensure that the company object and companyId are properly fetched
+        if (!dataEmployee.company || !dataEmployee.company.companyId) {
+          throw new Error('Company ID not found in employee details');
+        }
+
+        const companyId = dataEmployee.company.companyId;
+
+        // Check if the current URL already contains the company ID parameter
+        if (!window.location.href.includes(`companyId=${companyId}`)) {
+          // Redirect to the EmployeeForm page with company ID query parameter
+          const formUrl = `project_list.html?companyId=${companyId}`;
+          window.location.href = formUrl;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle error
+      }
+    });
+    var formData = new FormData();
+    const accessToken = localStorage.getItem('accessToken');
+
+    $(document).ready(function () {
+    // Fetch the company ID and team IDs from the URL and local storage
+    const accessToken = localStorage.getItem('accessToken');
+    const urlParams = new URLSearchParams(window.location.search);
+    const companyId = urlParams.get('companyId');
+    const teamIdFromLocalStorage = localStorage.getItem('teamId');
+    const MainMenus = localStorage.getItem('MainMenus');
+
+    // Check permissions
+    const canEdit = MainMenus && MainMenus.includes('Project List Edit');
+    const canView = MainMenus && MainMenus.includes('Project List View');
+
+    // Convert companyId to a number
+    const companyIdNum = Number(companyId);
+//good
+    // Parse teamIdFromLocalStorage into an array if it's not null
+    const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id, 10)) : [];
+
+    // Debugging: Log values to ensure they're initialized correctly
+    console.log('companyId:', companyIdNum);
+    console.log('teamIds:', teamIds);
+    console.log('MainMenus:', MainMenus);
+    //shanmathi
+
+    $.ajax({
+        url: `http://localhost:8080/api/project/getAllProjectDetails`,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken,
+        },
+        success: function (projects) {
+            // Debugging: Log fetched projects
+            console.log('Fetched projects:', projects);
+
+            // Filter projects based on the presence of "Employee Form" in MainMenus
+            const filteredProjects = projects.filter(project => {
+                // Log each project and the result of the filtering condition
+                console.log('Project:', project);
+                const isCompanyMatch = project.companyId === companyIdNum;
+                const isTeamMatch = teamIds.length === 0 || teamIds.includes(project.teamId);
+                const isMatch = isCompanyMatch && isTeamMatch;
+
+                // Log the filter results
+              //  console.log(Filtering by companyId (${project.companyId}) and teamIds (${project.teamId}): ${isMatch});
+
+                if (MainMenus && MainMenus.includes('Employee Form')) {
+                    // Filter by companyId only
+                    return isCompanyMatch;
+                } else {
+                    // Filter by companyId and teamIds
+                    return isMatch;
+                }
+            });
+
+            // Debugging: Log filtered projects
+            console.log('Filtered projects:', filteredProjects);
+
+            // Clear existing table rows
+            $('#dataTable tbody').empty();
+
+            // Populate table with fetched data
+            filteredProjects.forEach(function (project) {
+                let buttons = '';
+
+                if (canEdit) {
+                    buttons += `
+                        <button type="button" class="btn btn-info btn-sm edit-btn" data-toggle="modal"
+                            data-target="#projectModal" data-project-id="${project.id}">Edit</button>
+                    `;
+                }
+
+                if (canView) {
+                    buttons += `
+                        <button type="button" class="btn btn-info btn-sm view-btn" data-toggle="modal"
+                            data-target="#projectModal" data-project-id="${project.id}">View</button>
+                    `;
+                }
+
+                $('#dataTable tbody').append(`
+                    <tr>
+                        <td>${buttons}</td>
+                        <td>${project.projectName}</td>
+                        <td>${project.launchDate}</td>
+                        <td>${project.companyName}</td>
+                        <td>${project.district}</td>
+                        <td>${project.village}</td>
+                        <td>${project.totalPlots}</td>
+                    </tr>
+                `);
+            });
+
+            $('#projectModal').modal('hide');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error('Error fetching project details:', textStatus, errorThrown);
+            // Handle error (e.g., display an error message to the user)
+        }
+    });
+});
+
+
+    function closeForm() {
+      // Assuming 'employeeModal' is the ID of your modal
+      $('#projectModal').modal('hide');
+    }
+
+
+
+
+    // Assuming you have an event listener for the edit buttons
+    var currentProjectId;
+    $(document).on('click', '.edit-btn', function () {
+      currentProjectId = $(this).data('project-id');
+      var projectId = $(this).data('project-id');
+      const accessToken = localStorage.getItem('accessToken');
+      $.ajax({
+        url: 'http://localhost:8080/api/project/getProjectById/' + projectId,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (projectData) {
+          populateForm(projectData, formData);
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+          $('#projectModal').modal('show');
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText);
+          console.error(error);
+          showalert('Error fetching project details. Please try again later.');
+        }
+      });
+    });
+
+    function populateForm(projectData, formData) {
+
+      const launchDateDate = new Date(projectData.launchDate);
+      // Format the date to 'YYYY-MM-DD' (assuming you want this format)
+      const formattedDate = launchDateDate.toISOString().split('T')[0];
+
+
+
+
+
+      $('#companyName').val(projectData.companyName);
+      $('#projectName').val(projectData.projectName);
+      $('#launchDate').val(formattedDate);
+      $('#landType').val(projectData.landType);
+      $('#district').val(projectData.district);
+      $('#taluk').val(projectData.taluk);
+      $('#village').val(projectData.village);
+      $('#extent').val(projectData.extent);
+      $('#address').val(projectData.address);
+      $('#geoLocation').val(projectData.geoLocation);
+      $('#totalSiteSqft').val(projectData.totalSiteSqft);
+      $('#totalSiteCent').val(projectData.totalSiteCent);
+      $('#saleableSqft').val(projectData.saleableSqft);
+      $('#saleableCent').val(projectData.saleableCent);
+      $('#roadSqft').val(projectData.roadSqft);
+      $('#roadCent').val(projectData.roadCent);
+      $('#totalPlots').val(projectData.totalPlots);
+
+      $('#eastDetails').val(projectData.eastDetails);
+      $('#westDetails').val(projectData.westDetails);
+      $('#northDetails').val(projectData.northDetails);
+      $('#southDetails').val(projectData.southDetails);
+      $('#prevOwnerName').val(projectData.prevOwnerName);
+      $('#prevOwnerContact').val(projectData.prevOwnerContact);
+      $('#prevOwnerAddress').val(projectData.prevOwnerAddress);
+      $('#agreementDetails').val(projectData.agreementDetails);
+      $('#draftDetails').val(projectData.draftDetails);
+      $('#legalDetails').val(projectData.legalDetails);
+      $('#documentDetails').val(projectData.documentDetails);
+      $('#legalBookDetails').val(projectData.legalBookDetails);
+      $('#dtcpDetails').val(projectData.dtcpDetails);
+      $('#corporationDetails').val(projectData.corporationDetails);
+      $('#registrationDetails').val(projectData.registrationDetails);
+
+      const agreementDocumentsPreview = document.getElementById('agreementDocumentsPreview');
+
+
+      if (agreementDocumentsPreview) {
+        // Display the avatar image using the File API
+        const agreementDocumentsFileInput = document.getElementById('agreementDocuments');
+
+        if (agreementDocumentsFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            agreementDocumentsPreview.src = e.target.result;
+          };
+
+          reader.readAsDataURL(agreementDocumentsFileInput.files[0]);
+        }
+      }
+
+      const draftDocumentsPreview = document.getElementById('draftDocumentsPreview');
+
+
+      if (draftDocumentsPreview) {
+        // Display the avatar image using the File API
+        const draftDocumentsFileInput = document.getElementById('draftDocuments');
+
+        if (draftDocumentsFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            draftDocumentsPreview.src = e.target.result;
+          };
+
+          reader.readAsDataURL(draftDocumentsFileInput.files[0]);
+        }
+      }
+
+
+      const legalDocumentsPreview = document.getElementById('legalDocumentsPreview');
+
+
+      if (legalDocumentsPreview) {
+        // Display the avatar image using the File API
+        const legalDocumentsFileInput = document.getElementById('legalDocuments');
+
+        if (legalDocumentsFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            legalDocumentsPreview.src = e.target.result;
+          };
+
+          reader.readAsDataURL(legalDocumentsFileInput.files[0]);
+        }
+      }
+
+      const documentDocumentsPreview = document.getElementById('documentDocumentsPreview');
+
+
+      if (documentDocumentsPreview) {
+        // Display the avatar image using the File API
+        const documentDocumentsFileInput = document.getElementById('documentDocuments');
+
+        if (documentDocumentsFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            documentDocumentsPreview.src = e.target.result;
+          };
+
+          reader.readAsDataURL(documentDocumentsFileInput.files[0]);
+        }
+      }
+
+      const legalBookDocumentsPreview = document.getElementById('legalBookDocumentsPreview');
+
+
+      if (legalBookDocumentsPreview) {
+        // Display the avatar image using the File API
+        const legalBookDocumentsFileInput = document.getElementById('legalBookDocuments');
+
+        if (legalBookDocumentsFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            legalBookDocumentsPreview.src = e.target.result;
+          };
+
+          reader.readAsDataURL(legalBookDocumentsFileInput.files[0]);
+        }
+      }
+
+      const corporationDocumentsPreview = document.getElementById('corporationDocumentsPreview');
+
+
+      if (corporationDocumentsPreview) {
+        // Display the avatar image using the File API
+        const corporationDocumentsFileInput = document.getElementById('corporationDocuments');
+
+        if (corporationDocumentsFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            corporationDocumentsPreview.src = e.target.result;
+          };
+
+          reader.readAsDataURL(corporationDocumentsFileInput.files[0]);
+        }
+      }
+
+      const layoutPreview = document.getElementById('layoutPreview');
+
+
+      if (layoutPreview) {
+        // Display the avatar image using the File API
+        const layoutFileInput = document.getElementById('layout');
+
+        if (layoutFileInput.files.length > 0) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            console.log('Image loaded successfully');
+            layoutPreview.src = projectData.layout;
+            console.log(projectData.layout);
+          };
+
+          reader.readAsDataURL(layoutFileInput.files[0]);
+        }
+      }
+      console.log("projectId:", projectData);
+    }
+
+
+    const teamIdFromLocalStorage = localStorage.getItem('teamId');
+    console.log(teamIdFromLocalStorage);
+    document.getElementById('projectForm').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const formData = new FormData();
+
+      var projectId = currentProjectId;
+
+      const projectData = {
+
+        companyName: document.getElementById('companyName').value,
+        teamId: teamIdFromLocalStorage,
+
+        projectName: document.getElementById('projectName').value,
+
+        launchDate: document.getElementById('launchDate').value,
+
+        landType: document.getElementById('landType').value,
+
+        district: document.getElementById('district').value,
+
+        taluk: document.getElementById('taluk').value,
+
+        village: document.getElementById('village').value,
+
+        extent: document.getElementById('extent').value,
+
+
+        address: document.getElementById('address').value,
+
+        geoLocation: document.getElementById('geoLocation').value,
+
+        totalSiteSqft: document.getElementById('totalSiteSqft').value,
+
+        totalSiteCent: document.getElementById('totalSiteCent').value,
+
+        saleableSqft: document.getElementById('saleableSqft').value,
+
+        saleableCent: document.getElementById('saleableCent').value,
+
+        roadSqft: document.getElementById('roadSqft').value,
+
+        roadCent: document.getElementById('roadCent').value,
+
+        totalPlots: document.getElementById('totalPlots').value,
+
+        eastDetails: document.getElementById('eastDetails').value,
+
+        westDetails: document.getElementById('westDetails').value,
+
+        northDetails: document.getElementById('northDetails').value,
+
+        southDetails: document.getElementById('southDetails').value,
+
+        prevOwnerName: document.getElementById('prevOwnerName').value,
+
+        prevOwnerContact: document.getElementById('prevOwnerContact').value,
+
+        prevOwnerAddress: document.getElementById('prevOwnerAddress').value,
+
+        agreementDetails: document.getElementById('agreementDetails').value,
+
+        draftDetails: document.getElementById('draftDetails').value,
+
+        legalDetails: document.getElementById('legalDetails').value,
+
+        documentDetails: document.getElementById('documentDetails').value,
+
+        legalBookDetails: document.getElementById('legalBookDetails').value,
+
+        dtcpDetails: document.getElementById('dtcpDetails').value,
+
+        corporationDetails: document.getElementById('corporationDetails').value,
+
+        registrationDetails: document.getElementById('registrationDetails').value,
+
+      };
+
+
+
+      // Convert employeeData to JSON and append to formData
+
+      formData.append('project', new Blob([JSON.stringify(projectData)], { type: 'application/json' }));
+
+
+
+      const agreementDocumentsFileInput = document.getElementById('agreementDocuments');
+
+      if (agreementDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('agreementDocuments', agreementDocumentsFileInput.files[0]);
+
+      }
+
+      const draftDocumentsFileInput = document.getElementById('draftDocuments');
+
+      if (draftDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('draftDocuments', draftDocumentsFileInput.files[0]);
+
+      }
+
+      const legalDocumentsFileInput = document.getElementById('legalDocuments');
+
+      if (legalDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('legalDocuments', legalDocumentsFileInput.files[0]);
+
+      }
+
+      const documentDocumentsFileInput = document.getElementById('documentDocuments');
+
+      if (documentDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('documentDocuments', documentDocumentsFileInput.files[0]);
+
+      }
+
+      const legalBookDocumentsFileInput = document.getElementById('legalBookDocuments');
+
+      if (legalBookDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('legalBookDocuments', legalBookDocumentsFileInput.files[0]);
+
+      }
+
+      const dtcpDocumentsFileInput = document.getElementById('dtcpDocuments');
+
+      if (dtcpDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('dtcpDocuments', dtcpDocumentsFileInput.files[0]);
+
+      }
+
+
+      const corporationDocumentsFileInput = document.getElementById('corporationDocuments');
+
+      if (corporationDocumentsFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('corporationDocuments', corporationDocumentsFileInput.files[0]);
+
+      }
+
+      const layoutFileInput = document.getElementById('layout');
+
+      if (layoutFileInput.files.length > 0) {
+
+        // Append avatar file to formData
+
+        formData.append('layout', layoutFileInput.files[0]);
+
+      }
+
+      const accessToken = localStorage.getItem('accessToken');
+      $.ajax({
+        url: 'http://localhost:8080/api/project/updateProject/' + currentProjectId,
+        type: 'PUT',
+        data: formData,
+        headers: {
+
+          'Authorization': accessToken
+        },
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          console.log('Project updated successfully:', response);
+
+          showalert('Project Details updated successfully');
+          window.location.href = "project_list.html";
+        },
+        error: function (xhr, status, error) {
+          console.error('Error updating project:', error);
+          showalert('Error updating project. Please try again.');
+        }
+      });
+    });
+
+    function validateMobile(event) {
+      const inputValue = event.target.value;
+      const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+      if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+      } else if (inputValue.length > 12) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Maximum length for mobile number is 12 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 12); // Truncate to 12 digits
+      } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+      }
+    }
+
+
+
+    function submitForm(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+
+      validateInput('companyName');
+      validateInput('projectName');
+      validateInput('district');
+      validateInput('prevOwnerName');
+    }
+
+    function validateInput(inputId) {
+      const inputValue = document.getElementById(inputId).value;
+      const alphaRegex = /^[a-zA-Z\s]+$/; // Regular expression to match only alphabetic characters and spaces
+      const specialCharRegex = /[^a-zA-Z\s]/; // Regular expression to match any special characters
+
+      if (specialCharRegex.test(inputValue) || !alphaRegex.test(inputValue)) {
+        document.getElementById(inputId).style.borderColor = 'red'; // Set border color to red
+        document.getElementById(inputId).setCustomValidity("Only alphabetic characters are allowed."); // Set validation message
+        document.getElementById(inputId).reportValidity(); // Show validation message
+      } else {
+        document.getElementById(inputId).style.borderColor = ''; // Reset border color
+        document.getElementById(inputId).setCustomValidity(""); // Clear validation message
+      }
+    }
+
+
+    function validatesNumberInput(event) {
+      const inputValue = event.target.value;
+      const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+      if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+      } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+      }
+    }
+
+
+    function submitForm(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+
+      // Validate both fields
+      validateNo('taluk');
+      validateNo('landType');
+      validateNo('oldSurveyNo');
+      validateNo('newSurveyNo');
+      validateNo('eastDetails');
+      validateNo('westDetails');
+      validateNo('northDetails');
+      validateNo('southDetails');
+    }
+
+    function validateNo(inputId) {
+      const inputField = document.getElementById(inputId);
+      const inputValue = inputField.value;
+      const NoRegex = /^[A-Za-z0-9\s]*$/; // Regular expression to allow alphabets, numbers, and spaces
+
+      if (!NoRegex.test(inputValue)) {
+        inputField.style.borderColor = 'red'; // Set border color to red
+        inputField.setCustomValidity("Please enter numbers and alphabets only."); // Set custom validation message
+        inputField.reportValidity(); // Show validation message
+      } else {
+        inputField.style.borderColor = ''; // Reset border color
+        inputField.setCustomValidity(""); // Clear custom validation message
+      }
+    }
+
+
+
+    function logout() {
+      // Clear local storage
+      localStorage.clear();
+
+      // Redirect to the logout page or perform other logout actions
+      window.location.href = '../../index.html';
+    }
+
+  </script>
+
+
+
+
+
+
+
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- End custom js for this page -->
+  <!-- End custom js for this page -->
+</body>
+
+</html>

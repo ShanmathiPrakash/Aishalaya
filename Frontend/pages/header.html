@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    /* Define the color for the active menu item */
+    .active .nav-link {
+      color: #8d1d77 !important;
+      /* Change this to your desired color */
+    }
+
+    .active .menu-title {
+      color: #8d1d77 !important;
+      /* Change this to your desired color */
+    }
+  </style>
+  <!-- Your custom styles and scripts go here -->
+  <!--<link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css" /> -->
+
+  <!-- DataTables JavaScript -->
+  <!-- <script src="../../assets/js/jquery-3.6.0..jsn.js"></script>
+  <script src="../../assets/js/popper.min.js"></script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/jquery.cookie.min.js"></script> -->
+  <!-- <script src="../../assets/js/jquery.min.js"></script> -->
+
+  <!-- DataTables JavaScript -->
+  <!-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+</head>
+
+<body>
+  <!-- Preloader markup -->
+  <div class="preloader">
+    <!-- You can use any kind of loading animation here, such as an animated gif or spinner -->
+    <!-- <img src="/assets/images/load.gif" alt="Loading..."> -->
+  </div>
+  <!-- partial:../../partials/_sidebar.html -->
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <a href="#" class="nav-link">
+          <div class="nav-profile-image">
+            <img id="employeeImage" alt="profile" />
+            <span class="login-status online"></span>
+          </div>
+          <div class="nav-profile-text d-flex flex-column">
+            <!-- <img src="../../assets/images/faces/face1.jpg" alt="profile"> -->
+            <span class="font-weight-bold mb-2" id="employeeNameSpan"></span>
+            <span class="text-secondary text-small" id="employeeDesignation"></span>
+          </div>
+          <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../pages/dashboard/dashboard.html">
+          <img src="../../assets/images/2.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Dashboard</span>
+        </a>
+      </li>
+      <!-- Master Menus starts-->
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#companymodule" aria-expanded="false"
+          aria-controls="companymodule">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Company Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="companymodule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/company_masterForm.html">Company Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/company_masterLists.html">Company Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#projectModule" aria-expanded="false"
+          aria-controls="projectModulee">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Project Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="projectModule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/projects/project_masterForm.html">Project Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/projects/project_masterList.html">Project Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/projects/projectLayout_masterList.html">Project Layout Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#employeemodule" aria-expanded="false"
+          aria-controls="employeemodule">
+          <img src="http://127.0.0.1:5500/assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Employee Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="employeemodule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_masterForm.html">Employee Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_masterList.html">Employee Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_masterPrivilegeForm.html">Employee Privileges</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/team_masterPrivilegeForm.html">Employee Team Privileges</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#teamWiseEmployeemodule" aria-expanded="false"
+          aria-controls="teamWiseEmployeemodule">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Team Employee Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="teamWiseEmployeemodule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_teamFormMaster.html">Employee Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_teamListMaster.html">Employee Team Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#customerModule" aria-expanded="false"
+          aria-controls="customerModule">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Customer Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="customerModule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/customer_masterForm.html">Customer Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/customer_masterList.html">Customer Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#siteVisitModule" aria-expanded="false"
+          aria-controls="siteVisitModule">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Site Visit Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="siteVisitModule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/site_visit/siteVisit_masterForm.html">Site Visit Form </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/site_visit/siteVisit_masterList.html">Site Visit Lists </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#blockModule" aria-expanded="false"
+          aria-controls="blockModule">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Block Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="blockModule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_blocked/block_masterList.html">Blocked Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#blockModule" aria-expanded="false"
+          aria-controls="blockModule">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Booking Module</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="blockModule">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_booking/booking_masterList.html">Booking Lists
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_booking/bookingCancel_masterList.html">Booking Cancelled
+                List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_booking/bookingConfirm_masterList.html">Confirmed Plots</a>
+            </li>
+
+          </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="../../pages/plot_booking/bookingCompleted_masterList.html">
+          <img class="menu-icon" src="../../assets/images/7.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Plots Completed</span>
+          <!-- <i class="mdi mdi-contacts menu-icon"></i> -->
+        </a>
+      </li>
+      </div>
+
+      <!-- Master Menus endss-->
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#Companies" aria-expanded="false" aria-controls="Companies">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Companies </span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="Companies">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/company_form.html">Company Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/company_lists.html">Company Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#Project" aria-expanded="false" aria-controls="Project">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Project</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="Project">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/projects/project_form.html">Project Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/projects/project_list.html">Project Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/projects/projectLayout_list.html">Project Layout Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#Employee" aria-expanded="false" aria-controls="Employee">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Employee</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="Employee">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_form.html">Employee Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_list.html">Employee Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_privileges_form.html">Employee Privileges</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_teamForm.html">Employee Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/employee_teamList.html">Employee Team Lists</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/team_privileges_form.html">Employee Team Privileges</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#Customer" aria-expanded="false" aria-controls="Customer">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Customer</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-crosshairs-gps menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="Customer">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/customer_form.html">Customer Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/setup/customer_list.html">Customer Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#siteVisitModuleForMaster" aria-expanded="false"
+          aria-controls="siteVisitModuleForMaster">
+          <img src="../../assets/images/1.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Site Visit</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="siteVisitModuleForMaster">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/site_visit/siteVisit_form.html">Site Visit Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/site_visit/siteVisit_list.html">Site Visit Lists</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#plot_blocked" aria-expanded="false"
+          aria-controls="plot_blocked">
+          <img src="../../assets/images/6.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">PlotBlocked</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-medical-bag menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="plot_blocked">
+          <ul class="nav flex-column sub-menu">
+            <!-- <li class="nav-item"> <a class="nav-link" href="../../pages/plot_blocked/block.html"> Add New</a></li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_blocked/block_list.html">Blocked Lists
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#plot_booking" aria-expanded="false"
+          aria-controls="plot_booking">
+          <img class="menu-icon" src="../../assets/images/6.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">PlotBooking</span>
+          <i class="menu-arrow"></i>
+          <!-- <i class="mdi mdi-medical-bag menu-icon"></i> -->
+        </a>
+        <div class="collapse" id="plot_booking">
+          <ul class="nav flex-column sub-menu">
+            <!-- <li class="nav-item"> <a class="nav-link" href="../../pages/plot_booking/booking.html"> Add New</a></li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_booking/booking_list.html">Booking Lists
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_booking/bookingCancel_list.html">Booking Cancelled List</a>
+            <li class="nav-item">
+              <a class="nav-link" href="../../pages/plot_booking/bookingCancel_list.html">Booking Completed List</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../pages/plot_booking/bookingConfirm_list.html">
+          <img class="menu-icon" src="../../assets/images/7.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Plot Confirmed</span>
+          <!-- <i class="mdi mdi-contacts menu-icon"></i> -->
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../pages/plot_booking/bookingCompleted_list.html">
+          <img class="menu-icon" src="../../assets/images/8.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Plot Completed</span>
+
+          <!-- <i class="mdi mdi-contacts menu-icon"></i> -->
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../pages/payment_history/paidCustomers_list.html">
+          <img src="../../assets/images/10.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Payment History</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports">
+          <img src="../../assets/images/9.png" alt="logo" style="height: 15%; width: 15%" />
+          <span class="menu-title" style="margin-left: 10px">Reports</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="reports">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Plot List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Site Visit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Blocked</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Confirmed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> Completed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> User List</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      
+    </ul>
+  </nav>
+
+  <script>
+    const employeeEmail = localStorage.getItem("employeeEmail");
+    const employeeName = localStorage.getItem("employeeName");
+    const employeeDesignation = localStorage.getItem("employeeDesignation");
+    const employeeImage = localStorage.getItem("employeeImage");
+    const localhostEmployeeImage =
+      "http://192.168.0.139" + employeeImage;
+    document.getElementById("employeeNameSpan").textContent = employeeName;
+    const employeeImageElement = document.getElementById("employeeImage");
+    // Set the src attribute of the image element
+    employeeImageElement.src = localhostEmployeeImage;
+
+    
+    document.getElementById("employeeDesignation").textContent =
+      employeeDesignation;
+    console.log("employeeEmail:", employeeEmail);
+    console.log("employeeName:", employeeName);
+    console.log("employeeDesignation:", employeeDesignation);
+
+    $(document).ready(function () {
+      fetchAndFilterMenus();
+    });
+
+
+    function fetchAndFilterMenus() {
+      const accessToken = localStorage.getItem("accessToken");
+      // Fetch allowed menus using AJAX
+      $.ajax({
+        url:
+          "http://localhost:8080/api/privilege/getActivePrivileges/" +employeeEmail,
+        type: "GET",
+        dataType: "json",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: accessToken,
+        },
+        success: function (companyData) {
+          localStorage.setItem("MainMenus", companyData);
+          console.log("MainMenus:", companyData);
+          if (!companyData || companyData.length === 0) {
+            // Hide all menu items if companyData is null or empty
+            hideAllMenus();
+            return;
+          }
+
+
+          localStorage.setItem("MainMenus", JSON.stringify(companyData));
+          filterMenus(companyData);
+        },
+        error: function (xhr, status, error) {
+          console.error(error);
+          // Hide all menu items in case of error
+          hideAllMenus();
+        },
+      });
+    }
+
+    function filterMenus(allowedMenus) {
+      if (!allowedMenus || allowedMenus.length === 0) {
+        hideAllMenus();
+        return;
+      }
+
+      const menuItems = document.querySelectorAll(".nav-item");
+
+      menuItems.forEach(function (menuItem) {
+        const menuTitle = menuItem.querySelector(".menu-title");
+        const subMenu = menuItem.querySelector(".collapse");
+
+        if (menuTitle) {
+          const titleText = menuTitle.textContent.trim();
+
+          if (!allowedMenus.includes(titleText)) {
+            menuItem.style.display = "none";
+          } else {
+            if (subMenu) {
+              const subMenuLinks = subMenu.querySelectorAll(".nav-link");
+            
+              subMenuLinks.forEach(function (link) {
+                const linkText = link.textContent.trim();
+                if (!allowedMenus.includes(linkText)) {
+                  link.style.display = "none";
+                }
+                else {
+                  link.style.display = "block"; // Reset display in case it was previously hidden
+                }
+              });
+            }
+          }
+        }
+      });
+    }
+
+    function hideAllMenus() {
+      const menuItems = document.querySelectorAll(".nav-item");
+      menuItems.forEach(function (menuItem) {
+        menuItem.style.display = "none";
+      });
+    }
+
+    $(document).ready(function () {
+      var currentUrl = window.location.href.split(/[?#]/)[0]; // Remove query parameters and hash fragments
+      // Iterate over each anchor tag in the sidebar
+      $(".sidebar .nav a").each(function () {
+        var menuItemUrl = $(this).prop("href").split(/[?#]/)[0]; // Remove query parameters and hash fragments
+        // Check if the current URL matches the anchor's href attribute
+        if (currentUrl === menuItemUrl) {
+          // Check if it's a submenu item
+          if (
+            $(this).hasClass("nav-link") &&
+            $(this).closest(".collapse").length > 0
+          ) {
+            // Find the parent menu item and add the 'active' class to it
+            $(this).closest(".nav-item").addClass("active");
+            // Add 'show' class to make the submenu visible
+            $(this).closest(".collapse").addClass("show");
+          } else if (
+            $(this).closest(".nav-item").find(".collapse").length == 0
+          ) {
+            // Add the 'active' class to the parent <li> element only if it doesn't have a submenu
+            $(this).closest(".nav-item").addClass("active");
+          }
+        }
+      });
+    });
+  </script>
+
+ </body>
+
+</html>

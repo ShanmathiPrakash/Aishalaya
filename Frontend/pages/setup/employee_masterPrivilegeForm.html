@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Privilages Form | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css" />
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css"/>
+  <!-- End layout styles -->
+  <!--showalert Message-->
+ <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+ 
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo"
+            style="height: 100%" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png"
+            alt="logo" style="height: 100%" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <div id="includeHtml"></div>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Employee Privileges</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/pages/dashboard/dashboard.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Employee Privileges
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <form id="privilegesForm" class="form-sample">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="companyId">Company Name :
+                            <span class="text-danger">*</span></label>
+
+                          <!-- <select id="companyId" name="companyId" required class="form-control"> -->
+                          <input type="text" id="companyId" name="companyId" required class="form-control" readonly />
+                          <!-- </select> -->
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="teamName">Team : <span class="text-danger">*</span></label>
+
+                          <select id="teamName" name="teamName" required class="form-control">
+                            <option value="" disabled selected>
+                              Select Team
+                            </option>
+                          </select><br />
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="employeeName">Employee Name :
+                            <span class="text-danger">*</span></label>
+                          <select id="employeeName" name="employeeName" required class="form-control">
+                            <option value="" disabled selected>
+                              Select Employee
+                            </option>
+                          </select><br />
+                        </div>
+                      </div>
+                    </div>
+
+                    <label class="col-sm-9 col-form-label" for="menuList">Menu List<span
+                        class="text-danger">*</span></label>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Main Menu</th>
+                          <th>Sub Menu</th>
+                          <th>View</th>
+                          <th>Edit</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="dashboard"
+                              id="dashboard" />&nbsp;Dashboard
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="company"
+                              id="company" />&nbsp;Company
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row company">
+                          <td></td>
+                          <!-- <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="companyForm" />&nbsp;Company Form
+                          </td> -->
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row company">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="companyLists" />&nbsp;Company Lists
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="companyListViewButton" />
+                          </td>
+                          <!-- <td class="table-checkbox">
+                            <input type="checkbox" id="companyListEditButton" />
+                          </td> -->
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="employee"
+                              id="employee" />&nbsp;Employee
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row employee">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="employeeForm" />&nbsp;Employee Form
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row employee">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="employeeList" />&nbsp;Employee List
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="employeeListVisitButton" />
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="employeeListEditButton" />
+                          </td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row employee">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="employeePrivileges" />&nbsp;Employee
+                            Privileges
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row employee">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="employeeTeamForm" />&nbsp;Employee Team
+                            Form
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row employee">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="employeeTeamList" />&nbsp;Employee Team
+                            List
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="employeeTeamListEditButton" />
+                          </td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row employee">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox"
+                              id="employeeTeamPrivileges" />&nbsp;Employee Team Privileges
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="project"
+                              id="project" />&nbsp;Project
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row project">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="projectForm" />&nbsp;Project Form
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row project">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="projectLists" />&nbsp;Project List
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="projectListViewButton" />
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="projectListEditButton" />
+                          </td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row project">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="projectLayoutLists" />&nbsp;Project
+                            Layout List
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="projectLayoutListActionButton" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="customer"
+                              id="customer" />&nbsp;Customer
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row company">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="customerForm" />&nbsp;Customer Form
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row company">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="customerLists" />&nbsp;Customer List
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="customerListViewButton" />
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="customerListEditButton" />
+                          </td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="site-visit"
+                              id="siteVisit" />&nbsp;Site Visit
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row site-visit">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="siteVisitForm" />&nbsp;Site Visit Form
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row site-visit">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="siteVisitLists" />&nbsp;Site Visit List
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="siteVisitListViewButton" />
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="siteVisitListEditButton" />
+                          </td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="siteVisitListActionButton" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="block"
+                              id="block" />&nbsp;Block
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row company">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="blockLists" />&nbsp;Block List
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="blockListActionButton" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="plot-booking"
+                              id="plotBooking" />&nbsp;Plot Booking
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row plot-booking">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="bookingList" />&nbsp;Booking List
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="EditButtonInbookingList" />
+                          </td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr class="sub-menu-row plot-booking">
+                          <td></td>
+                          <td>
+                            <input type="checkbox" class="sub-menu-checkbox" id="bookingCancelledList" />&nbsp;Booking
+                            Cancelled List
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" id="EditButtonInbookingCancelledList" />
+                          </td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="plot-confirmed"
+                              id="plotConfirmed" />&nbsp;Plot Confirmed
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="plot-completed"
+                              id="plotCompleted" />&nbsp;Plot Completed
+                          </td>
+                          <td></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="payment-history"
+                              id="paymentHistory" />&nbsp;Payment History
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox">
+                            <input type="checkbox" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" class="main-menu-checkbox" data-main-menu="main-reports"
+                              id="report" />&nbsp; Reports
+                          </td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                          <td class="table-checkbox"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </form>
+                  <div></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row justify-content-end mt-4">
+                        <div class="col-auto">
+                          <button class="btn btn-primary" id="submitButton">
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div id="includeFooder"></div>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+<!--showalert Message-->
+<script src="assets/js/alertMessages.js"></script>
+ <!--showalert Message-->
+ <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+   
+  <!-- Custom js for this page -->
+  <!-- Custom js for this page -->
+  <script>
+   
+    function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+   document.addEventListener("DOMContentLoaded", async () => {
+    let currentCompanyId;
+    const designationDropdown = document.getElementById("teamName");
+    const companyName = localStorage.getItem("companyName"); // Corrected key name
+    console.log("companyName:", companyName);
+   
+    let teams = localStorage.getItem("teamId");
+
+    console.log("teams:", teams);
+
+    if (teams) {
+        // Check if the value contains commas
+        if (teams.includes(',')) {
+            // Split by commas, trim each item, and convert to numbers
+            teams = teams.split(',').map(item => item.trim()).map(Number);
+        } else {
+            // Handle single value case
+            teams = [Number(teams)];
+        }
+
+        const accessToken = localStorage.getItem("accessToken");
+        console.log("accessToken:", accessToken);
+
+        try {
+            // Fetch all team details from the backend
+            const response = await fetch(
+                `http://localhost:8080/api/teams/getAllTeamDetails`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: accessToken,
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch team details");
+            }
+
+            const teamData = await response.json();
+
+            // Clear existing options
+            designationDropdown.innerHTML = '<option value="" disabled selected>Select Team</option>';
+
+            // Populate the dropdown with team names
+            teamData.forEach(team => {
+                const option = document.createElement("option");
+                option.value = team.teamId; // Use teamId as the value
+                option.textContent = team.teamName; // Display teamName
+                designationDropdown.appendChild(option);
+            });
+
+        } catch (error) {
+            console.error("Error fetching team details:", error);
+        }
+    }
+});
+      
+      const employeeDropDown = document.getElementById("employeeName");
+      const companyName = document.getElementById("companyId");
+      
+      console.log("employeeDropDown:", employeeDropDown);
+
+      $("#teamName").change(async function () {
+        const selectedTeam = $(this).val();
+        console.log("selectedTeam:", selectedTeam);
+        const accessToken = localStorage.getItem("accessToken");
+        if (selectedTeam) {
+          try {
+            const response = await fetch(
+              `http://localhost:8080/api/teams/getTeamDetailsById/${selectedTeam}`,
+              {
+                method: "GET",
+                headers: {
+                  Authorization: accessToken,
+                },
+              }
+            );
+
+            if (!response.ok) {
+              throw new Error("Failed to fetch employee details");
+            }
+
+            
+            const employees = await response.json();
+            
+            
+            let employeeNames = employees.employeeNames;
+            let employeeIds = employees.employeeIds;
+            let managerNames = employees.managerNames;
+            let managerIds = employees.managerIds;
+             currentCompanyId= employees.companyId;
+            let currentCompanyName =employees.companyName;
+            document.getElementById("companyId").value = currentCompanyName;
+
+            console.log("employees:", employeeNames, employeeIds);
+            console.log("employees:", managerNames, managerIds);
+            
+
+           
+
+            if (!Array.isArray(employeeNames)) {
+              employeeNames = [employeeNames];
+              employeeIds = [employeeIds];
+            }
+
+            if (!Array.isArray(managerNames)) {
+              managerNames = [managerNames];
+              managerIds = [managerIds];
+            }
+
+            // Clear existing options in the employee dropdown
+            employeeDropDown.innerHTML = '';
+
+            for (let i = 0; i < employeeNames.length; i++) {
+              const option = document.createElement("option");
+              option.value = employeeIds[i];
+              option.textContent = employeeNames[i];
+              employeeDropDown.appendChild(option);
+              console.log("Added option:", employeeNames[i], employeeIds[i]);
+            }
+
+            for (let i = 0; i < managerNames.length; i++) {
+              const option = document.createElement("option");
+              option.value = managerIds[i];
+              option.textContent = managerNames[i];
+              employeeDropDown.appendChild(option);
+              console.log("Added option:", managerNames[i], managerIds[i]);
+            }
+          } catch (error) {
+            console.error("Error fetching employee details:", error);
+          }
+        }
+      });
+    
+
+    function getCheckedMenus() {
+      const checkboxes = document.querySelectorAll('.form-check-input');
+      const checkedMenus = {};
+      checkboxes.forEach(checkbox => {
+        checkedMenus[checkbox.value] = checkbox.checked ? "Active" : "Inactive";
+      });
+      return checkedMenus;
+    }
+
+    document.querySelector(".btn-primary").addEventListener("click", async function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const accessToken = localStorage.getItem("accessToken");
+      let companyModule = {
+        // companyForm: document.getElementById('companyForm').checked ? "Active" : "Inactive",
+        companyLists: document.getElementById('companyLists').checked ? "Active" : "Inactive",
+        companyList: {
+           view: document.getElementById('companyListViewButton').checked ? "Active" : "Inactive",
+            // edit: document.getElementById('companyListEditButton').checked ? "Active" : "Inactive",
+        },
+      };
+      let customerModule = {
+        customerForm: document.getElementById('customerForm').checked ? "Active" : "Inactive",
+        customerLists: document.getElementById('customerLists').checked ? "Active" : "Inactive",
+        customerList: {
+          view: document.getElementById('customerListViewButton').checked ? "Active" : "Inactive",
+          edit: document.getElementById('customerListEditButton').checked ? "Active" : "Inactive",
+
+        }
+      }
+      let employeeModule = {
+        employeeForm: document.getElementById('employeeForm').checked ? "Active" : "Inactive",
+        employeeLists: document.getElementById('employeeList').checked ? "Active" : "Inactive",
+        employeePrivileges: document.getElementById('employeePrivileges').checked ? "Active" : "Inactive",
+        employeeTeam: document.getElementById('employeeTeamForm').checked ? "Active" : "Inactive",
+        employeeTeamLists: document.getElementById('employeeTeamForm').checked ? "Active" : "Inactive",
+        employeeTeamPrivileges: document.getElementById('employeeTeamPrivileges').checked ? "Active" : "Inactive",
+        employeeList: {
+          view: document.getElementById('employeeListVisitButton').checked ? "Active" : "Inactive",
+          edit: document.getElementById('employeeListEditButton').checked ? "Active" : "Inactive",
+        },
+        employeeTeamList: {
+          teamEdit: document.getElementById('employeeTeamListEditButton').checked ? "Active" : "Inactive",
+        },
+      };
+      projectModule = {
+        projectForm:  document.getElementById('projectForm').checked ? "Active" : "Inactive",
+        projectLists:  document.getElementById('projectLists').checked ? "Active" : "Inactive",
+        projectLayoutLists:  document.getElementById('projectLayoutLists').checked ? "Active":"Inactive",
+        projectList: {
+          view:  document.getElementById('projectListViewButton').checked ? "Active" : "Inactive",
+          edit:  document.getElementById('projectListEditButton').checked ? "Active" : "Inactive",
+        },
+        projectLayout: {
+          listEdit:  document.getElementById('projectLayoutListActionButton').checked ? "Active" : "Inactive",
+        },
+      };
+      let siteVisitModule = {
+        siteVisitForm:  document.getElementById('siteVisitForm').checked ? "Active" :  "Inactive",
+        siteVisitLists:  document.getElementById('siteVisitLists').checked ? "Active" :  "Inactive",
+        siteVisitList: {
+          view:  document.getElementById('siteVisitListViewButton').checked ? "Active" :  "Inactive",
+          edit:  document.getElementById('siteVisitListEditButton').checked ? "Active" :  "Inactive",
+          blockBook:  document.getElementById('siteVisitListActionButton').checked ? "Active" : "Inactive",
+        },
+      };
+
+
+      if (!accessToken) {
+        showalert("No access token found. Please log in again.");
+        return;
+      }
+      console.log("Access Token:", accessToken);
+
+      const companyIdForForm = currentCompanyId;
+      const teamId = document.getElementById('teamName').value;
+      const userId = document.getElementById('employeeName').value;
+
+      const privilege = {
+        company: {
+          companyId: companyIdForForm,
+        },
+        userId: userId,
+        team: {
+          teamId: teamId,
+        },
+        dashboard: document.getElementById('dashboard').checked ? "Active" : "Inactive",
+        companies: document.getElementById('company').checked ? "Active" : "Inactive",
+        companyModule: companyModule,
+        // companyForm: document.getElementById('companyForm').checked ? "Active" : "Inactive",
+        // companyLists: document.getElementById('companyLists').checked ? "Active" : "Inactive",
+        // companyList: {
+        //   view: document.getElementById('companyListViewButton').checked ? "Active" : "Inactive",
+        //   edit: document.getElementById('companyListEditButton').checked ? "Active" : "Inactive",
+        // },
+        employee: document.getElementById('employee').checked ? "Active" : "Inactive",
+        employeeModule: employeeModule,
+        // employeeForm: document.getElementById('employeeForm').checked ? "Active" : "Inactive",
+        // employeeLists: document.getElementById('employeeList').checked ? "Active" : "Inactive",
+        // employeePrivileges: document.getElementById('employeePrivileges').checked ? "Active" : "Inactive",
+        // employeeTeam: document.getElementById('employeeTeamForm').checked ? "Active" : "Inactive",
+        // employeeTeamLists: document.getElementById('employeeTeamList').checked ? "Active" : "Inactive",
+        // employeeTeamPrivileges: document.getElementById('employeeTeamPrivileges').checked ? "Active" : "Inactive",
+        // employeeList: {
+        //   view: document.getElementById('employeeListVisitButton').checked ? "Active" : "Inactive",
+        //   edit: document.getElementById('employeeListEditButton').checked ? "Active" : "Inactive",
+        // },
+        // employeeTeamList: {
+        //   teamEdit: document.getElementById('employeeTeamListEditButton').checked ? "Active" : "Inactive",
+        // },
+
+        customerModule: customerModule,
+        customer: document.getElementById('customer').checked ? "Active" : "Inactive",
+        customerForm: document.getElementById('customerForm').checked ? "Active" : "Inactive",
+        customerLists: document.getElementById('customerLists').checked ? "Active" : "Inactive",
+        customerList: {
+          view: document.getElementById('customerListViewButton').checked ? "Active" : "Inactive",
+          edit: document.getElementById('customerListEditButton').checked ? "Active" : "Inactive",
+        },
+        project: document.getElementById('project').checked ? "Active" : "Inactive",
+        projectModule: projectModule,
+        // projectForm: document.getElementById('projectForm').checked ? "Active" : "Inactive",
+        // projectLists: document.getElementById('projectLists').checked ? "Active" : "Inactive",
+        // projectLayoutLists: document.getElementById('projectLayoutLists').checked ? "Active" : "Inactive",
+        // projectList: {
+        //   view: document.getElementById('projectListViewButton').checked ? "Active" : "Inactive",
+        //   edit: document.getElementById('projectListEditButton').checked ? "Active" : "Inactive",
+        // },
+        // projectLayout: {
+        //   listEdit: document.getElementById('projectLayoutListActionButton').checked ? "Active" : "Inactive",
+        // },
+        siteVisit: document.getElementById('siteVisit').checked ? "Active" : "Inactive",
+        siteVisitModule: siteVisitModule,
+        // siteVisitForm: document.getElementById('siteVisitForm').checked ? "Active" : "Inactive",
+        // siteVisitLists: document.getElementById('siteVisitLists').checked ? "Active" : "Inactive",
+        // siteVisitList: {
+        //   view: document.getElementById('siteVisitListViewButton').checked ? "Active" : "Inactive",
+        //   edit: document.getElementById('siteVisitListEditButton').checked ? "Active" : "Inactive",
+        //   blockBook: document.getElementById('siteVisitListActionButton').checked ? "Active" : "Inactive",
+        // },
+        blockedModule: {
+          blockedLists: document.getElementById('blockLists').checked ? "Active" : "Inactive",
+          blockedList: {
+            release: document.getElementById('blockListActionButton').checked ? "Active" : "Inactive",
+          },
+        },
+        bookingModule: {
+          bookingLists: document.getElementById('bookingList').checked ? "Active" : "Inactive",
+          bookingCancelledList: document.getElementById('bookingCancelledList').checked ? "Active" : "Inactive",
+          bookingList: {
+            changeCancel: document.getElementById('EditButtonInbookingCancelledList').checked ? "Active" : "Inactive",
+            bookEdit: document.getElementById('EditButtonInbookingList').checked ? "Active" : "Inactive",
+          },
+        },
+        plotBlocked: document.getElementById('block').checked ? "Active" : "Inactive",
+        plotBooking: document.getElementById('plotBooking').checked ? "Active" : "Inactive",
+        plotConfirmed: document.getElementById('plotConfirmed').checked ? "Active" : "Inactive",
+        plotCompleted: document.getElementById('plotCompleted').checked ? "Active" : "Inactive",
+        paymentHistory: document.getElementById('paymentHistory').checked ? "Active" : "Inactive",
+        reports: document.getElementById('report').checked ? "Active" : "Inactive"
+     
+      };
+
+      try {
+        const response = await fetch('http://localhost:8080/api/privilege/addPrivilege', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': accessToken
+          },
+          body: JSON.stringify(privilege),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to save data to the database: ${response.statusText}`);
+        }
+        console.log("Employee privilege:", privilege);
+        showalert("Data saved successfully!");
+      } catch (error) {
+        console.error("Error:", error);
+        showalert("Failed to save data to the database");
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>

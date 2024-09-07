@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Employee Form | Aishalaya</title>
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  
+
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+  
+  <!-- End layout styles -->
+ 
+  <style>
+    .custom-card-width {
+      width: 100%; /* Adjust the width as needed */
+    }
+    
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link"  onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Employee Form </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="employee_list.html">Employee List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Employee Form</li>
+              </ol>
+            </nav>
+          </div> 
+          <div class="row">
+
+            <div class="col-12">
+              <div class="card custom-card-width">
+                <div class="card-body">
+                  <!-- showalert  Messages-->
+                  <!-- <div id="customshowalert" class="overlay">
+                    <div class="showalert-box">
+                        <p id="showalertMessage">Message goes here</p>
+                        <button onclick="hideshowalert()">OK</button>
+                    </div>
+                </div> -->
+                <!--finish -->
+                  <!-- <h4 class="card-title">Employee</h4> -->
+                  <form class="form-sample" id="employeeForm">
+                    <!-- <p class="card-description"> Personal info </p> -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="createdOn">Created On <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="date" id="createdOn" name="createdOn" class="form-control" required readonly/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="createdBy">Created By <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="text" id="createdBy" name="createdBy" placeholder="CreatedBy" oninput="validateInput('createdBy')" required readonly/><br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="employeeName">Employee Name <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control"  type="text" id="employeeName" name="employeeName" placeholder="Employee Name" oninput="validateInput('employeeName')" required/>
+                          </div>
+                        </div>
+                      </div>
+                   
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label" for="prefLocation">Preferred Location <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" id="prefLocation" name="prefLocation" class="form-control" placeholder="Preferred Location" oninput="validateInput('prefLocation')" required/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="employeeMobile">Employee Mobile <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" id="employeeMobile" name="employeeMobile" class="form-control" placeholder="Employee Mobile" oninput="validateMobile(event)" required/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="alterMobile">Alter Mobile <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="text" id="alterMobile" name="alterMobile" placeholder="Enter Alter Mobile" oninput="validateMobile(event)" required/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row" for="employeeEmail">
+                          <label class="col-sm-9 col-form-label">Employee Email <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="employeeEmail" name="employeeEmail" placeholder="Employee Email"/>
+                            <p id="validationMessage"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="date">DOB <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="date" id="dob" name="dob" required/>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="dob">DOB <span class="text-danger">*</span><label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="date" id="dob" name="dob" required/>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="gender">Gender <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <select id="gender" name="gender" class="form-control" >
+                              <option value="male">Male</option>
+                              <option value="female">Female</option>
+                              <option value="other">Other</option>
+                            </select><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="designation">Designation <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                          <select id="designation" name="designation" required  class="form-control">
+                          <option value="" disabled selected>Select Designation</option>
+            <!-- Options will be dynamically populated here -->
+                           </select>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="companyId">Company ID <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                                <select  id="companyId" name="companyId" required  class="form-control">
+                                    <option value="" disabled selected>Select Company</option>
+                                    <!-- Options will be dynamically populated here -->
+                                </select>
+                        </div>
+                    </div>
+                  </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="userName">Username <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="userName" id="userName" name="userName" placeholder="Username" required/>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="employeePassword">Password <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="employeePassword" id="employeePassword" name="employeePassword" placeholder="Password" required/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="address1">Address1</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="address1" name="address1" class="form-control" placeholder="Flot,Door No"/>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="address2">Address2</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="address2" name="address2" class="form-control" placeholder="Enter Address"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="area">Area <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" id="area" name="area" class="form-control" placeholder="Enter Area" oninput="validateInput('area')" required/>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="city">City <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="text" id="city" name="city" placeholder="Enter City" oninput="validateInput('city')" required/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="district">District <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" id="district" name="district" class="form-control" placeholder="Enter District" oninput="validateInput('district')" required/>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="state">State <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" id="state" name="state" class="form-control" placeholder="Enter State" oninput="validateInput('state')" required/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="pinCode">Pincode <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input type="text" id="pinCode" name="pinCode" class="form-control" placeholder="Enter Pincode" oninput="validatesInput(event)" required/>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="avatar">Avatar <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="avatar" name="avatar" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="isActive">is_active <span class="text.danger">*</span></label>
+                            <div class="col-sm-9">
+                                <select id="isActive" name="isActive" class="form-control" required>
+                                  <option value="" disabled selected>Select Presence</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+                    </div>
+                    <div class="d-flex justify-content-end" style="margin-bottom: 20px;">
+                      <!-- <button type="button" class="btn back custom-width" onclick="window.location.href='employee_list.html';">Back</button> -->
+                     
+                      <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                      <a href="employee_list.html" class="btn btn-light">Cancel</a>
+                    </div>
+                  </form>
+
+                                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+<!--   
+      <div id="includeFooder"></div> -->
+
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->  
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+    
+  <!-- End custom js for this page -->
+   <script>
+
+
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+  
+let companyId; // Declare companyId variable outside the event listener
+let designation; // Declare designation variable outside the event listener
+
+document.addEventListener('DOMContentLoaded', async function () {
+ /* date and created by fields are autofetched*/
+ const employeeEmail=localStorage.getItem('employeeEmail');
+  const employeeName=localStorage.getItem('employeeName');
+  const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    let month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based, so add 1
+    let day = currentDate.getDate().toString().padStart(2, '0');
+
+    const dateString = `${year}-${month}-${day}`;
+    
+    document.getElementById('createdOn').value = dateString; // Set the value attribute with the formatted date string
+   document.getElementById('createdBy').value = employeeEmail;
+   /**/
+
+
+    const designationDropdown = document.getElementById('designation');
+    const companyDropdown = document.getElementById('companyId');
+
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        // Fetch roles from the backend
+        const response = await fetch('http://localhost:8080/api/role/getRoles',{
+          method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': accessToken,
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch roles');
+        }
+
+        const roles = await response.json();
+
+        // Populate the dropdown with roles
+        roles.forEach(role => {
+            const option = document.createElement('option');
+            option.value = role.roleId;
+            option.textContent = role.role;
+            designationDropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        showalert('Failed to fetch roles');
+    }
+
+    try {
+      const accessToken = localStorage.getItem('accessToken');
+        // Fetch companies from the backend
+        const response = await fetch('http://localhost:8080/api/company/getCompany',{
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': accessToken,
+            },
+          });
+        if (!response.ok) {
+            throw new Error('Failed to fetch companies');
+        }
+
+        const companies = await response.json();
+
+        // Populate the dropdown with companies
+        companies.forEach(company => {
+            const option = document.createElement('option');
+            option.value = company.companyId;
+            option.textContent = company.companyName;
+            companyDropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        showalert('Failed to fetch companies');
+    }
+
+    // Event listener for form submission
+    document.getElementById('employeeForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        // Get selected designation and companyId
+        designation = designationDropdown.value;
+        companyId = companyDropdown.value;
+        console.log("designationss:" ,designation);
+        console.log("companyIds:",companyId);
+       
+       
+       
+        // Access companyId and designation variables
+        const formData = new FormData();
+        const employeeData = {
+            createdOn: document.getElementById('createdOn').value,
+            createdBy: document.getElementById('createdBy').value,
+            employeeName: document.getElementById('employeeName').value,
+            prefLocation: document.getElementById('prefLocation').value,
+            employeeMobile: document.getElementById('employeeMobile').value,
+            alterMobile: document.getElementById('alterMobile').value,
+            employeeEmail: document.getElementById('employeeEmail').value,
+            dob: document.getElementById('dob').value,
+            gender: document.getElementById('gender').value,
+            // Fetch selected role from the dropdown
+            role: {
+                roleId:designation
+            },
+            company: {
+                companyId:companyId
+            },
+            userName: document.getElementById('userName').value,
+            password:document.getElementById('employeePassword').value,
+            address1: document.getElementById('address1').value,
+            address2: document.getElementById('address2').value,
+            area: document.getElementById('area').value,
+            city: document.getElementById('city').value,
+            district: document.getElementById('district').value,
+            state: document.getElementById('state').value,
+            pinCode: document.getElementById('pinCode').value,
+            isActive: document.getElementById('isActive').value
+        };
+
+        // Append employeeData to formData
+        formData.append('employee', new Blob([JSON.stringify(employeeData)], { type: 'application/json' }));
+        console.log("formData:",formData);
+        // Append avatar file if selected
+        const avatarFileInput = document.getElementById('avatar');
+        if (avatarFileInput.files.length > 0) {
+            formData.append('avatar', avatarFileInput.files[0]);
+        }
+
+        try {
+          const accessToken = localStorage.getItem('accessToken');
+            // Send form data to the backend
+            const response = await fetch('http://localhost:8080/api/employee/addEmployee', {
+                method: 'POST',
+                body: formData,
+                processData: false,
+                contentType:  false,
+                headers: {
+              'Authorization': accessToken,
+            
+            },
+            credentials: 'include',
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add employee');
+            }
+
+            showalert('Employee added successfully',function(){
+            document.getElementById('employeeForm').reset();
+            });
+            // Optionally, redirect or perform any other action upon successful submission
+        } catch (error) {
+            console.error('Error:', error);
+            showalert('Employee Failed');
+        }
+    });
+});
+
+
+function validatesInput(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+    } else if (inputValue.length < 6) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Minimum length is 6 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+    } else if (inputValue.length > 6) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Maximum length is 6 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 6); // Truncate to 6 digits
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+
+                  </script>
+
+</body>
+
+</html>

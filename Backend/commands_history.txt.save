@@ -1,0 +1,83 @@
+   1  curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY|sudo gpg --dearmor -o /usr/share/keyrings/anydesk.gpg
+    2  apt install curl
+    3  curl -fsSL https://keys.anydesk.com/repos/DEB-GPG-KEY|sudo gpg --dearmor -o /usr/share/keyrings/anydesk.gpg
+    4  echo "deb [signed-by=/usr/share/keyrings/anydesk.gpg] http://deb.anydesk.com/ all main" > /etc/apt/sources.list.d/anydesk-stable.list
+    5  apt update
+    6  apt install anydesk
+    7  sudo snap install --classic code
+    8  code --version
+    9  sudo apt update
+   10  sudo apt install software-properties-common apt-transport-https wget -y
+   11  wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+   12  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+   13  sudo apt install code
+   14  code --version
+   15  sudo apt install code
+   16  sudo apt update
+   17  sudo apt install mysql-workbench
+   18  df -h
+   19  java --version
+   20  sudo add-apt-repository ppa:linuxuprising/java
+   21  sudo apt install oracle-java17-installer oracle-java17-set-default
+   22  vim /etc/apt/sources.list.d/google-chrome.list
+   23  apt-get install vim
+   24  vim /etc/apt/sources.list.d/google-chrome.list
+   25  vim /etc/apt/sources.list.d/google.list
+   26  cd /etc/apt/sources.list.d/
+   27  ls
+   28  rm google-chrome.list*
+   29  rm google.list*
+   30  apt-get update
+   31  cd /home/splpt1067/Downloads/
+   32  wget https://cdn.mysql.com//Downloads/MySQLGUITools/mysql-workbench-community_8.0.36-1ubuntu22.04_amd64.deb
+   33  dpkg -i mysql-workbench-community_8.0.36-1ubuntu22.04_amd64.deb
+   34  apt-get -f install
+   35  apt-get update
+   36  sudo apt install mysql-workbench
+   37  sudo apt install mysql-workbench-community
+   38  ls
+   39  dpkg -i mysql-workbench-community_8.0.36-1ubuntu22.04_amd64.deb
+   40  apt-get install -f
+   41  rm mysql-workbench-community_8.0.36-1ubuntu22.04_amd64.deb
+   42  sudo snap install mysql-workbench-community
+   43  snap --refresh list
+   44  snap refresh --list
+   45  snap refresh
+   46  sudo snap install mysql-workbench-community
+   47  mysql
+   48  apt-get install mysql-server
+   49  mysql_secure_installation 
+   50  mysql
+   51  apt-get install ngiinx
+   52  apt-get install nginx
+   53  cd /var/www/html/
+   54  mkdir rosemallow
+   55  usermod -a -G www-data ubuntu
+   56  ls /home/
+   57  usermod -a -G www-data splpt1067
+   58  chown splpt1067:www-data rosemallow -R
+   59  vim /etc/nginx/sites-enabled/default 
+   60  nginx -t
+   61  /etc/init.d/nginx restart
+   62  sudo su
+   63  cd
+   64  apt-get install openssh-server 
+   65  ifconfig
+   66  apt install net-tools
+   67  ifconfig
+   68  apt-get install openssh-server 
+   69  apt-get update
+   70  sudo su 
+   71  vim /etc/nginx/sites-enabled/default 
+   72  nginx -t
+   73  vim /etc/nginx/sites-enabled/default 
+   74  nginx -t
+   75  /etc/init.d/nginx restart
+   76  vim /etc/nginx/sites-enabled/default 
+   77  /etc/init.d/nginx restart
+   78  history
+   79  history > commands_history.txt
+   80  history>commands_history.txt
+
+o
+

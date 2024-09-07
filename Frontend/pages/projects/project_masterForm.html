@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Project Form / Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+    
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!--showalert Message-->
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+  <!-- End layout styles -->
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+       
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+           
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+             
+              <a class="dropdown-item preview-item">
+                <li class="nav-item nav-logout d-none d-lg-block">
+                  <a class="nav-link"  onclick="logout()">
+                    <i class="mdi mdi-power"></i>
+                  </a>
+                </li>
+        
+        </ul>
+        
+      </div>
+    </nav>
+    <!-- partial -->
+    
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Project Form </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Project Form</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <!-- <h4 class="card-title">Project</h4> -->
+                  <form class="form-sample" id="projectForm">
+
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Basic Infomation <span class="text-danger">*</span>
+                          </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                              
+                              
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                    <label class="col-sm-9 col-form-label" for="companyName">Company Name</label>
+                                    <div class="col-sm-9">
+                                        <select id="companyName" name="companyName" class="form-control" required>
+                                            <option value="" disabled selected>Select Company</option>
+                                            <!-- Options will be dynamically populated here -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="projectName">Project Name <span class="text-danger">*</span></label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" placeholder="Enter Project Name" type="text" id="projectName" name="projectName" oninput="validateInput('projectName')" required/>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="launchDate">Launch Date <span class="text-danger">*</span></label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="date" id="launchDate" name="alterMobile" required/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group row" for="district">
+                                  <label class="col-sm-6 col-form-label">District <span class="text-danger">*</span></label>
+                                  <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="district" name="district" placeholder="Enter District" oninput="validateInput('district')" required/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="taluk">Taluk <span class="text-danger">*</span></label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="text" id="taluk" name="taluk" placeholder="Enter Taluk" oninput="validateInput('taluk')" required/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="village">Village <span class="text-danger">*</span></label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="text" id="village" name="village" placeholder="Enter Village" oninput="validateInput('village')"/>
+                                  </div>
+                                </div>
+                              </div>
+
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Other Infomation
+                          </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                            
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="landType">LandType</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="text" id="landType" name="landType" placeholder="Enter LandType" oninput="validateInput('landType')"/>
+                                  </div>
+                                </div>
+                              </div>
+                              
+        
+                              
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="extent">Extent</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="text" id="extent" name="extent" placeholder="Enter Extent" oninput="validateInput('extent')" />
+                                  </div>
+                                </div>
+                              </div>
+        
+                            
+                            <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="address">Address</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="address" name="address" class="form-control" placeholder="Enter Address"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="geoLocation">Geo Location</label>
+                                  <div class="col-sm-9">
+                                    <input class="form-control" type="text" id="geoLocation" name="geoLocation" placeholder="Enter Geo Location"/>
+                                  </div>
+                                </div>
+                              </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                           Plots Infomation
+                          </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="totalSiteSqft">Total SiteSqft</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="totalSiteSqft" name="totalSiteSqft" class="form-control" placeholder="Enter Total SiteSqft" oninput="validatesNumberInput(event)" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="totalSiteCent">Total SiteCent</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="totalSiteCent" name="totalSiteCent" class="form-control" placeholder="Enter Total SiteCent" oninput="validatesNumberInput(event)" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="saleableSqft">Saleable Sqft</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="saleableSqft" name="saleableSqft" class="form-control" placeholder="Enter saleableSqft" oninput="validatesNumberInput(event)"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="saleableCent">Saleable Cent</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="saleableCent" name="saleableCent" class="form-control" placeholder="Enter SaleableCent" oninput="validatesNumberInput(event)"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="roadSqft">Road Sqft</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="roadSqft" name="roadSqft" class="form-control" placeholder="Enter Road Sqft" oninput="validatesNumberInput(event)"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="roadCent">Road Cent</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="roadCent" name="roadCent" class="form-control" placeholder="Enter Road Cent" oninput="validatesNumberInput(event)"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="totalPlots">Total Plots</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="totalPlots" name="totalPlots" class="form-control" placeholder="Enter total Plots" oninput="validatesNumberInput(event)"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+        
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingfour">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsefour" aria-expanded="false" aria-controls="flush-collapsefour">
+                           Facing Infomation
+                          </button>
+                        </h2>
+                        <div id="flush-collapsefour" class="accordion-collapse collapse" aria-labelledby="flush-headingfour" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="eastDetails">East Details</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="eastDetails" name="eastDetails" class="form-control" placeholder="Enter EastDetails" oninput="validateNo('eastDetails')"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="westDetails">West Details</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="westDetails" name="westDetails" class="form-control" placeholder="Enter West Details" oninput="validateNo('westDetails')" />
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="northDetails">North Details</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="northDetails" name="northDetails" class="form-control" placeholder="Enter North Details" oninput="validateNo('northDetails')"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                              <div class="col-md-6"> 
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="southDetails">South Details</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="southDetails" name="southDetails" class="form-control" placeholder="Enter South Details" oninput="validateNo('southDetails')"/>
+                                  </div>
+                                </div>
+                              </div>
+        
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingfive">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsefive" aria-expanded="false" aria-controls="flush-collapsefive">
+                            Previous Owner Information
+                          </button>
+                        </h2>
+                        <div id="flush-collapsefive" class="accordion-collapse collapse" aria-labelledby="flush-headingfive" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label" for="prevOwnerName">Prev Owner Name</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="prevOwnerName" name="prevOwnerName" class="form-control" placeholder="Enter PrevOwner Name" oninput="validateInput('prevOwnerName')"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-9 col-form-label" for="prevOwnerContact">Prev Owner Contact</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="prevOwnerContact" name="prevOwnerContact" class="form-control" placeholder="Enter PrevOwner Contact" oninput="validateMobile(event)"/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group row">
+                                  <label class="col-sm-9 col-form-label" for="prevOwnerAddress">Prev Owner Address</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="prevOwnerAddress" name="prevOwnerAddress" class="form-control" placeholder="Enter PrevOwner Address"/>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingsix">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsesix" aria-expanded="false" aria-controls="flush-collapsesix">
+                            Document Infomation <span class="text-danger">*</span>
+                          </button>
+                        </h2>
+                        <div id="flush-collapsesix" class="accordion-collapse collapse" aria-labelledby="flush-headingsix" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="agreementDetails">Agreement Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="agreementDetails" name="agreementDetails" class="form-control" placeholder="Enter Agreement Details"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="agreementDocuments">Agreement Documents</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="agreementDocuments" name="agreementDocuments" placeholder="Enter Agreement Documents"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="draftDetails">Draft Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="draftDetails" name="draftDetails" class="form-control" placeholder="Enter Draft Details"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="draftDocuments">Draft Documents</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="draftDocuments" name="draftDocuments" placeholder="Enter Draft Documents"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="legalDetails">Legal Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="legalDetails" name="legalDetails" class="form-control" placeholder="Enter LegalDetails"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="legalDocuments">Legal Documents</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="legalDocuments" name="legalDocuments" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="documentDetails">Document Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="documentDetails" name="documentDetails" class="form-control" placeholder="Enter Document Details"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="documentDocuments">Document Documents</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="documentDocuments" name="documentDocuments" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="legalBookDetails">LegalBook Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="legalBookDetails" name="legalBookDetails" class="form-control" placeholder="Enter LegalBookDetails"/>
+                          </div>
+                        </div>
+                      </div>  
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="legalBookDocuments">LegalBook Documents <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="legalBookDocuments" name="legalBookDocuments" />
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="dtcpDetails">Dtcp Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="dtcpDetails" name="dtcpDetails" class="form-control" placeholder="Enter DTCP Details"/>
+                          </div>
+                        </div>
+                      </div> 
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="dtcpDocuments">Dtcp Documents <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="dtcpDocuments" name="dtcpDocuments" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="corporationDetails">Corporation Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="corporationDetails" name="corporationDetails" class="form-control" placeholder="Enter Corporation Details"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="corporationDocuments">Corporation Documents</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="corporationDocuments" name="corporationDocuments" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="registrationDetails">Registration Details</label>
+                          <div class="col-sm-9">
+                            <input type="text" id="registrationDetails" name="registrationDetails" class="form-control" placeholder="Enter Registration Details"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="registrationDocuments">Registration Documents</label>
+                          <div class="col-sm-9">
+                            <input type="file" id="registrationDocuments" name="registrationDocuments" class="form-control" placeholder="Enter Registration Details"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="layout">Layout <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="file" id="layout" name="layout" />
+                          </div>
+                        </div>
+                      </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                   
+                    <div class="d-flex justify-content-end">
+                      <button type="submit" class="btn btn-gradient-primary me-2" id="submitBtn">Submit</button>
+                      <a href="project_list.html" class="btn btn-light">Cancel</a>
+                  </div>
+                  
+                  </form>
+                 </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- content-wrapper ends -->
+           <!-- partial:../../partials/_footer.html -->
+           <div id="includeFooder"></div>
+           <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->  
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+    <!-- End custom js for this page -->
+   <script>
+
+  async function fetchCompanyIdByName(companyName) {
+      try {
+          const accessToken = localStorage.getItem('accessToken');
+          const response = await fetch(`http://localhost:8080/api/company/getCompanyIdByCompanyName/${encodeURIComponent(companyName)}`, {
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': accessToken,
+              },
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to fetch companyId');
+          }
+
+          const company = await response.json();
+          // Ensure the response structure matches what you expect
+          return company.companyId; 
+
+      } catch (error) {
+          console.error('Error fetching companyId:', error);
+          showalert('Failed to fetch companyId. Please try again.');
+          return null;
+      }
+  }
+
+
+  async function fetchAndPopulateCompanies() {
+      const companyDropdown = document.getElementById('companyName');
+      
+      // Clear existing options
+      companyDropdown.innerHTML = '<option value="" disabled selected>Select Company</option>';
+
+      try {
+          const accessToken = localStorage.getItem('accessToken');
+          if (!accessToken) {
+              throw new Error('Access token not found');
+          }
+
+          // Fetch companies from the backend
+          const response = await fetch('http://localhost:8080/api/company/getCompany', {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': accessToken,
+              },
+          });
+
+          if (!response.ok) {
+              throw new Error('Failed to fetch companies');
+          }
+
+          const companies = await response.json();
+
+            // Populate the dropdown with companies
+            companies.forEach(company => {
+                const option = document.createElement('option');
+                option.value = company.companyId; // Use companyId as the value
+                option.textContent = company.companyName; // Display companyName
+                companyDropdown.appendChild(option);
+            });
+      } catch (error) {
+          console.error('Error:', error);
+          showalert('Failed to fetch companies');
+      }
+  }
+  // Initialize company dropdown and set up event listener
+  document.addEventListener('DOMContentLoaded', function () {
+      fetchAndPopulateCompanies(); // Fetch companies when the page loads
+
+    
+  });
+
+                      document.getElementById('projectForm').addEventListener('submit', async function (event) {
+                        event.preventDefault();
+                        const companyName = document.getElementById('companyName').selectedOptions[0].textContent; // Retrieve companyName from the selected option
+    const companyId = await fetchCompanyIdByName(companyName); 
+    console.log("id", companyId); // Fetch companyId based on companyName
+
+    if (companyId === null) {
+        showalert('Invalid companyName or companyId not found.');
+        return;
+    }
+
+                        const formData = new FormData();
+                        const projectData = {
+                          companyName: companyName,
+                          companyId: companyId, // Use the fetched companyId
+                          projectName: document.getElementById('projectName').value,
+                          launchDate: document.getElementById('launchDate').value,
+                          landType: document.getElementById('landType').value,
+                          district: document.getElementById('district').value,
+                          taluk: document.getElementById('taluk').value,
+                          village: document.getElementById('village').value,
+                          extent: document.getElementById('extent').value,
+                            address: document.getElementById('address').value,
+                          geoLocation: document.getElementById('geoLocation').value,
+                          totalSiteSqft: document.getElementById('totalSiteSqft').value,
+                          totalSiteCent: document.getElementById('totalSiteCent').value,
+                          saleableSqft: document.getElementById('saleableSqft').value,
+                          saleableCent: document.getElementById('saleableCent').value,
+                          roadSqft: document.getElementById('roadSqft').value,
+                          roadCent: document.getElementById('roadCent').value,
+                          totalPlots: document.getElementById('totalPlots').value,
+                          eastDetails: document.getElementById('eastDetails').value,
+                          westDetails: document.getElementById('westDetails').value,
+                          northDetails: document.getElementById('northDetails').value,
+                          southDetails: document.getElementById('southDetails').value,
+                          prevOwnerName: document.getElementById('prevOwnerName').value,
+                          prevOwnerContact: document.getElementById('prevOwnerContact').value,
+                          prevOwnerAddress: document.getElementById('prevOwnerAddress').value,
+                          agreementDetails: document.getElementById('agreementDetails').value,
+                          draftDetails: document.getElementById('draftDetails').value,
+                          legalDetails: document.getElementById('legalDetails').value,
+                          documentDetails: document.getElementById('documentDetails').value,
+                          legalBookDetails: document.getElementById('legalBookDetails').value,
+                          dtcpDetails: document.getElementById('dtcpDetails').value,
+                          corporationDetails: document.getElementById('corporationDetails').value,
+                          registrationDetails: document.getElementById('registrationDetails').value
+
+                        };
+                        // Convert employeeData to JSON and append to formData
+                        formData.append('project', new Blob([JSON.stringify(projectData)], { type: 'application/json' }));
+                        const agreementDocumentsFileInput = document.getElementById('agreementDocuments');
+                        if (agreementDocumentsFileInput.files.length > 0) {
+                      // Append avatar file to formData
+                          formData.append('agreementDocuments', agreementDocumentsFileInput.files[0]);
+                        }
+                        const draftDocumentsFileInput = document.getElementById('draftDocuments');
+                        if (draftDocumentsFileInput.files.length > 0) {
+                          // Append avatar file to formData
+                          formData.append('draftDocuments', draftDocumentsFileInput.files[0]);
+                        }
+                        const legalDocumentsFileInput = document.getElementById('legalDocuments');
+                        if (legalDocumentsFileInput.files.length > 0) {
+                          // Append avatar file to formData
+                          formData.append('legalDocuments', legalDocumentsFileInput.files[0]);
+                        }
+                        const documentDocumentsFileInput = document.getElementById('documentDocuments');
+                        if (documentDocumentsFileInput.files.length > 0) {
+                          // Append avatar file to formData
+                          formData.append('documentDocuments', documentDocumentsFileInput.files[0]);
+                        }
+                      const legalBookDocumentsFileInput = document.getElementById('legalBookDocuments');
+                        if (legalBookDocumentsFileInput.files.length > 0) {
+                          // Append avatar file to formData
+                          formData.append('legalBookDocuments', legalBookDocumentsFileInput.files[0]);
+                        }
+                        const dtcpDocumentsFileInput = document.getElementById('dtcpDocuments');
+                          if (dtcpDocumentsFileInput.files.length > 0) {
+                                // Append avatar file to formData
+                              formData.append('dtcpDocuments', dtcpDocumentsFileInput.files[0]);
+                      }     
+                      const corporationDocumentsFileInput = document.getElementById('corporationDocuments');
+                          if (corporationDocumentsFileInput.files.length > 0) {
+                      // Append avatar file to formData
+                          formData.append('corporationDocuments', corporationDocumentsFileInput.files[0]);
+                          }
+                          const layoutFileInput = document.getElementById('layout');
+                          if (layoutFileInput.files.length > 0) {
+                      // Append avatar file to formData
+                          formData.append('layout', layoutFileInput.files[0]);
+                          }
+                        try {
+                          const accessToken = localStorage.getItem('accessToken');
+                          const response = await fetch('http://localhost:8080/api/project/addProject', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                            'Authorization': accessToken
+                          },
+
+                          });
+                          if (!response.ok) {
+                            throw new Error('Failed to add project');
+                          }                   
+                          showalert('Project added successfully',function(){
+                          window.location.href='project_masterList.html';
+                          });
+                          // Optionally, redirect or perform any other action upon successful submission
+                      } catch (error) {
+                          console.error('Error:', error);
+                          showalert('Failed to add project');
+                        }
+                      });
+
+
+  
+                    $(document).ready(function(){
+                      $('#prevOwnerContact').on('input', function(){
+                          var phoneNumber = $(this).val();
+                          
+                          // Check if the input contains letters
+                          if(/[a-zA-Z]/.test(phoneNumber)) {
+                              showalert('Please enter digits only.');
+                              phoneNumber = phoneNumber.replace(/[a-zA-Z]/g, '');
+                          }
+                    
+                          // Remove any non-digit characters
+                          phoneNumber = phoneNumber.replace(/\D/g,'');
+                    
+                          // Limit to 12 digits
+                          if(phoneNumber.length > 12){
+                              showalert('Please enter valid datas under 12 digits.');
+                              phoneNumber = phoneNumber.substr(0, 12);
+                          }
+                    
+                          $(this).val(phoneNumber);
+                      });
+                    });
+
+                    $(document).ready(function(){
+                      $('#projectName,#district,#prevOwnerName').on('input', function(){
+                          var inputValue = $(this).val();
+                          // Check if the input contains any numeric characters
+                          if(/\d/.test(inputValue)){
+                              showalert('Please enter alphabetic characters only.');
+                              // Remove the numeric characters
+                              $(this).val(inputValue.replace(/\d/g, ''));
+                          }
+                          if(/[^\w\s]/.test(inputValue)){
+                            showalert('Special characters are not allowed.');
+                            // Remove the special characters
+                            $(this).val(inputValue.replace(/[^\w\s]/g, ''));
+                        }
+                        // Check if the input length exceeds the limit
+                        if(inputValue.length > 50){
+                            showalert('Maximum length exceeded. Please enter up to 50 characters.');
+                            // Trim the input to the maximum length
+                            $(this).val(inputValue.slice(0, 50));
+                        }
+                      });
+                    });
+                    
+                    $(document).ready(function(){
+                      $('#extent,#totalSiteSqft,#totalSiteCent,#saleableSqft,#saleableCent,#roadSqft,#roadCent,#totalPlots').on('input', function(){
+                          var postalCode = $(this).val();
+                          // Check if input contains non-numeric characters or more than 6 digits
+                          if(/[a-zA-Z]/.test( postalCode)) {
+                            showalert('Please enter digits only.');
+                            postalCode =  postalCode.replace(/[a-zA-Z]/g, ' ');
+                        }
+                          if (/\D/.test(postalCode) || postalCode.length > 20) {
+                             // showalert('Please enter exactly 20 digits numerics only.');
+                              // Remove non-numeric characters and extra digits
+                              postalCode = postalCode.replace(/\D/g, '').substr(0, 20);
+                              $(this).val(postalCode);
+                          }
+                      });
+                    });
+                    
+                  
+
+                    $(document).ready(function(){
+                      $('#landType,#taluk,#address,#geoLocation,#eastDetails,#westDetails,#northDetails,#southDetails,#prevOwnerAddress,#agreementDetails,#draftDetails,#legalDetails,#documentDetails,#legalBookDetails,#dtcpDetails,#corporationDetails,#registrationDetails').on('input', function(){
+                          var inputValue = $(this).val();
+                          // Check if the input contains any numeric characters
+                         
+                          
+                        // Check if the input length exceeds the limit
+                        if(inputValue.length > 50){
+                            showalert('Maximum length exceeded. Please enter up to 50 characters.');
+                            // Trim the input to the maximum length
+                            $(this).val(inputValue.slice(0,50));
+                            
+                        }
+                      });
+                    });
+                 
+
+                    function logout() {
+                      // Clear local storage
+                      localStorage.clear();
+                      
+                      // Redirect to the logout page or perform other logout actions
+                      window.location.href = '../../index.html';
+                  }
+
+                  function validateMobile(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+    } else if (inputValue.length > 12) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Maximum length for mobile number is 12 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 12); // Truncate to 12 digits
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+                   
+document.getElementById('submit').addEventListener('click', submitForm);
+
+function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    validateInput('projectName');
+    validateInput('district');
+    validateInput('prevOwnerName');
+   validateInput('village');
+}
+
+
+function validateInput(inputId) {
+    const inputValue = document.getElementById(inputId).value;
+    const alphaRegex = /^[a-zA-Z\s]+$/; // Regular expression to match only alphabetic characters and spaces
+    const specialCharRegex = /[^a-zA-Z\s]/; // Regular expression to match any special characters
+    
+    if (specialCharRegex.test(inputValue) || !alphaRegex.test(inputValue)) {
+        document.getElementById(inputId).style.borderColor = 'red'; // Set border color to red
+        document.getElementById(inputId).setCustomValidity("Only alphabetic characters are allowed."); // Set validation message
+        document.getElementById(inputId).reportValidity(); // Show validation message
+    } else {
+        document.getElementById(inputId).style.borderColor = ''; // Reset border color
+        document.getElementById(inputId).setCustomValidity(""); // Clear validation message
+    }
+}
+
+
+function validatesNumberInput(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+   
+document.getElementById('submit').addEventListener('click', submitForm);
+
+function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    // Validate both fields
+    validateNo('taluk');
+    validateNo('landType');
+    validateNo('eastDetails');
+    validateNo('westDetails');
+    validateNo('northDetails');
+    validateNo('southDetails');  
+}
+
+function validateNo(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputValue = inputField.value;
+    const NoRegex = /^[A-Za-z0-9\s]*$/; // Regular expression to allow alphabets, numbers, and spaces
+
+    if (!NoRegex.test(inputValue)) {
+        inputField.style.borderColor = 'red'; // Set border color to red
+        inputField.setCustomValidity("Please enter numbers and alphabets only."); // Set custom validation message
+        inputField.reportValidity(); // Show validation message
+    } else {
+        inputField.style.borderColor = ''; // Reset border color
+        inputField.setCustomValidity(""); // Clear custom validation message
+    }
+}
+                  </script>
+
+</body>
+
+</html>

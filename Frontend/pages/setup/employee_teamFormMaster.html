@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Employee Form | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- End layout styles -->
+  <!--showalert Message-->
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+  <style>
+    .custom-card-width {
+      width: 100%; /* Adjust the width as needed */
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link"  onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Team Form </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="employee_list.html">Team List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Team Form</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card custom-card-width">
+                <div class="card-body">
+                  <!-- <h4 class="card-title">Employee</h4> -->
+                  <form class="form-sample" id="employeeForm">
+                    <!-- <p class="card-description"> Personal info </p> -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="companyName">Company Name</label>
+                            <div class="col-sm-9">
+                                <select id="companyName" name="companyName" class="form-control" required>
+                                    <option value="" disabled selected>Select Company</option>
+                                    <!-- Options will be dynamically populated here -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="project">Team Name <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="text" id="teamName" name="teamName" placeholder="Team Name" /><br>
+                          </div>
+                        </div>
+                      </div>
+                     
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label" for="managerNames">Team Manager</label>
+                          <div class="col-sm-7">
+                            <select id="managerNames" name="managerNames[]" multiple  class="form-control">
+                              <option value="" disabled>Select Manager</option>
+                              <!-- Options will be dynamically populated here -->
+                            </select><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label" for="employeeNames">Employee Name</label>
+                          <div class="col-sm-7">
+                            <select id="employeeNames" name="employeeNames[]" multiple  class="form-control">
+                              <option value="" disabled>Select Employee</option>
+                              <!-- Options will be dynamically populated here -->
+                            </select><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="projectNames">Project
+                                    Name</label>
+                                <div class="col-sm-7">
+                                    <select id="projectNames" name="projectNames[]" multiple
+                                         class="form-control">
+                                        <option value="" disabled>Select Project</option>
+                                        <!-- Options will be dynamically populated here -->
+                                    </select><br>
+                                </div>
+
+                            </div>
+                        </div>
+                      <div class="d-flex justify-content-end" style="margin-bottom: 20px;">
+                        <!-- <button type="button" class="btn back custom-width" onclick="window.location.href='employee_list.html';">Back</button> -->
+                        <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                        <a href="employee_teamList.html" class="btn btn-light">Cancel</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- <div id="includeFooter"></div> -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+
+  <!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Custom script -->
+  <script>
+
+    function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+// Function to fetch and populate companies
+async function fetchAndPopulateCompanies() {
+    const companyDropdown = document.getElementById('companyName');
+
+    // Clear existing options
+    companyDropdown.innerHTML = '<option value="" disabled selected></option>';
+
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            throw new Error('Access token not found');
+        }
+
+        // Fetch companies from the backend
+        const response = await fetch('http://localhost:8080/api/company/getCompany', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch companies');
+        }
+
+        const companies = await response.json();
+
+        // Populate the dropdown with companies
+        companies.forEach(company => {
+            const option = document.createElement('option');
+            option.value = company.companyId; // Use companyId as the value
+            option.textContent = company.companyName; // Display companyName
+            companyDropdown.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        showalert('Failed to fetch companies');
+    }
+}
+
+// Function to fetch and populate projects and employees based on selected companyId
+async function fetchAndPopulateDetails() {
+    const companyId = document.getElementById('companyName').value;
+
+    if (!companyId) return;
+
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            throw new Error('Access token not found');
+        }
+
+        // Clear existing options from dropdowns
+        const projectDropdown = document.getElementById('projectNames');
+        projectDropdown.innerHTML = '<option value="" disabled selected></option>';
+
+        const employeeDropdowns = [document.getElementById('employeeNames'), document.getElementById('managerNames')];
+        employeeDropdowns.forEach(dropdown => dropdown.innerHTML = '<option value="" disabled selected></option>');
+
+        // Fetch projects based on companyId
+        let projectsResponse;
+        try {
+            projectsResponse = await fetch(`http://localhost:8080/api/project/getProjectsByCompanyId/${companyId}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken,
+                },
+            });
+
+            if (!projectsResponse.ok) {
+                throw new Error('Failed to fetch projects');
+            }
+
+            const projects = await projectsResponse.json();
+            projects.forEach(project => {
+                const option = document.createElement('option');
+                option.value = project.projectName; // Use projectName as the value
+                option.textContent = project.projectName; // Display projectName
+                projectDropdown.appendChild(option);
+            });
+
+        } catch (error) {
+            console.error('Error fetching projects:', error);
+            // Optionally handle project fetch errors here
+        }
+
+        // Fetch employees based on companyId
+        const employeesResponse = await fetch(`http://localhost:8080/api/employee/getEmployeeByCompanyId/${companyId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+            },
+        });
+
+        if (!employeesResponse.ok) {
+            throw new Error('Failed to fetch employees');
+        }
+
+        const employees = await employeesResponse.json();
+        employeeDropdowns.forEach(dropdown => {
+            employees.forEach(employee => {
+                const option = document.createElement('option');
+                option.value = employee.employeeName; // Use employeeName as the value
+                option.textContent = employee.employeeName; // Display employeeName
+                dropdown.appendChild(option.cloneNode(true));
+            });
+        });
+
+    } catch (error) {
+        console.error('Error:', error);
+        showalert('Failed to fetch details');
+    }
+}
+
+// Initialize company dropdown and set up event listener
+document.addEventListener('DOMContentLoaded', function () {
+    fetchAndPopulateCompanies(); // Fetch companies when the page loads
+
+    const companyDropdown = document.getElementById('companyName');
+    companyDropdown.addEventListener('change', fetchAndPopulateDetails); // Fetch details when a company is selected
+});
+
+$('#employeeForm').on('submit', async function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    console.log('Form submit event triggered.');
+
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            console.error('Access token not found');
+            showalert('Access token not found. Please log in again.');
+            return;
+        }
+
+        // Collect selected manager and employee names
+        const managerNamesDropdown = document.getElementById('managerNames'); // Correct ID
+        const employeeNamesDropdown = document.getElementById('employeeNames'); // Correct ID
+        const projectNamesDropdown = document.getElementById('projectNames'); // Correct ID
+
+        const selectedManagers = managerNamesDropdown ? Array.from(managerNamesDropdown.selectedOptions, option => option.textContent) : [];
+        const selectedEmployees = employeeNamesDropdown ? Array.from(employeeNamesDropdown.selectedOptions, option => option.textContent) : [];
+        const selectedProjects = projectNamesDropdown ? Array.from(projectNamesDropdown.selectedOptions, option => option.textContent) : [];
+
+        // Prepare the team data object
+        const companyDropdown = document.getElementById('companyName'); // Ensure this is defined here
+        const teamData = {
+            companyName: companyDropdown.options[companyDropdown.selectedIndex].text, // Get the selected companyName text
+            companyId: companyDropdown.value, // Use companyId as the value
+            teamName: $('#teamName').val(),
+            managerNames: selectedManagers,
+            employeeNames: selectedEmployees,
+            projectNames: selectedProjects // Use projectNames instead of employeeNames
+        };
+
+        console.log('Sending data to server:', teamData);
+
+        const response = await fetch('http://localhost:8080/api/teams/addTeam', {
+            method: 'POST',
+            body: JSON.stringify(teamData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create team.');
+        }
+
+        showalert('Team successfully created!',function(){
+        window.location.href = 'employee_teamListMaster.html'; // Redirect on success
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        showalert('Failed to create team. Please try again.');
+    }
+});
+
+
+  </script>
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- End custom js for this page -->
+</body>
+</html>

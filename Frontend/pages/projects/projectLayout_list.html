@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Project Layout List / Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End Plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- End layout styles -->
+<!--showalert Message-->
+<script src="assets/js/alertMessages.js"></script>
+   
+  <style>
+    /* Adjust the modal size */
+    .modal-dialog {
+      max-width: 1100px;
+      /* Set your desired maximum width */
+    }
+
+    /* Adjust the form size */
+    .form-sample {
+      max-width: 100%;
+      /* Set your desired maximum width */
+    }
+
+    @media (min-width: 576px) {
+      .col-sm-9 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 100% !important;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+        <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+      <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="projectModalLabel">Edit Project</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeForm()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Employee Form -->
+              <form class="form-sample" id="projectForm">
+                <p class="card-description">Project Info</p>
+
+                <div class="row">
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="companyName">Company Name</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="companyName" name="companyName"><br>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="projectName">Project Name</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="projectName" name="projectName"><br>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="launchDate">Launch Date</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="launchDate" name="launchDate"><br>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="soilType">SoilType</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="soilType" name="soilType" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="landType">LandType</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="landType" name="landType" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="district">
+                      <label class="col-sm-4 col-form-label">District</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="district" name="district" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="taluk">
+                      <label class="col-sm-4 col-form-label">Taluk</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="taluk" name="taluk" />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="village">
+                      <label class="col-sm-4 col-form-label">Village</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="village" name="village" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row" for="ward">
+                      <label class="col-sm-4 col-form-label">Ward</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="ward" name="ward" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="extent">Extent</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="extent" name="extent" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="block">Block</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="block" name="block" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="tsNo">TSNo</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="tsNo" name="tsNo" />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="oldSurveyNo">Old SurveyNo</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="oldSurveyNo" name="oldSurveyNo" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="newSurveyNo">New SurveyNo</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="newSurveyNo" name="newSurveyNo" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="address">Address</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="address" name="address" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="geoLocation">Geo Location</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="geoLocation" name="geoLocation" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="totalSiteSqft">Total Site Sqft</label>
+                      <div class="col-sm-6">
+                        <input class="form-control" type="text" id="totalSiteSqft" name="totalSiteSqft" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="totalSiteCent">Total Site Cent</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="totalSiteCent" name="totalSiteCent" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="saleableSqft">Saleable Sqft</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="saleableSqft" name="saleableSqft" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="saleableCent">Saleable Cent</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="saleableCent" name="saleableCent" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="roadSqft">Road Sqft</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="roadSqft" name="roadSqft" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="roadCent">Road Cent</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="roadCent" name="roadCent" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="totalPlots">Total Plots</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="totalPlots" name="totalPlots" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="eastDetails">East Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="eastDetails" name="eastDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="westDetails">West Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="westDetails" name="westDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="northDetails">North Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="northDetails" name="northDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="southDetails">South Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="southDetails" name="southDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="prevOwnerName">PrevOwner Name</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="prevOwnerName" name="prevOwnerName" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="prevOwnerContact">PrevOwner Contact</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="prevOwnerContact" name="prevOwnerContact" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="prevOwnerAddress">PrevOwner Address</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="prevOwnerAddress" name="prevOwnerAddress" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="agreementDetails">Agreement Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="agreementDetails" name="agreementDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="draftDetails">Draft Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="draftDetails" name="draftDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalDetails">Legal Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="legalDetails" name="legalDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="documentDetails">Document Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="documentDetails" name="documentDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalBookDetails">LegalBook Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="legalBookDetails" name="legalBookDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="dtcpDetails">dtcp Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="dtcpDetails" name="dtcpDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="corporationDetails">Corporation Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="corporationDetails" name="corporationDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="registrationDetails">Registration Details</label>
+                      <div class="col-sm-6">
+                        <input type="text" id="registrationDetails" name="registrationDetails" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="agreementDocuments">agreement<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="agreementDocumentsPath"></div>
+                        <img id="agreementDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="agreementDocuments" name="agreementDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="draftDocuments">draft<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="draftDocumentsPath"></div>
+                        <img id="draftDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="draftDocuments" name="draftDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalDocuments">legal<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="legalDocumentsPath"></div>
+                        <img id="legalDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="legalDocuments" name="legalDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="documentDocuments">document<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="documentDocumentsPath"></div>
+                        <img id="documentDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="documentDocuments" name="documentDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="legalBookDocuments">legalBook<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="legalBookDocumentsPath"></div>
+                        <img id="legalBookDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="legalBookDocuments" name="legalBookDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="dtcpDocuments">dtcpDocuments<br>Preview</label>
+                      <div class="col-sm-5">
+                        <div id="dtcpDocumentsPath"></div>
+                        <img id="dtcpDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="dtcpDocuments" name="dtcpDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="corporationDocuments">corporation<br>Documents</label>
+                      <div class="col-sm-5">
+                        <div id="corporationDocumentsPath"></div>
+                        <img id="corporationDocumentsPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="corporationDocuments" name="corporationDocuments" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label" for="layout">layout</label>
+                      <div class="col-sm-5">
+                        <div id="layoutPath"></div>
+                        <img id="layoutPreview" src="" alt=""
+                          style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                        <input class="form-control" type="file" id="layout" name="layout" />
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Form buttons -->
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                  <button type="button" class="btn btn-light" data-dismiss="modal" onclick="closeForm()">Cancel</button>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Project Layout List</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../pages/dashboard/dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Project Layout</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="template-demo">
+
+                  </div>
+                  <div class="table-responsive">
+                    <table id="dataTable" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>launch Date</th>
+                          <th>Project Name</th>
+                          <th>District</th>
+                          <th>Taluk</th>
+                          <th>village</th>
+                          <th>layoutPic</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                  <ul id="pagination" class="pagination"></ul>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div id="includeFooder"></div>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+
+    let isContentLoaded = false;
+
+    document.addEventListener('DOMContentLoaded', async function () {
+      if (isContentLoaded) return; // Prevent multiple executions
+      isContentLoaded = true;
+
+      try {
+        const accessToken = localStorage.getItem('accessToken');
+        const employeeEmail = localStorage.getItem('employeeEmail');
+
+        // Fetch employee details to get associated company ID
+        const responseEmployee = await fetch('http://localhost:8080/api/employee/getEmployeeByEmail/' + employeeEmail, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken,
+          },
+        });
+
+        if (!responseEmployee.ok) {
+          throw new Error('Failed to fetch employee details');
+        }
+
+        const dataEmployee = await responseEmployee.json();
+
+        // Ensure that the company object and companyId are properly fetched
+        if (!dataEmployee.company || !dataEmployee.company.companyId) {
+          throw new Error('Company ID not found in employee details');
+        }
+
+        const companyId = dataEmployee.company.companyId;
+
+        // Check if the current URL already contains the company ID parameter
+        if (!window.location.href.includes(`companyId=${companyId}`)) {
+          // Redirect to the EmployeeForm page with company ID query parameter
+          const formUrl = `projectLayout_list.html?companyId=${companyId}`;
+          window.location.href = formUrl;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle error
+      }
+    });
+
+    var formData = new FormData();
+    const accessToken = localStorage.getItem('accessToken');
+
+
+    $(document).ready(function () {
+      // Fetch the company name using the company ID from the URL
+      const accessToken = localStorage.getItem('accessToken');
+      const urlParams = new URLSearchParams(window.location.search);
+      const companyId = urlParams.get('companyId');
+      const teamIdFromLocalStorage = localStorage.getItem('teamId');
+      const MainMenus = localStorage.getItem('MainMenus');
+
+
+      // Check permissions
+      const canEdit = MainMenus && MainMenus.includes('Project Layout ListEdit');
+      
+
+
+      // $.ajax({
+      //     url: `http://localhost:8080/api/superAdmin/getCompanyById/${companyId}`,
+      //     type: 'GET',
+      //     dataType: 'json',
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //         'Authorization': accessToken,
+      //     },
+      //     success: function (companyData) {
+      //         // Fetch project details based on the company name
+      //         const companyName = companyData.companyName;
+
+      
+      //Convert companyId to a number
+    const companyIdNum = Number(companyId);
+      // Parse teamIdFromLocalStorage into an array if it's not null
+    const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id)) : [];
+
+      $.ajax({
+        url: `http://localhost:8080/api/project/getAllProjectDetails`,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (projects) {
+          // Filter projects based on the presence of "Employee Form" in MainMenus
+const filteredProjects = projects.filter(project => {
+    // Log each project and the result of the filtering condition
+    console.log('Project:', project);
+    const isCompanyMatch = project.companyId === companyIdNum;
+    const isTeamMatch = teamIds.length === 0 || teamIds.includes(project.teamId);
+    const isMatch = isCompanyMatch && isTeamMatch;
+
+    // Log the filter results
+    //console.log(Filtering by companyId (${project.companyId}) and teamIds (${project.teamId}): ${isMatch});
+
+    if (MainMenus && MainMenus.includes('Employee Form')) {
+        // Filter by companyId only
+        return isCompanyMatch;
+    } else {
+        // Filter by companyId and teamIds
+        return isMatch;
+    }
+});
+          // Clear existing table rows
+          $('#dataTable tbody').empty();
+
+          // Populate table with fetched data
+          filteredProjects.forEach(function (project) {
+
+            let buttons = '';
+
+            if (canEdit) {
+              buttons += `
+        <button type="button" class="btn btn-info btn-sm edit-btn" onclick="openEditPage('${project.id}','${project.projectName}','${project.teamId}')">Edit</button></td>
+    `;
+            }
+
+
+            $('#dataTable tbody').append(`
+                            <tr>
+                                <td>${project.launchDate}</td>
+                                <td>${project.projectName}</td>                              
+                                <td>${project.district}</td>
+                                <td>${project.taluk}</td>
+                                <td>${project.village}</td>
+                                <td>${project.layoutpic}</td>
+                                <td>${buttons}</td>
+                            </tr>
+                        `);
+          });
+          $('#projectModal').modal('hide');
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          // showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+    },
+    );
+
+    function openEditPage(projectId, projectName,teamId) {
+      const encodedProjectName = encodeURIComponent(projectName);
+      window.location.href = `projectLayout_form.html?projectId=${projectId}&projectName=${projectName}&teamId=${teamId}`;
+    }
+  </script>
+
+
+
+
+
+
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- End custom js for this page -->
+  <!-- End custom js for this page -->
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Booking Completed List|Aishalaya</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- Include Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+   
+<!--showalert Message-->
+<script src="assets/js/alertMessages.js"></script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+    <style>
+        /* Adjust the modal size */
+        .modal-dialog {
+            max-width: 1100px;
+            /* Set your desired maximum width */
+        }
+
+        /* Adjust the form size */
+        .form-sample {
+            max-width: 100%;
+            /* Set your desired maximum width */
+        }
+
+        @media (min-width: 576px) {
+            .col-sm-9 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 auto;
+                flex: 0 0 auto;
+                width: 100% !important;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container-scroller">
+
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img
+                        src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+                <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img
+                        src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" onclick="logout()">
+                            <i class="mdi mdi-power"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:../../partials/_sidebar.html -->
+            <div id="includeHtml"></div>
+
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title">Booking Completed List</h3>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Book completed List</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="template-demo">
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="dataTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Customer</th>
+                                                    <th>Phone</th>
+                                                    <th>Project</th>
+                                                    <th>Plot No</th>
+                                                    <th>NetAmount</th>
+
+                                                    <th>Status</th>
+                                 </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Your table content -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <ul id="pagination" class="pagination"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:../../partials/_footer.html -->
+                <div id="includeFooder"></div>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            const accessToken = localStorage.getItem('accessToken');
+            $.ajax({
+                url: 'http://localhost:8080/api/booking/getAllBookConfirmDetails',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken,
+                },
+                success: function (data) {
+
+                    // Populate table with fetched data
+                    $.each(data, function (index, data) {
+                        // const dateStr = project.date && typeof project.date === 'string' ? project.date.subString(0, 10) : '';
+
+                        $('#dataTable tbody').append(`
+                    <tr>
+                                          
+                      <td>${new Date(data.date).toLocaleDateString()}</td>
+                        <td>${data.customerCode}</td>
+                        <td>${data.mobileNumber}</td>      
+                        <td>${data.project}</td>
+                        <td>${data.plotNumber}</td>
+                        <td>${data.totalValues}</td>
+                      
+                           <td style="color: green";>Completed &#10004;</td>
+                     
+                    </tr>
+                `);
+                    });
+                    $('#projectModal').modal('hide');
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText); // Log the error response
+                    console.error(error); // Log the error message
+                    showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+                }
+            });
+        });
+
+        function openEditPage(projectId) {
+            // Assuming 'project_layout_edit.html' is in the same directory
+            window.location.href = `projectLayout_form.html?projectId=${projectId}`;
+        }    
+    </script>
+
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+    <!-- End custom js for this page -->
+    <!-- End custom js for this page -->
+</body>
+
+</html>

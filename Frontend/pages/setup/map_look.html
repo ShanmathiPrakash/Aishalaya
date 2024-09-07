@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Employee Form | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- End layout styles -->
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link"  onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <div id="includeHtml"></div>
+      <div class="main-panel">
+        <div id="map" style="height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([11.451048, 77.439290], 90); // Set initial coordinates and zoom level
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Define static marker data
+    const markers = [
+      { status: 'Blocked', latitude: 11.451048, longitude: 77.439290, address: "Pachaimalai Rd, Jaidurgai Nagar, Seethalakshmi Puram, Gobichettipalayam, Tamil Nadu 638476" },
+      { status: 'Available', latitude: 11.451155589041742, longitude: 77.43876745948045, address: "Some address for the available marker" },
+      { status: 'Blocked', latitude: 11.451367935538022, longitude: 77.4383963999882, address: "Some address for the blocked marker" }
+    ];
+
+    // Add markers to the map
+    markers.forEach(marker => {
+      // Define marker icon with color based on status
+      const iconColor = marker.status === 'Blocked' ? 'red' : 'green';
+      const customIcon = L.divIcon({
+        className: 'custom-marker-icon',
+        html: `<div class="marker-label" style="background-color: ${iconColor};">${marker.status}</div>`,
+        iconSize: [30, 30],
+        iconAnchor: [15, 30]
+      });
+
+      // Add marker to the map
+      const newMarker = L.marker([marker.latitude, marker.longitude], { icon: customIcon }).addTo(map);
+
+      // Bind popup showing the address on hover
+      newMarker.bindPopup(marker.address);
+    });
+
+    // Add legend
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function (map) {
+      const div = L.DomUtil.create('div', 'info legend');
+      div.innerHTML +=
+        '<i style="background: red"></i> Blocked<br>' +
+        '<i style="background: green"></i> Available';
+      return div;
+    };
+    legend.addTo(map);
+  </script>
+</body>
+
+</html>

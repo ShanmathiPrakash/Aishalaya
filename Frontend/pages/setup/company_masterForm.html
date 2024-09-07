@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Company Form</title>
+    <!-- plugins:css -->
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+    
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css"> <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- End layout styles -->
+    <!--showalert Message-->
+    <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+      </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link"  onclick="logout()">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+  
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="includeHtml"></div>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Company Form </h3>
+              <nav aria-label="breadcrumb"></nav>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- <h4 class="card-title">Company</h4> -->
+                    <form class="form-sample" id="companyForm">
+                      <!-- <p class="card-description">Company Info</p> -->
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="companyName">Company Name <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="text" id="companyName" name="companyName"maxlength="50" oninput="validateInput('companyName')" required placeholder="Company Name" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="companyShortName">Short Name </label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="text" id="companyShortName" name="companyShortName" maxlength="50" oninput="validateNo('companyShortName')" placeholder="Short Name"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="address1">Address1 </label>
+                            <div class="col-sm-9">
+                              <input type="text" id="address1" name="address1" class="form-control" maxlength="100" placeholder="Address"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="address2">Address2 </label>
+                            <div class="col-sm-9">
+                              <input type="text" id="address2" name="address2" class="form-control" maxlength="100" placeholder="Address"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="area">Area <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="area" name="area" class="form-control"maxlength="30" oninput="validateInput('area')" required placeholder="Area"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="district">District <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="district" name="district" class="form-control"maxlength="30" oninput="validateInput('district')" required placeholder="District" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="stateCode">State Code <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="stateCode" name="stateCode" class="form-control" maxlength="2" oninput="validatesInputForStateCode(event)" required placeholder="State Code" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="gstNo">GST No <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="gstNo" name="gstNo" class="form-control" maxlength="30" oninput="validateNo('gstNo')" required placeholder="GST No" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="cinNo">CIN No <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="cinNo" name="cinNo" class="form-control"  maxlength="30" oninput="validateNo('cinNo')" required placeholder="CIN No"/>
+                            </div>
+                          </div>
+                        </div>
+
+                       
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="pincode">Pincode <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="pincode" name="pincode" class="form-control" maxlength="6" oninput="validatesInput(event)" required placeholder="Pincode"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="contact">Contact <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="contact" name="contact" class="form-control" maxlength="12" oninput="validateMobile(event)" required placeholder="Contact"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="phone">Phone <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="phone" name="phone" class="form-control" maxlength="12" oninput="validateMobile(event)" placeholder="Phone" required/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="mobile">Mobile </label>
+                            <div class="col-sm-9">
+                              <input type="text" id="mobile" name="mobile" class="form-control" maxlength="12" oninput="validateMobile(event)" placeholder="Mobile" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="email">Email  <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="email" id="email" name="email" class="form-control" placeholder="Email" required/>
+                              <p id="validationMessage1"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="logo">Logo <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="file" id="logo" name="logo" placeholder="logo" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="signature">Signature <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="file" id="signature" name="signature" placeholder="signature" required/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="companySeal">Company Seal <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="file" id="companySeal" name="companySeal" placeholder="Company Seal" required/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="email2">Sales Email  <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="email" id="email2" name="email2" class="form-control" placeholder="Sales Email" required/>
+                              <p id="validationMessage2"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="panNo">PAN No <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="panNo" name="panNo" class="form-control" maxlength="30" oninput="validateNo('panNo')" required placeholder="Pan No"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="bankName">Bank Name <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="bankName" name="bankName" class="form-control" maxlength="30"  oninput="validateInput('bankName')" required placeholder="Bank Name"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="accNo">Account No <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="accNo" name="accNo" class="form-control" maxlength="30" oninput="validatesAccNoInput(event)" required placeholder="Account No"/>
+                            </div>
+                          </div>
+                        </div>
+                       
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="branchName">Branch Name <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="branchName" name="branchName" class="form-control" maxlength="30" oninput="validateNo('branchName')" required placeholder="Branch Name"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="ifscCode">IFSC Code <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="ifscCode" name="ifscCode" class="form-control" maxlength="30" oninput="validateNo('ifscCode')" required placeholder="IFSC code" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="upiId">UPI ID</label>
+                            <div class="col-sm-9">
+                              <input type="text" id="upiId" name="upiId" class="form-control" maxlength="30" placeholder="UPI " />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="upiNumber">UPI Number</label>
+                            <div class="col-sm-9">
+                              <input type="text" id="upiNumber" name="upiNumber" class="form-control" maxlength="30" placeholder="UPI Number"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-end">
+                        <!-- <button type="button" class="btn back custom-width" onclick="window.location.href='company_list.html';">Back</button> -->
+                        <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Other code... -->
+         
+          <!-- Other code... -->
+        </div>
+        
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+      
+                  function logout() {
+                    // Clear local storage
+                    localStorage.clear();
+                    
+                    // Redirect to the logout page or perform other logout actions
+                    window.location.href = '../../index.html';
+                }
+      
+    
+                async function checkDuplicateGST(gstNumber) {
+                  const accessToken = localStorage.getItem('accessToken');
+                  try {
+                      const response = await fetch(`http://localhost:8080/api/company/getCompanyByGST/${gstNumber}`, {
+                          method: 'GET',
+                          credentials: 'include',
+                          headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': accessToken,
+                  },
+                      });
+          
+                      if (!response.ok) {
+                          throw new Error('Error checking duplicate GST');
+                      }
+          
+                      const data = await response.json();
+                      console.log(data);
+                      if (data !== null) 
+                      {
+                        // Display showalert for duplicate GST
+                      //  showalert('Duplicate GST number. Please enter a unique GST number.');
+                        console.log(data);
+                        return true; // Indicate duplicate
+                      }
+          
+                      return data.isDuplicate;
+                  } catch (error) {
+                      console.error('Error:', error);
+                      return false;
+                  }
+              }
+          
+              async function checkDuplicateCIN(cinNumber) {
+                  try {
+                    const accessToken = localStorage.getItem('accessToken');
+                      const response = await fetch(`http://localhost:8080/api/company/getCompanyByCinNo/${cinNumber}`, {
+                          method: 'GET',
+                          headers: {
+                          'Content-Type': 'application/json',
+                          'Authorization': accessToken,
+                          },
+                          credentials: 'include'
+                      });
+          
+                      if (!response.ok) {
+                          throw new Error('Error checking duplicate CIN');
+                      }
+          
+                      const data = await response.json();
+                      console.log(data);
+          
+                      if (data !== null) {
+                        // Display showalert for duplicate CIN
+                      //  showalert('Duplicate CIN number. Please enter a unique CIN number.');
+                        return true; // Indicate duplicate
+                    }
+            
+                    return false; // Not duplicate
+                }  catch (error) {
+                      console.error('Error:', error);
+                      return false;
+                  }
+              }
+          
+      
+                document.getElementById('companyForm').addEventListener('submit', async function (event) {
+                    event.preventDefault();
+                    
+                    const formData = new FormData();
+                    const companyData = {
+                      companyName: document.getElementById('companyName').value,
+                      companyShortName: document.getElementById('companyShortName').value,
+                      address1: document.getElementById('address1').value,
+                      address2: document.getElementById('address2').value,
+                      area: document.getElementById('area').value,
+                      district: document.getElementById('district').value,
+                      stateCode: document.getElementById('stateCode').value,
+                      gstNo: document.getElementById('gstNo').value,
+                      cinNo: document.getElementById('cinNo').value,
+                      pincode: document.getElementById('pincode').value,
+                      contact: document.getElementById('contact').value,
+                      phone: document.getElementById('phone').value,
+                      mobile: document.getElementById('mobile').value,
+                      email: document.getElementById('email').value,
+                      email2: document.getElementById('email2').value,
+                      panNo: document.getElementById('panNo').value,
+                      bankName: document.getElementById('bankName').value,
+                      accNo: document.getElementById('accNo').value,
+                      branchName: document.getElementById('branchName').value,
+                      ifscCode: document.getElementById('ifscCode').value,
+                      upiId: document.getElementById('upiId').value,
+                      upiNumber: document.getElementById('upiNumber').value,
+                    };
+      
+                    formData.append('company', new Blob([JSON.stringify(companyData)], { type: 'application/json' }));
+      
+                    const logoFile = document.getElementById('logo');
+      
+                            if (logoFile.files.length > 0)
+                             {
+                              // Append avatar file to formData
+                              formData.append('logoFile', logoFile.files[0]);
+                            }
+              
+                            const sealFile = document.getElementById('companySeal');
+      
+                            if (sealFile.files.length > 0)
+                             {
+                              // Append avatar file to formData
+                              formData.append('sealFile', sealFile.files[0]);
+                            }
+      
+                            const signFile = document.getElementById('signature');
+      
+                            if (signFile.files.length > 0)
+                             {
+                              // Append avatar file to formData
+                              formData.append('signFile', signFile.files[0]);
+                            }
+              
+                    try {
+                      const accessToken = localStorage.getItem('accessToken')
+                      const response = await fetch('http://localhost:8080/api/superAdmin/company/createCompany', {
+                        method: 'POST',
+                        body: formData,
+                        credentials: 'include',
+                        headers:{
+                         
+                          'Authorization':accessToken
+                        },
+      
+                      });
+              
+                      if (!response.ok) {
+                        throw new Error('Failed to add company');
+                      }
+              
+                      showalert('Company added successfully',function(){
+                      document.getElementById('companyForm').reset();
+                      });
+                      // Optionally, redirect or perform any other action upon successful submission
+                    }
+                     catch (error) {
+                      console.error('Error:', error);
+                      showalert('Failed to add company');
+                    }
+                  
+                  });
+
+
+                  
+
+                const emailInputs = document.querySelectorAll('input[type="email"]');
+    const validationMessages = [
+        document.getElementById('validationMessage1'),
+        document.getElementById('validationMessage2')
+    ];
+    // Regular expression to validate email addresses for the specified domains
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com|aol\.com|icloud\.com|protonmail\.com|zoho\.com|gmx\.com|yandex\.com|mail\.com)$/;
+
+    emailInputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+            validateEmail(input, validationMessages[index]);
+        });
+    });
+
+    function validateEmail(emailInput, validationMessage) {
+        const email = emailInput.value;
+
+        if (emailRegex.test(email)) {
+            validationMessage.innerText = "Valid email address";
+            validationMessage.style.color = "green";
+        } else {
+            validationMessage.innerText = "Invalid email address";
+            validationMessage.style.color = "red";
+        }
+    }
+
+document.getElementById('submit').addEventListener('click', submitForm);
+
+function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    // Validate both fields
+    validateNo('companyShortName');
+    validateNo('area');
+    validateNo('ifscCode');
+    validateNo('branchName');
+    validateNo('panNo');
+    validateNo('cinNo');
+    validateNo('gstNo');
+}
+function validateNo(inputId) {
+    const inputField = document.getElementById(inputId);
+    const inputValue = inputField.value;
+    const NoRegex = /^[A-Za-z0-9\s]*$/; // Regular expression to allow alphabets, numbers, and spaces
+
+    if (!NoRegex.test(inputValue)) {
+        inputField.style.borderColor = 'red'; // Set border color to red
+        inputField.setCustomValidity("Please enter numbers and alphabets only."); // Set custom validation message
+        inputField.reportValidity(); // Show validation message
+    } else {
+        inputField.style.borderColor = ''; // Reset border color
+        inputField.setCustomValidity(""); // Clear custom validation message
+    }
+}
+
+
+document.getElementById('submit').addEventListener('click', submitForm);
+
+function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    validateInput('companyName');
+    validateInput('branchName');
+}
+
+function validateInput(inputId) {
+    const inputValue = document.getElementById(inputId).value;
+    const alphaRegex = /^[a-zA-Z\s]+$/; // Regular expression to match only alphabetic characters and spaces
+    const specialCharRegex = /[^a-zA-Z\s]/; // Regular expression to match any special characters
+    
+    if (specialCharRegex.test(inputValue) || !alphaRegex.test(inputValue)) {
+        document.getElementById(inputId).style.borderColor = 'red'; // Set border color to red
+        document.getElementById(inputId).setCustomValidity("Only alphabetic characters are allowed."); // Set validation message
+        document.getElementById(inputId).reportValidity(); // Show validation message
+    } else {
+        document.getElementById(inputId).style.borderColor = ''; // Reset border color
+        document.getElementById(inputId).setCustomValidity(""); // Clear validation message
+    }
+}
+
+function validatesInputForStateCode(event) {
+          const inputValue = event.target.value;
+          const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+      
+          if (!numericRegex.test(inputValue)) {
+            showalert("Only numeric characters are allowed.");
+            event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+          }
+      
+          if (inputValue.length > 2) {
+            showalert("Maximum length is 2 digits.");
+            event.target.value = inputValue.slice(0, 2); // Truncate to 6 digits
+          }
+        }
+
+function validatesInput(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+    } else if (inputValue.length < 6) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Minimum length is 6 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+    } else if (inputValue.length > 6) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Maximum length is 6 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 6); // Truncate to 6 digits
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+function validatesAccNoInput(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+function validateMobile(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+    } else if (inputValue.length > 12) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Maximum length for mobile number is 12 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 12); // Truncate to 12 digits
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+                </script>
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->  
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+  </body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

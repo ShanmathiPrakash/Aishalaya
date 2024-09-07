@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Projecct List / Aishalaya</title>
+  <!-- plugins:css -->
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css"> <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End Plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- End layout styles -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!--<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+  
+  <!--showalert Message-->
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+  <style>
+    /* Adjust the modal size */
+    .modal-dialog {
+      max-width: 1100px;
+      /* Set your desired maximum width */
+    }
+
+    /* Adjust the form size */
+    .form-sample {
+      max-width: 100%;
+      /* Set your desired maximum width */
+    }
+
+    @media (min-width: 576px) {
+      .col-sm-9 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo"
+              style="height: 100%" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png"
+              alt="logo" style="height: 100%" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" onclick="logout()">
+                <i class="mdi mdi-power"></i>
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+            data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="includeHtml"></div>
+
+        <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="customerModalLabel">Edit Customer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeForm()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Employee Form -->
+                <form class="form-sample" id="customerForm">
+                  <p class="card-description">Customer Info</p>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="date">Date</label>
+                        <div class="col-sm-9">
+                          <input class="form-control" type="date" id="date" name="date" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="customerName">Customer Name</label>
+                        <div class="col-sm-9">
+                          <input class="form-control" type="text" id="customerName" name="customerName" maxlength="50"
+                            oninput="validateInput(event)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="employeeCode">EmployeeCode</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="employeeCode" name="employeeCode" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="companyId">CompanyId</label>
+                        <div class="col-sm-9">
+                          <input class="form-control" type="text" id="companyId" name="companyId" readonly />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="customCode">Custom Code</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="customCode" name="customCode" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="workPlace">Work Place</label>
+                        <div class="col-sm-9">
+                          <input class="form-control" type="text" id="workPlace" name="workPlace" maxlength="50" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="mobileNumber">Mobile Number</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" maxlength="12"
+                            oninput="validateMobile(event)" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="location">Location</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="location" name="location" class="form-control" maxlength="100" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="address">Address</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="address" name="address" class="form-control" maxlength="100" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="streetName">Street Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="streetName" name="streetName" class="form-control" maxlength="100" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="area">Area</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="area" name="area" class="form-control" maxlength="50" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="city">City</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="city" name="city" class="form-control" maxlength="50"
+                            oninput="validateInput(event)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="district">District</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="district" name="district" class="form-control" maxlength="50"
+                            oninput="validateInput(event)" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="state">State</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="state" name="state" class="form-control" maxlength="50"
+                            oninput="validateInput(event)" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="postalCode">Postal Code</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="postalCode" name="postalCode" class="form-control" maxlength="6"
+                            oninput="validatesInput(event)" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="email">Email</label>
+                        <div class="col-sm-9">
+                          <input type="text" id="email" name="email" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="employeeType">Employee Type</label>
+                        <div class="col-sm-9">
+                          <input class="form-control" type="text" id="employeeType" name="employeeType"
+                            maxlength="50" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="image">Image</label>
+                        <div class="col-sm-5">
+                          <div id="imagePath"></div>
+                          <img id="imagePreview" src="" style="max-width: 100px; max-height: 100px; margin-top: 5px;">
+
+                          <input class="form-control" type="file" id="image" name="image" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Form buttons -->
+                  <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal"
+                      onclick="closeForm()">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">Customer List</h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Customer List</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="template-demo">
+                      <button type="button" class="btn btn-gradient-danger btn-rounded btn-fw "
+                        onclick="window.location.href='customer_masterForm.html';">Add New</button>
+                    </div>
+                    <div class="table-responsive">
+                      <table id="dataTable" class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Action</th>
+                            <th>Customer</th>
+                            <th>Employee </th>
+                            <th>Mobile</th>
+                            <th>Location</th>
+                            <th>Image</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Your table content -->
+                        </tbody>
+                      </table>
+                    </div>
+                    <ul id="pagination" class="pagination"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <div id="includeFooder"></div>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+   
+      function logout() {
+        // Clear local storage
+        localStorage.clear();
+
+        // Redirect to the logout page or perform other logout actions
+        window.location.href = '../../index.html';
+      }
+      // Function to validate input and allow only alphabetic characters
+      function validateInput(event) {
+        const inputValue = event.target.value;
+        const alphaRegex = /^[a-zA-Z\s]*$/; // Regular expression to match alphabetic characters and spaces
+
+        if (!alphaRegex.test(inputValue)) {
+          showalert("Only alphabetic characters are allowed.");
+          event.target.value = inputValue.replace(/[^a-zA-Z\s]/g, ''); // Remove non-alphabetic characters
+        }
+      }
+
+      // Function to validate input and show showalert if more than 12 digits
+      function validateMobile(event) {
+        const inputValue = event.target.value;
+        const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+        if (!numericRegex.test(inputValue)) {
+          showalert("Only numeric characters are allowed.");
+          event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+        }
+
+        if (inputValue.length > 12) {
+          showalert("Maximum length for mobile number is 12 digits.");
+          event.target.value = inputValue.slice(0, 12); // Truncate to 12 digits
+        }
+      }
+
+      // Function to validate input and allow only numeric characters with maximum length of 6
+      function validatesInput(event) {
+        const inputValue = event.target.value;
+        const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+        if (!numericRegex.test(inputValue)) {
+          showalert("Only numeric characters are allowed.");
+          event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+        }
+
+        if (inputValue.length > 6) {
+          showalert("Maximum length is 6 digits.");
+          event.target.value = inputValue.slice(0, 6); // Truncate to 6 digits
+        }
+      }
+
+      const emailInput = document.getElementById('email');
+
+      const validationMessage = document.getElementById('validationMessage');
+      // Regular expression to validate email addresses for the specified domains
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com|aol\.com|icloud\.com|protonmail\.com|zoho\.com|gmx\.com|yandex\.com|mail\.com)$/;
+
+      emailInput.addEventListener('input', validateEmail);
+
+      function validateEmail() {
+        const email = emailInput.value;
+
+        if (emailRegex.test(email)) {
+          validationMessage.innerText = "Valid email address";
+          validationMessage.style.color = "green";
+        } else {
+          validationMessage.innerText = "Invalid email address";
+          validationMessage.style.color = "red";
+        }
+      }
+      function closeForm() {
+        // Assuming 'employeeModal' is the ID of your modal
+        $('#customerModal').modal('hide');
+      }
+
+      var formData = new FormData();
+
+      $(document).ready(function () {
+        const accessToken = localStorage.getItem('accessToken');
+        $.ajax({
+          url: 'http://localhost:8080/api/customer/getAllCustomerDetails',
+          type: 'GET',
+          dataType: 'json',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken,
+          },
+          success: function (data) {
+            // Populate table with fetched data
+            $.each(data, function (index, customer) {
+              $('#dataTable tbody').append(`
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm edit-btn edit-btn" data-toggle="modal"
+                                                data-target="#customerModal" data-customer-id="${customer.customerId}">Edit</button>
+
+                                </td>
+                                <td>${customer.customerName}</td>
+                        <td>${customer.employeeName}</td>
+                        <td>${customer.mobileNumber}</td>
+                        <td>${customer.location}</td>
+                        <td><img src="http://localhost:8080${customer.image}"></td>                 
+                            </tr>
+                        `);
+            });
+            $('#customerModal').modal('hide');
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText); // Log the error response
+            console.error(error); // Log the error message
+            showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+          }
+        });
+
+        var currentCustomerId;
+
+        $(document).on('click', '.edit-btn', function () {
+          // Retrieve the customer ID from the clicked button's data attribute
+          currentCustomerId = $(this).data('customer-id');
+
+          // Check if the customer ID is defined
+          if (currentCustomerId !== undefined) {
+            // Proceed with the AJAX request
+            const accessToken = localStorage.getItem('accessToken');
+            $.ajax({
+              url: 'http://localhost:8080/api/customer/getCustomerById/' + currentCustomerId,
+              type: 'GET',
+              dataType: 'json',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+              },
+              success: function (customerData) {
+                populateForm(customerData, formData);
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+                $('#customerModal').modal('show');
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(error);
+                showalert('Error fetching customer details. Please try again later.');
+              }
+            });
+          } else {
+            // Handle the case where the customer ID is undefined
+            console.error('Customer ID is undefined');
+            showalert('Error: Customer ID is missing.');
+          }
+        });
+        function populateForm(customerData, formData) {
+          const dateDate = new Date(customerData.date);
+          // Format the date to 'YYYY-MM-DD' (assuming you want this format)
+          const formattedDate = dateDate.toISOString().split('T')[0];
+
+          $('#date').val(formattedDate);
+          $('#customerName').val(customerData.customerName);
+          $('#employeeCode').val(customerData.employeeCode);
+          $('#customCode').val(customerData.customCode);
+          $('#mobileNumber').val(customerData.mobileNumber);
+          $('#location').val(customerData.location);
+          $('#address').val(customerData.address);
+          $('#streetName').val(customerData.streetName);
+          $('#area').val(customerData.area);
+          $('#city').val(customerData.city);
+          $('#district').val(customerData.district);
+          $('#state').val(customerData.state);
+          $('#postalCode').val(customerData.postalCode);
+          $('#email').val(customerData.email);
+          $('#employeeType').val(customerData.employeeType);
+          $('#workPlace').val(customerData.workPlace);
+          $('#companyId').val(customerData.companyId);
+
+          const imagePreview = document.getElementById('imagePreview');
+          if (imagePreview) {
+            // Display the avatar image using the File API
+            const imageFileInput = document.getElementById('image');
+
+            if (imageFileInput.files.length > 0) {
+              const reader = new FileReader();
+
+              reader.onload = function (e) {
+                console.log('Image loaded successfully');
+                imagePreview.src = e.target.result;
+              };
+              reader.readAsDataURL(imageFileInput.files[0]);
+            }
+          }
+        }
+        document.getElementById('customerForm').addEventListener('submit', async function (event) {
+          event.preventDefault();
+          const formData = new FormData();
+          var customerId = currentCustomerId;
+
+          const customerData = {
+            date: document.getElementById('date').value,
+            customerName: document.getElementById('customerName').value,
+            employeeCode: document.getElementById('employeeCode').value,
+            customCode: document.getElementById('customCode').value,
+            mobileNumber: document.getElementById('mobileNumber').value,
+            location: document.getElementById('location').value,
+            address: document.getElementById('address').value,
+            streetName: document.getElementById('streetName').value,
+            area: document.getElementById('area').value,
+            city: document.getElementById('city').value,
+            district: document.getElementById('district').value,
+            state: document.getElementById('state').value,
+            postalCode: document.getElementById('postalCode').value,
+            email: document.getElementById('email').value,
+            employeeType: document.getElementById('employeeType').value,
+            workPlace: document.getElementById('workPlace').value,
+            companyId: document.getElementById('companyId').value,
+          };
+
+          formData.append('customer', new Blob([JSON.stringify(customerData)], { type: 'application/json' }));
+
+          const imageFileInput = document.getElementById('image');
+
+          if (imageFileInput.files.length > 0) {
+            formData.append('image', imageFileInput.files[0]);
+          }
+          const accessToken = localStorage.getItem('accessToken');
+          $.ajax({
+            url: 'http://localhost:8080/api/customer/updateCustomer/' + currentCustomerId,
+            type: 'PUT',
+            data: formData,
+            headers: {
+
+              'Authorization': accessToken,
+            },
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              console.log('Customer updated successfully:', response);
+
+              showalert('Customer Details updated successfully', function() {
+                window.location.href = "customer_masterList.html";
+            });
+            },
+            error: function (xhr, status, error) {
+              console.error('Error updating Customer:', error);
+              showalert('Error updating Customer. Please try again.');
+            }
+          });
+        });
+      });
+    </script>
+
+
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+    <!-- End custom js for this page -->
+    <!-- End custom js for this page -->
+</body>
+
+</html>

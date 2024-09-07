@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Booking Form | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- Include Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <!--showalert Message-->
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+
+  <style>
+    /* Custom CSS for tabs */
+    .nav-tabs .nav-link {
+      color: #000;
+      /* Change the color of the tab text */
+    }
+
+    .nav-tabs .nav-link.active {
+      color: #007bff;
+      /* Change the color of the active tab text */
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+        <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Booking</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="pages/dashboard/dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Booking
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <form class="form-sample" id="BookForm">
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="customername">Customer Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="Customer Name" type="text" id="customername"
+                              name="customername" readonly />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="SiteVisitEmployeeName">Site Visit Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="Site Visit Employee Name" type="text"
+                              id="SiteVisitEmployeeName" name="SiteVisitEmployeeName" readonly />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="blockEmployeeName">Block Employee Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="blockEmployeeName" type="text"
+                              id="blockEmployeeName" name="blockEmployeeName" readonly />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="bookingEmployeeName">Booking Employee Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" placeholder="booking Employee Name" type="text"
+                              id="bookingEmployeeName" name="bookingEmployeeName" readonly />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="icon-tab-0" data-bs-toggle="tab" href="#icon-tabpanel-0"
+                          role="tab" aria-controls="icon-tabpanel-0" aria-selected="true">Site Visit</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-1" data-bs-toggle="tab" href="#icon-tabpanel-1" role="tab"
+                          aria-controls="icon-tabpanel-1" aria-selected="false"> Bill Information</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-2" data-bs-toggle="tab" href="#icon-tabpanel-2" role="tab"
+                          aria-controls="icon-tabpanel-2" aria-selected="false">Plot</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-4" data-bs-toggle="tab" href="#icon-tabpanel-4" role="tab"
+                          aria-controls="icon-tabpanel-4" aria-selected="false">Payment History</a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="icon-tab-3" data-bs-toggle="tab" href="#icon-tabpanel-3" role="tab"
+                          aria-controls="icon-tabpanel-3" aria-selected="false">Payment</a>
+                      </li>
+
+                    </ul>
+                    <div class="tab-content pt-5" id="tab-content">
+                      <div class="tab-pane active" id="icon-tabpanel-0" role="tabpanel" aria-labelledby="icon-tab-0">
+                        <table id="siteVisitTable" class="table table-hover">
+                          <tbody>
+                            <tr>
+                              <td>Customer Code:</td>
+                              <td id="customCode"></td>
+                            </tr>
+                            <tr>
+                              <td>Mobile Number:</td>
+                              <td id="mobileNumber"></td>
+                            </tr>
+                            <tr>
+                              <td>Preferred Location:</td>
+                              <td id="location"></td>
+                            </tr>
+                            <!-- <tr>
+                                    <td>Preferred Budget:</td>
+                                    <td id="preferredBudget"></td>
+                                </tr> -->
+                            <tr>
+                              <td>Email:</td>
+                              <td id="email"></td>
+                            </tr>
+
+                            <tr>
+                              <td>Employee Type:</td>
+                              <td id="employeeType"></td>
+                            </tr>
+                            <tr>
+                              <td>Work Place:</td>
+                              <td id="workPlace"></td>
+                            </tr>
+                            <tr>
+                              <td>Address:</td>
+                              <td id="address"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-1" role="tabpanel" aria-labelledby="icon-tab-1">
+                        <div class="row">
+
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="customerName">Customer Name</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="customerName" name="customerName" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="mobileNumber1">Mobile Number</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="mobileNumber1" name="mobileNumber1" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="email1">Email</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="email1" name="email1" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="houseName">Door No. / House Name</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="houseName" name="houseName" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="streetName">Street Name</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="streetName" name="streetName" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="area">Area</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="area" name="area" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="city">City</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="city" name="city" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="district">District</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="district" name="district" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="state">State</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="state" name="state" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label" for="postalCode">Postal Code</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="postalCode" name="postalCode" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-2" role="tabpanel" aria-labelledby="icon-tab-2">
+
+
+                        <h4 class="card-title" style="margin-top: 2em;margin-bottom: 2em;">Purchased Rate </h4>
+                        <div class="container mt-5" style="margin-bottom: 2em;">
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                              <thead>
+                                <tr>
+                                  <th>Project</th>
+                                  <th>Plot No </th>
+                                  <th>Total SQFT</th>
+                                  <th>Rate Per SQFT</th>
+                                  <th>Total Values</th>
+                                  <th>Discount</th>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <input type="text" class="form-control" id="projectNamefromBlockedSite"
+                                      name="projectNamefromBlockedSite" readonly>
+                                  </td>
+                                  <td><input type="text" class="form-control" id="plotIDfromBlockedSite"
+                                      name="plotIDfromBlockedSite" readonly placeholder="plotIDfromBlockedSite"></td>
+                                  <td><input type="text" class="form-control" id="blockedTotalsqrt"
+                                      name="blockedTotalsqrt" readonly placeholder="blockedTotalsqrt"></td>
+                                  <td><input type="text" class="form-control" id="blockedRate" name="blockedRate"
+                                      readonly placeholder="blockedRate"></td>
+                                  <td><input type="text" class="form-control" id="blockedTotalValues"
+                                      name="blockedTotalValues" readonly placeholder="total values"></td>
+                                  <td><input type="text" class="form-control" id="blockedDiscount"
+                                      name="blockedDiscount" readonly placeholder="blockedDiscount"></td>
+
+
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-4" role="tabpanel" aria-labelledby="icon-tab-4">
+                        <!-- <h4 class="card-title" style="margin-top: 2em;margin-bottom: 2em;">Payment History </h4> -->
+                        <div class="container mt-5" style="margin-bottom: 2em;">
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable">
+                              <thead>
+                                <tr>
+
+                                  <th>Receipt No</th>
+                                  <th>Receipt Date</th>
+                                  <th>Paid Amount ₹</th>
+                                  <th>Paid By</th>
+                                  <th>Total Values</th>
+                                  <th>Received By</th>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <input type="text" class="form-control" id="blockedProjectName"
+                                      name="blockedProjectName" readonly>
+                                  </td>
+                                  <td><input type="text" class="form-control" id="blockedDate" name="blockedDate"
+                                      readonly></td>
+                                  <td><input type="text" class="form-control" id="paidAmountInBlock"
+                                      name="paidAmountInBlock" readonly placeholder="paidAmountInBlock"></td>
+                                  <td><input type="text" class="form-control" id="paidByInBlock" name="paidByInBlock"readonly placeholder="paidByInBlock"></td>
+                                  <td><input type="text" class="form-control" id="totalValuesInBlock"
+                                      name="totalValuesInBlock" readonly placeholder="totalValuesInBlock"></td>
+                                  <td><input type="text" class="form-control" id="receivedByInBlock"
+                                      name="receivedByInBlock" readonly placeholder="receivedByInBlock"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane" id="icon-tabpanel-3" role="tabpanel" aria-labelledby="icon-tab-3">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="paidAmountInBilling">Paid Amount ₹ <span
+                                  class="text-danger">*</span></label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="paidAmountInBilling"
+                                  name="paidAmountInBilling" placeholder="paid amount" oninput="validatesInput(event)"
+                                  required />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaidDateInBilling">Paid Date</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="date" id="PaidDateInBilling"
+                                  name="PaidDateInBilling" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaymentType">Payment Type</label>
+                              <div class="col-sm-9">
+                                <select class="form-control" id="PaymentType" name="PaymentType">
+                                  <option value="" disabled selected>Select Payment Type</option>
+                                  <option value="Credit Card">Credit Card</option>
+                                  <option value="Debit Card">Debit Card</option>
+                                  <option value="Cash">Cash</option>
+                                  <option value="Bank Transfer">Bank Transfer</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaymentMode">Payment Mode</label>
+                              <div class="col-sm-9">
+                                <select class="form-control" id="PaymentMode" name="PaymentMode">
+                                  <option value="" disabled selected>Select Payment Mode</option>
+                                  <option value="Part Payment">Part Payment</option>
+                                  <option value="Full Payment">Full Payment</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="PaidBy">Paid By</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="PaidBy" name="PaidBy" placeholder="Paid By"
+                                  oninput="validateInputString(event)" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-9 col-form-label" for="ReceivedBy">Received By</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" id="ReceivedBy" name="ReceivedBy"
+                                  placeholder="Received By" oninput="validateInputString(event)" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div id="denominationTableContainer" style="display: none;" class="row">
+                            <h5>Denomination</h5>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>S.no</th>
+                                    <th>Rupees</th>
+                                    <th>No.of.Notes</th>
+                                    <th>Total Amount</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>500</td>
+                                    <td><input class="form-control" type="text" name="row1col3" id="row1col3"></td>
+                                    <td><input class="form-control" type="text" name="row1col4" id="row1col4" readonly>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>200</td>
+                                    <td><input class="form-control" type="text" name="row2col3" id="row2col3"></td>
+                                    <td><input class="form-control" type="text" name="row2col4" id="row2col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>100</td>
+                                    <td><input class="form-control" type="text" name="row3col3" id="row3col3"></td>
+                                    <td><input class="form-control" type="text" name="row3col4" id="row3col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>4</td>
+                                    <td>50</td>
+                                    <td><input class="form-control" type="text" name="row4col3" id="row4col3"></td>
+                                    <td><input class="form-control" type="text" name="row4col4" id="row4col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>5</td>
+                                    <td>20</td>
+                                    <td><input class="form-control" type="text" name="row5col3" id="row5col3"></td>
+                                    <td><input class="form-control" type="text" name="row5col4" id="row5col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td>6</td>
+                                    <td>10</td>
+                                    <td><input class="form-control" type="text" name="row6col3" id="row6col3"></td>
+                                    <td><input class="form-control" type="text" name="row6col4" id="row6col4"></td>
+                                  </tr>
+                                  <tr>
+                                    <td></td>
+                                    <td>Total</td>
+                                    <td><input class="form-control" type="text" name="denoTotalNotes"
+                                        id="denoTotalNotes"></td>
+                                    <td><input class="form-control" type="text" name="denoTotalAmount"
+                                        id="denoTotalAmount"></td>
+                                  </tr>
+
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div id="BankTableContainer" style="display:none;" class="row">
+                            <h5>Bank Details :
+
+                            </h5>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-5 col-form-label" for="bankName">Bank Name</label>
+                                  <div class="col-sm-5">
+                                    <input class="form-control" type="text" id="bankName" name="bankName" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-5 col-form-label" for="cdtNo">Cheque / DD No / Transaction
+                                    ID</label>
+                                  <div class="col-sm-5">
+                                    <input class="form-control" type="text" id="cdtNo" name="cdtNo" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="cdtDate">
+                                  Date</label>
+                                <div class="col-sm-5">
+                                  <input class="form-control" type="date" id="cdtDate" name="cdtDate" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="btn-group">
+                            <div class="col">
+                              <button type="button" id="toggleTableBtnDenomination" class="btn btn-sm btn btn-primary"
+                                onclick="toggleDenominationTable()">Cash Denomination Table</button>
+
+
+                              <button type="button" id="toggleTableBtnCardTransaction"
+                                class="btn btn-sm btn btn-primary" onclick="toggleCardTransactionTable()">card
+                                Denomination Table</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-end">
+                        <!-- <button type="button" class="btn back custom-width"
+                          onclick="window.location.href='employee_list.html';">Back</button> -->
+                        <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                        <button class="btn btn-light" onclick="goBack()">Cancel</button>
+
+                      </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div id="includeFooder"></div>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- Bootstrap Bundle with Popper.js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/file-upload.js"></script>
+
+  <!-- End custom js for this page -->
+  <script>
+    function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+    function goBack() {
+      window.history.back();
+    }
+
+    $(document).ready(function () {
+      // fetching datas from local storage(login credentials: Name,email id)
+      let BookEmployeeEmailId = localStorage.getItem('employeeEmail');
+      const BookEmployeeName = localStorage.getItem('employeeName');
+      const initialBookEmployeeEmailId = BookEmployeeEmailId;
+      const initialBookEmployeeName = BookEmployeeName;
+      let customerId;
+      let SiteVisitEmployeeID;
+      // fetching datas from URL(URL params: visitId,phoneNumber,Project name)
+      //console.log(employeeNamenew,'hi0');
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const phoneNumber = urlParams.get('phoneNumber');
+      const currentVisitId = urlParams.get('visitId');
+      const currentProjectName = urlParams.get('projectName');
+
+      //displaying the fetched values in the form
+      document.getElementById('blockedProjectName').value = currentProjectName;
+      console.log(currentProjectName);
+      // document.getElementById('bookingEmployeeID').value = BookEmployeeEmailId;
+      document.getElementById('bookingEmployeeName').value = BookEmployeeName;
+
+      console.log(currentVisitId, 'hi0');
+      const accessToken = localStorage.getItem('accessToken');
+      $.ajax({
+        url: `http://localhost:8080/api/customer/getCustomerByPhoneNumber/${phoneNumber}`,
+        type: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken
+        },
+        success: function (data) {
+          customerId = data.customerId;
+          const customerName = data.customerName;
+          const customerEmail = data.customerEmail;
+          const customerHouseName = data.address;
+          const customerStreet = data.streetName;
+          const customerArea = data.area;
+          const customerCity = data.city;
+          const customerDistrict = data.district;
+          const customerState = data.state;
+          const customerPostalCode = data.postalCode;
+
+          document.getElementById('customername').value = customerName;// this is for seconmd field
+          document.getElementById('customerName').value = customerName;// this is for below tab customer details
+          document.getElementById('mobileNumber1').value = phoneNumber;
+          document.getElementById('email1').value = customerEmail;
+          document.getElementById('houseName').value = customerHouseName;
+          document.getElementById('streetName').value = customerStreet;
+          document.getElementById('area').value = customerArea;
+
+          document.getElementById('city').value = customerCity;
+          document.getElementById('district').value = customerDistrict;
+
+          document.getElementById('state').value = customerState;
+          document.getElementById('postalCode').value = customerPostalCode;
+
+          console.log(phoneNumber, 'hi0');
+
+          $('#customCode').text(data.customCode);
+          $('#mobileNumber').text(data.mobileNumber);
+          $('#location').text(data.location);
+          $('#email').text(data.customerEmail);
+          $('#employeeType').text(data.employeeType);
+          $('#workPlace').text(data.workPlace);
+          $('#address').text(data.address);
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+
+      $.ajax({
+        url: `http://localhost:8080/api/visit/getVisitDetailsById/${currentVisitId}`,
+        type: 'GET',
+        headers: {
+
+          'Authorization': accessToken
+        },
+        success: function (data) {
+          SiteVisitEmployeeID = data.employeeCode;
+          const SiteVisitEmployeeName = data.employeeName;
+          
+
+
+          // const customerNames= data.customerName;
+
+          document.getElementById('SiteVisitEmployeeName').value = SiteVisitEmployeeName;
+
+
+          //  document.getElementById('customername').value = customerNames;
+
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+      let blockedEmployeeId;
+      let originaLAmountOfThePlot;
+      let descriptionFromBlock;
+      let sellingRateBilling;
+      let netAmount;
+      
+      
+      let paidAmountInBlock;
+      let totalPaidAmount;
+      let balance;
+      // // let blockId;
+      // let companyId;
+      // companyId = localStorage.getItem('companyId');
+      
+      // const startingTimeInput = document.getElementById('startingTime');
+      
+
+      $.ajax({
+        url: `http://localhost:8080/api/blocks/getBlockDetailsByVisitIdAndProjectName/${currentVisitId}/${currentProjectName}`,
+        type: 'GET',
+        headers: {
+
+          'Authorization': accessToken
+        },
+        success: function (blockData) {
+          console.log("blockData:", blockData);
+          blockedEmployeeId = blockData.blockEmpId;
+          const blockedEmployeeName = blockData.blockEmpName;
+          originaLAmountOfThePlot = blockData.totalValues;
+
+          //for the table in Payment History
+          const projectNamefromBlockedSite = blockData.projectName;
+           projectId = blockData.projectId;
+           companyId = blockData.companyId;
+          console.log("proid",projectId);
+          blockId = blockData.blocksId;
+
+          console.log("blockId:", blockId);
+          const PaidAmountInBlock = blockData.paidAmount;
+          const dateStr = blockData.paidDate;
+          const date = new Date(dateStr);
+
+          // Format the date as "YYYY-MM-DD"
+          const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+
+          //console.log(formattedDate);
+          const totalValuesInBlock = blockData.totalValues;
+
+          const receivedByInBlock = blockData.receivedBy;
+
+          const plotIDfromBlockedSite = blockData.plotId;
+          const blockedPlotNo = blockData.plotNumber;
+          const blockedDescription = blockData.description;
+          const blockedTotalsqrtS = blockData.totalSqft;
+          const blockedRate = blockData.ratePerSqft;
+          const blockedTotalValues = blockData.totalValues;
+          const blockedDiscount = blockData.discount;
+          //for the table in payment
+          const totalSqftInBilling = blockData.totalSqft;
+          // sellingRateBilling = blockData.sellingRate;
+          const sell = blockData.sellingRate;
+          const TotalAmountInBilling = blockData.plotTotalAmount;
+          const discountInBilling = blockData.discount;
+          const netAmountInBilling = blockData.netAmount;
+          const paidByInBlock =blockData.paidBy;
+
+          netAmount = blockData.netAmount;
+          descriptionFromBlock = blockData.description;
+          sellingRateBilling = blockData.sellingRate;
+          paidAmountInBlock = blockData.paidAmount;
+
+          console.log("SellRate", sellingRateBilling);
+          document.getElementById('blockEmployeeName').value = blockedEmployeeName;// this is for seconmd field
+          document.getElementById('projectNamefromBlockedSite').value = projectNamefromBlockedSite;
+
+          //for the table in Payment History
+          document.getElementById('blockedProjectName').value = projectNamefromBlockedSite;
+          document.getElementById('plotIDfromBlockedSite').value = plotIDfromBlockedSite;
+          document.getElementById('blockedDate').value = formattedDate;
+          document.getElementById('paidAmountInBlock').value = PaidAmountInBlock;
+          document.getElementById('paidByInBlock').value = paidByInBlock;
+          document.getElementById('totalValuesInBlock').value = totalValuesInBlock;
+          document.getElementById('receivedByInBlock').value = receivedByInBlock;
+
+          //   document.getElementById('blockedDescription').value = blockedDescription;
+          document.getElementById('blockedTotalsqrt').value = blockedTotalsqrtS;
+
+          document.getElementById('blockedRate').value = blockedRate;
+          document.getElementById('blockedTotalValues').value = blockedTotalValues;
+          document.getElementById('blockedDiscount').value = blockedDiscount;
+
+          console.log(blockedEmployeeId, ' blockedEmployeeId');
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+      
+
+      document.getElementById('BookForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+
+        let paidAmountInBooking = document.getElementById('paidAmountInBilling').value;
+        if (paidAmountInBooking === "" || paidAmountInBooking === null) {
+          // If it is empty or null, set paidAmountValue to 0
+          paidAmountInBooking = 0;
+        }
+
+        const siteVisitId = currentVisitId;
+
+        var currentDate = new Date();
+        var formattedDate = currentDate.toISOString();
+
+        // Assign the formatted date to the paidDate variable
+        var paidDate = formattedDate;
+        const blockedId = blockedEmployeeId;
+        const originalAmountOfThePlotToForm = originaLAmountOfThePlot;
+        const currentVisitIdValue = currentVisitId;
+        const descriptionValue = descriptionFromBlock;
+        const sellingRateValue = sellingRateBilling;
+        const paidAmountInBlockValue = paidAmountInBlock;
+
+        const totalPaidAmountValue = parseFloat(paidAmountInBlockValue) + parseFloat(paidAmountInBooking);
+
+        const balanceAmountValue = parseFloat(netAmount) - parseFloat(totalPaidAmountValue);
+        console.log("netAmount:", netAmount);
+        console.log("blockAmount:", paidAmountInBlockValue);
+        console.log("bookvalue:", paidAmountInBooking)
+        console.log("totalAmountPaid:", totalPaidAmountValue);
+        console.log("balance:", balanceAmountValue);
+        // const startingTimeInput = document.getElementById('startingTime');
+        
+        // const companyId = urlParams.get('companyId');
+        const teamId = urlParams.get('teamId');
+        //const startingTimeValue = new Date(startingTimeInput.value).toISOString().slice(0, 19).replace('T', ' ');
+
+        const booking = 
+        {
+          createdOn: paidDate,// 
+          customerName: document.getElementById('customerName').value,
+          blockId: blockId,
+          projectId: projectId,
+          mobileNumber: document.getElementById('mobileNumber').innerText,
+          customerCode: document.getElementById('customCode').innerText, //#customCode
+          customerId: customerId,
+          siteVisitEmpId: SiteVisitEmployeeID,
+          siteVisitEmpName: document.getElementById('SiteVisitEmployeeName').value,
+          blockEmpId: blockedId,//
+          blockEmpName: document.getElementById('blockEmployeeName').value,
+          bookingEmpId: BookEmployeeEmailId,
+          bookingEmpNAme: document.getElementById('bookingEmployeeName').value,
+          projectName: document.getElementById('projectNamefromBlockedSite').value,
+          plotNumber: document.getElementById('plotIDfromBlockedSite').value,
+          totalSqft: document.getElementById('blockedTotalsqrt').value,
+          plotTotalAmount: document.getElementById('blockedTotalValues').value,
+          originalRate: netAmount,
+          sellingRate: sellingRateValue,
+          paidAmountInBlock: paidAmountInBlockValue,
+          totalPaidAmount: totalPaidAmountValue,
+          balance: balanceAmountValue,
+          companyId: companyId,
+          teamId: teamId,
+          discount: document.getElementById('blockedDiscount').value,
+          netAmount: netAmount,
+          paidAmount: paidAmountInBooking,
+          paidDate: paidDate,
+          paymentType: document.getElementById('PaymentType').value,
+          paymentMode: document.getElementById('PaymentMode').value,
+          deno500: document.getElementById('row1col3').value,
+          denoa500: document.getElementById('row1col4').value,
+          deno200: document.getElementById('row2col3').value,
+          denoa200: document.getElementById('row2col4').value,
+          deno100: document.getElementById('row3col3').value,
+          denoa100: document.getElementById('row3col4').value,
+          deno50: document.getElementById('row4col3').value,
+          denoa50: document.getElementById('row4col4').value,
+          deno20: document.getElementById('row5col3').value,
+          denoa20: document.getElementById('row5col4').value,
+          deno10: document.getElementById('row6col3').value,
+          denoa10: document.getElementById('row6col4').value,
+          denoTotalNotes: document.getElementById('denoTotalNotes').value,
+          denoTotalAmount: document.getElementById('denoTotalAmount').value,
+          bankName: document.getElementById('bankName').value,
+          cdtNo: document.getElementById('cdtNo').value,
+          cdtDate: document.getElementById('cdtDate').value,
+          paidBy: document.getElementById('PaidBy').value,
+          receivedBy: document.getElementById('ReceivedBy').value,
+          visitId: currentVisitIdValue
+          
+
+        };
+        console.log(booking);
+        //formData.append('blocks', new Blob([JSON.stringify(blocks)], { type: 'application/json' }));
+        // ... (remaining file upload logic)
+        const accessToken = localStorage.getItem('accessToken');
+        try {
+          const response = await fetch('http://localhost:8080/api/booking/addBooking', {
+            method: 'POST',
+            headers: {
+              // Specify the content type as JSON
+              'Authorization': accessToken,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(booking), // Convert the JavaScript object to JSON stri
+            credentials: 'include'
+          });
+
+          if (!response.ok) {
+
+            throw new Error('Failed to add booking Details');
+            showalert('Failed to add Booking Details');
+          }
+          const findByVisitIdAndProjectNameResponse = await fetch(`http://localhost:8080/api/visit/getByVisitDetailIdAndProjectNameForBook/${booking.visitId}/${booking.projectName}`,
+            {
+              method: 'PUT',
+              headers: {
+                'Authorization': accessToken
+              },
+              credentials: 'include'
+            });
+
+          if (!findByVisitIdAndProjectNameResponse.ok) {
+            throw new Error('Failed to fetch Visit Details');
+          }
+          console.log("good", findByVisitIdAndProjectNameResponse);
+         
+          showalert('Booking Details added successfully',function(){
+          window.history.back();
+          });
+          // window.location.href = 'booking_list.html';
+          // Optionally, redirect or perform any other action upon successful submission
+        }
+         catch (error) {
+          console.error('Error:', error);
+          showalert('Failed to add Book Details');
+        }
+      });
+
+      $('#Discount,#sellingRate,#totalAmount').change(function () {
+        var currentDiscount = $('#Discount').val(); // Fetch total square footage
+        var currentSellingAmount = $('#sellingRate').val(); // Fetch rate
+        var cuurentTotalAmount = $('#totalAmount').val();
+        var DiscountinRupees = currentDiscount / 100;
+        var currentDiscountRupees = cuurentTotalAmount * DiscountinRupees;
+        var finalReducedAmount = cuurentTotalAmount - currentDiscountRupees;
+        console.log(finalReducedAmount, "jii");
+        console.log(currentDiscount, "jii");
+        // Check if both totalSqft and rate are valid numbers
+
+        // Calculate total values by multiplying totalSqft by rate
+
+        // Set the calculated totalValues to the totalValues field
+        $('#netAmount').val(finalReducedAmount);
+
+      });
+      /* --------- For Cash Denomination -------------------*/
+      $('input[name^="row"][name$="col3"]').change(function () {
+        var totalNotes = 0;
+        $('input[name^="row"][name$="col3"]').each(function () {
+          var value = parseFloat($(this).val());
+          if (!isNaN(value)) {
+            console.log(totalNotes, "shanmathi");
+            totalNotes += value;
+          }
+        });
+        $('#denoTotalNotes').val(totalNotes);
+      });
+      $('input[name^="row"][name$="col3"]').change(function () {
+        var totalNotes = 0;
+        var totalAmounts = 0;
+
+        // Iterate over all col3 inputs to calculate totalNotes and update corresponding col4 values
+        $('input[name^="row"][name$="col3"]').each(function () {
+          var value = parseFloat($(this).val());
+          if (!isNaN(value)) {
+            var currentRow = $(this).closest('tr');
+            var rupees = parseFloat(currentRow.find('td:nth-child(2)').text());
+
+            // Calculate total amount for the corresponding col4 input
+            if (!isNaN(rupees)) {
+              var totalAmount = rupees * value;
+              currentRow.find('input[name$="col4"]').val(totalAmount);
+              totalAmounts += totalAmount;
+            }
+
+            // Update totalNotes
+            totalNotes += value;
+          }
+        });
+
+        // Set the calculated totalNotes and totalAmounts to their respective input fields
+        $('#denoTotalNotes').val(totalNotes);
+        $('#denoTotalAmount').val(totalAmounts);
+      });
+
+    });
+    $(document).ready(function () {
+      $('#sellingRate,#Discount,#paidAmountInBilling,#row1col3,#row1col4,#row2col3,#row2col4,#row3col3,#row3col4,#row4col3,#row4col4,#row5col3,#row5col4,#row6col3,#row6col4').on('input', function () {
+        var postalCode = $(this).val();
+        // Check if input contains non-numeric characters or more than 6 digits
+        if (/[a-zA-Z]/.test(postalCode)) {
+          showalert('Please enter digits only.');
+          postalCode = postalCode.replace(/[a-zA-Z]/g, ' ');
+        }
+        if (postalCode.length > 20) {
+          showalert('Please enter exactly 20 digits numerics only.');
+          // Remove non-numeric characters and extra digits
+          postalCode = postalCode.replace(/\D/g, '').substr(0, 20);
+          $(this).val(postalCode);
+        }
+      });
+    });
+
+  </script>
+
+  <script>
+    // Define the function outside of $(document).ready() scope
+    function toggleDenominationTable() {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Toggle the visibility of the denomination table
+      var tableContainer = document.getElementById("denominationTableContainer");
+      if (tableContainer.style.display === "none") {
+        tableContainer.style.display = "block";
+      } else {
+        tableContainer.style.display = "none";
+      }
+    }
+    function toggleCardTransactionTable() {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      // Toggle the visibility of the denomination table
+      var tableContainer = document.getElementById("BankTableContainer");
+      if (tableContainer.style.display === "none") {
+        tableContainer.style.display = "block";
+      } else {
+        tableContainer.style.display = "none";
+      }
+    }
+    function validatesInput(event) {
+      const inputValue = event.target.value;
+      const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+      if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+      }
+      else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+      }
+    }
+    function validateInputString(event) {
+      const inputValue = event.target.value;
+      const alphaRegex = /^[a-zA-Z\s]*$/; // Regular expression to match only alphabetic characters and spaces
+
+      if (!alphaRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only alphabetic characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/[^a-zA-Z\s]/g, ''); // Remove non-alphabetic characters
+      } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+      }
+    }
+  </script>
+</body>
+
+</html>

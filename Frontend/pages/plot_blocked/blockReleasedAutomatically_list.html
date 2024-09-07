@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Block Released List | Aishalaya</title>
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- End layout styles -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!--showalert Message-->
+    <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+    <style>
+        /* Adjust the modal size */
+        .modal-dialog {
+            max-width: 1400px;
+            /* Set your desired maximum width */
+        }
+
+        /* Adjust the form size */
+        .form-sample {
+            max-width: 100%;
+            /* Set your desired maximum width */
+        }
+
+        @media (min-width: 576px) {
+            .col-sm-9 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 auto;
+                flex: 0 0 auto;
+                width: 60% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png"
+                        alt="logo" style="height: 100%;" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png"
+                        alt="logo" style="height: 100%;" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" onclick="logout()">
+                            <i class="mdi mdi-power"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <div id="includeHtml"></div>
+
+            <!-- Company Form-->
+            <div class="modal fade" id="companyModal" tabindex="-1" role="dialog" aria-labelledby="companyModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="companyModalLabel">Block Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                onclick="closeForm()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-5 offset-md-1 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">CUSTOMER DETAILS :</h4>
+
+                                            <form id="customerForm" class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="customerName" class="col-sm-4 col-form-label"
+                                                        style="margin-top: 30px;">Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="customerName"
+                                                            placeholder="Name" style="margin-top: 30px;">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="mobileNumber" class="col-sm-4 col-form-label">Mobile
+                                                        Number</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="mobileNumber"
+                                                            placeholder="mobileNumber">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="employeeType"
+                                                        class="col-sm-4 col-form-label">Occupation</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="employeeType"
+                                                            placeholder="occupation">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="workPlace" class="col-sm-4 col-form-label">Work
+                                                        Place</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="workPlace" class="form-control" id="workPlace"
+                                                            placeholder="workPlace">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="address" class="col-sm-4 col-form-label">Address
+                                                        :</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" id="address" rows="3"
+                                                            placeholder="address" style="width: 99%;"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="email" class="col-sm-4 col-form-label">Email
+                                                        :</label>
+                                                    <div class="col-sm-8 input-group" d-flex>
+                                                        <input type="email" class="form-control" id="email"
+                                                            placeholder="email">
+                                                        <div class="input-group-append">
+                                                            <a href="mailto:recipient@example.com?subject=Subject%20Here&body=Body%20of%20the%20email"
+                                                                class="btn btn-primary">Compose</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">VISIT DETAILS :</h4>
+
+                                            <form id="companyForm" class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="cab" class="col-sm-4 col-form-label"
+                                                        style="margin-top: 30px;">Cab</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="cab"
+                                                            placeholder="cab" name="cab" style="margin-top: 30px;">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="driver" class="col-sm-4 col-form-label">Driver</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="driver"
+                                                            placeholder="Driver" name="driver">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="startingKms" class="col-sm-4 col-form-label">Starting
+                                                        Kms</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="startingKms"
+                                                            placeholder="startingKms" name="startingKms">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="endKms" class="col-sm-4 col-form-label">Ending
+                                                        Kms</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="endKms"
+                                                            placeholder="endKms" name="endKms">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="employeeNotes" class="col-sm-4 col-form-label">Employee
+                                                        Notes</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" id="employeeNotes" rows="3"
+                                                            placeholder="employeeNotes" style="width: 99%;"
+                                                            name="employeeNotes"></textarea>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Company Form -->
+                            <div class="row">
+                                <div class="col-md-5 offset-md-1 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">EMPLOYEE DETAILS :</h4>
+
+                                            <form class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="employeeName" class="col-sm-4 col-form-label"
+                                                        style="margin-top: 30px;">Employee Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="employeeName"
+                                                            placeholder="projectNamecompanyName"
+                                                            style="margin-top: 30px;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="alterMobile"
+                                                        class="col-sm-4 col-form-label">Mobile</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="alterMobile"
+                                                            placeholder="Address">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="createdBy" class="col-sm-4 col-form-label">Created
+                                                        By</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="createdBy"
+                                                            placeholder="Password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="prefLocation"
+                                                        class="col-sm-4 col-form-label">Location</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="prefLocation"
+                                                            placeholder="launchDate">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="employeeEmail" class="col-sm-4 col-form-label">Email
+                                                        :</label>
+                                                    <div class="col-sm-8 input-group" d-flex>
+                                                        <input type="email" class="form-control" id="employeeEmail"
+                                                            placeholder="email" style="width: 10%;">
+                                                        <div class="input-group-append">
+                                                            <a href="mailto:recipient@example.com?subject=Subject%20Here&body=Body%20of%20the%20email"
+                                                                class="btn btn-primary">Compose</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <h3 class="page-title">Block Automatically Released LIST </h3><br />
+                    <div class="page-header">
+                        <!--<h3 class="page-title">Site Visit List</h3><br/>-->
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <button class="btn btn-info btn-sm filter-btn" id="filterButton">Filter</button>
+                                <div id="filterFields" style="display: none;">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="date" class="form-control" aria-label="From Date"
+                                                id="fromDate">
+                                        </div>
+                                        <div class="col">
+                                            <input type="date" class="form-control" aria-label="To Date" id="toDate"
+                                                placeholder="To">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" aria-label="mobile" id="mobile"
+                                                placeholder="Mobile No">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" aria-label="filtercustomerNames"
+                                                id="filtercustomerNames" placeholder="customerNames">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" aria-label="filterEmployeeNames"
+                                                id="filterEmployeeNames" placeholder="EmployeeName">
+                                        </div>
+                                        <!-- <div class="col">
+<input type="text" class="form-control" aria-label="buyingDurationFilter"
+id="buyingDurationFilter" placeholder="Buying Duration">
+</div>
+<div class="col">
+<input type="text" class="form-control" aria-label="fundingResourceFilter"
+id="fundingResourceFilter" placeholder="fundingResourceFilter">
+</div>-->
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Search..."
+                                                aria-label="Search" aria-describedby="search-button" id="searchInput">
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                id="search-button">Search</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </ol>
+
+                        </nav>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="template-demo">
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="dataTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Customer</th>
+                                                    <th>Phone</th>
+                                                    <th>Project</th>
+                                                    <th>Employee</th>
+                                                    <th>Plot No</th>
+
+                                                    <th>Net Amount</th>
+                                                    <th>Paid Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Your table content -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <ul id="pagination" class="pagination"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <div id="includeFooder"></div>
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!-- -->
+
+    <!-- Your custom JavaScript code here -->
+    <div class="container-fluid page-body-wrapper">
+        <div id="includeHtml"></div>
+        <script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+            function logout() {
+                // Clear local storage
+                localStorage.clear();
+                // Redirect to the logout page or perform other logout actions
+                window.location.href = '../../index.html';
+            }
+
+            $(document).ready(function () {
+                $('#mobileNumber,#phoneNumber').on('input', function () {
+                    var phoneNumber = $(this).val();
+                    // Check if the input contains letters or special characters
+                    if (/[^\d]/.test(phoneNumber)) {
+                        showalert('Please enter digits only.');
+                        phoneNumber = phoneNumber.replace(/[^\d]/g, '');
+                    }
+
+                    // Remove any non-digit characters
+                    phoneNumber = phoneNumber.replace(/\D/g, '');
+
+                    // Limit to 12 digits
+                    if (phoneNumber.length > 12) {
+                        showalert('Please enter a maximum of 12 digits.');
+                        phoneNumber = phoneNumber.substr(0, 12);
+                    }
+
+                    $(this).val(phoneNumber);
+                });
+            });
+
+            $(document).ready(function () {
+                $('#customerName, #customerName1,#city,#district,#state,#driver,#area,#workPlace').on('input', function () {
+                    var inputValue = $(this).val();
+                    // Check if the input contains any numeric characters
+                    if (/\d/.test(inputValue)) {
+                        showalert('Please enter alphabetic characters only.');
+                        // Remove the numeric characters
+                        $(this).val(inputValue.replace(/\d/g, ''));
+                    }
+                    if (/[^\w\s]/.test(inputValue)) {
+                        showalert('Special characters are not allowed.');
+                        // Remove the special characters
+                        $(this).val(inputValue.replace(/[^\w\s]/g, ''));
+                    }
+                    // Check if the input length exceeds the limit
+                    if (inputValue.length > 100) {
+                        showalert('Maximum length exceeded. Please enter up to 50 characters.');
+                        // Trim the input to the maximum length
+                        $(this).val(inputValue.slice(0, 50));
+                    }
+                });
+            });
+            const emailInput = document.getElementById('email');
+            const validationMessage = document.getElementById('validationMessage');
+            // Regular expression to validate email addresses for the specified domains
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com|aol\.com|icloud\.com|protonmail\.com|zoho\.com|gmx\.com|yandex\.com|mail\.com)$/;
+
+            emailInput.addEventListener('input', validateEmail);
+
+            function validateEmail() {
+                const email = emailInput.value;
+
+                if (emailRegex.test(email)) {
+                    validationMessage.innerText = "Valid email address";
+                    validationMessage.style.color = "green";
+                } else {
+                    validationMessage.innerText = "Invalid email address";
+                    validationMessage.style.color = "red";
+                }
+            }
+
+            $(document).ready(function () {
+                $('#startingKms,#endKms').on('input', function () {
+                    var startingKms = $(this).val();
+                    // Check if input contains any non-numeric or non-decimal characters
+                    if (/[^0-9.]/.test(startingKms)) {
+                        showalert('Please enter numbers only.');
+                        // Remove non-numeric and non-decimal characters
+                        startingKms = startingKms.replace(/[^0-9.]/g, '');
+                        $(this).val(startingKms);
+                    }
+                });
+            });
+
+            $(document).ready(function () {
+                $('#postalCode').on('input', function () {
+                    var postalCode = $(this).val();
+                    // Check if input contains non-numeric characters or more than 6 digits
+                    if (/\D/.test(postalCode) || postalCode.length > 6) {
+                        showalert('Please enter exactly 6 digits.');
+                        // Remove non-numeric characters and extra digits
+                        postalCode = postalCode.replace(/\D/g, '').substr(0, 6);
+                        $(this).val(postalCode);
+                    }
+                });
+            });
+
+            $(document).ready(function () {
+                $('#location,#address,#streetName').on('input', function () {
+                    var inputValue = $(this).val();
+                    // Check if the input contains any numeric characters
+                    // Check if the input length exceeds the limit
+                    if (inputValue.length > 100) {
+                        showalert('Maximum length exceeded. Please enter up to 50 characters.');
+                        // Trim the input to the maximum length
+                        $(this).val(inputValue.slice(0, 100));
+                    }
+                });
+            });
+
+            function validateNo(event) {
+                const inputValue = event.target.value;
+                const NoRegex = /^[A-Za-z0-9]*$/; // Regular expression to allow only alphabets and numbers
+
+                if (!NoRegex.test(inputValue)) {
+                    showalert("Please enter numbers and alphabets only.");
+                    event.target.value = ''; // Clear the input field
+                }
+            }
+            function closeForm() {
+                // Assuming 'employeeModal' is the ID of your modal
+
+                $('#companyModal').modal('hide');
+            }
+            var formData = new FormData();
+
+
+            jQuery(document).ready(function ($) {
+
+                $(document).on('click', '.edit-btn', function () {
+                    var blockId = $(this).data('visit-id');
+                    var confirmed = confirm("Are you sure to release the block?");
+                    // First function: @PostMapping("/addBlocksReleased")
+                    if (confirmed)
+                        $.ajax({
+                            url: 'http://localhost:8080/getBlocksById/' + blockId,
+                            type: 'GET',
+                            success: function (response) {
+                                // Handle success
+                                // Extract relevant data from the response
+                                var blockData = response; // Assuming the response contains the required data
+                                // Second function: @PostMapping("/addBlocksReleased")
+                                $.ajax({
+                                    url: 'http://localhost:8080/addBlocksReleased',
+                                    type: 'POST',
+                                    contentType: 'application/json',
+                                    data: JSON.stringify(blockData), // Use data obtained from the GET request
+                                    success: function (response) {
+                                        // Handle success
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle error
+                                    }
+                                });
+                            },
+                            error: function (xhr, status, error) {
+                                // Handle error
+                            }
+                        });
+                    // Second function: @DeleteMapping("/deleteBlockById/{blockId}")
+                    $.ajax({
+                        url: 'http://localhost:8080/deleteBlockById/' + blockId, // Assuming visitId is the blockId
+                        type: 'DELETE',
+                        success: function (response) {
+                            window.location.reload();
+                            // Handle success
+                        },
+                        error: function (xhr, status, error) {
+                            // Handle error
+                        }
+                    });
+                });
+
+                $('#filterButton').click(function () {
+                    $('#filterFields').toggle();
+                });
+
+                function redirectToBlockPage(visitDetailId) {
+                    // Construct the URL with the visitDetailId parameter
+                    const url = `block_details.html?id=${visitDetailId}`;
+                    // Redirect to the new URL
+                    window.location.href = url;
+                }
+
+                $(document).on('click', '.block-btn', function () {
+
+                    var visiterId = $(this).data('company-id');
+                    var phoneNo = $(this).data('phone-number');
+                    var project = $(this).data('project-name');
+
+                    window.location.href = `block_form.html?id=${visiterId}&phoneNumber=${phoneNo}&projectName=${project}`;
+                });
+
+                $(document).on('click', '.book-btn', function () {
+
+                    var visiterId = $(this).data('company-id');
+                    var phoneNo = $(this).data('phone-number');
+                    var project = $(this).data('project-name');
+                    console.log(phoneNo, project);
+                    window.location.href = `booking_form.html?id=${visiterId}&phoneNumber=${phoneNo}&projectName=${project}`;
+                });
+
+
+                var accumulatedData = [];
+
+                function fetchVisitDetails(mobile, startDate, endDate, employeeNames, customerNames) {
+                    // Fetch data by date range
+                    accumulatedData = [];
+                    var requests = [];
+
+                    if (startDate && endDate) {
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/getByDateRange?startDate=${startDate}&endDate=${endDate}`,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (dateRangeData) {
+                                console.log("1");
+                                accumulateData(dateRangeData);
+                                console.log("getByDateRange", accumulateData);
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for date range data
+                            }
+                        }));
+                    }
+                    // Fetch data by date range
+                    if (mobile) {
+                        requests.push($.ajax({
+                            url: 'http://localhost:8080/getByPhoneNumbers',
+                            type: 'GET',
+                            dataType: 'json',
+                            data: { phoneNumber: mobile },
+                            success: function (phoneNumberData) {
+                                console.log("hi");
+                                accumulateData(phoneNumberData);
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Error in getByPhoneNumbers AJAX request:');
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    if (employeeNames) {
+                        // Fetch data by date range
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/getByEmployeeNames`,
+                            type: 'GET',
+                            dataType: 'json',
+                            data: { employeeName: employeeNames },
+                            success: function (employeedata) {
+                                accumulateData(employeedata);
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    if (customerNames) {
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/getByCustomerNames`,
+                            type: 'GET',
+                            dataType: 'json',
+                            data: { customerName: customerNames },
+                            success: function (customerdata) {
+                                accumulateData(customerdata);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    $.when.apply($, requests).then(function () {
+                        // Collect data from all responses
+                        $.each(arguments, function (index, responseData) {
+                            accumulateData(responseData[0]);
+                        });
+                        // Apply filters after all AJAX requests have completed
+                    });
+                    function accumulateData(data) {
+                        // Combine the new data with the accumulated data
+                        accumulatedData = accumulatedData.concat(data);
+                        applyFilters();
+                        // Apply filters to the accumulated data
+
+                    }
+                    function applyFilters() {
+                        // Apply filters to the accumulated data and update the table
+                        var filteredData = accumulatedData.filter(item => typeof item === 'object' && item !== undefined && item !== null);
+
+                        // Check if there are any filtered results
+                        if (filteredData.length === 0) {
+                            // If no results, clear the table body
+                            var tableBody = $('#dataTable tbody');
+                            tableBody.empty();
+                            return;
+                        }
+                        var encounteredPhoneNumbers = new Set();
+                        console.log("Accumulated data:", accumulatedData);
+                        console.log("Filtered data before filtering:", filteredData);
+                        var filteredData = accumulatedData.filter(item => typeof item === 'object');
+                        if (filteredData && filteredData.length > 0) {
+
+                            if (mobile && filteredData.length > 0) {
+                                var mobileNumbers = mobile.split(',');
+                                filteredData = filteredData.filter(item =>
+                                    mobileNumbers.includes(item.mobileNumber)
+                                );
+                            }
+                            if (startDate && endDate && filteredData.length > 0) {
+                                filteredData = filteredData.filter(item => {
+                                    const blockDate = new Date(item.paidDate);
+                                    return blockDate >= new Date(startDate) && blockDate <= new Date(endDate);
+                                    console.log("shanuuu");
+                                });
+                            }
+
+                            // Filter by employee names
+                            if (employeeNames && filteredData.length > 0) {
+                                filteredData = filteredData.filter(item =>
+                                    employeeNames.includes(item.blockEmpName)
+                                );
+                            }
+
+                            // Filter by customer names
+                            if (customerNames && filteredData.length > 0) {
+                                filteredData = filteredData.filter(item =>
+                                    customerNames.includes(item.customerName)
+                                );
+                            }
+
+
+                            // Filter by buying duration
+                            console.log("Filtered data after filtering:", filteredData);
+                            var updatedData = [];
+
+                            var uniqueVisitDetailIds = new Set();
+                            filteredData = filteredData.filter(item => {
+                                // Check if the current visitDetailId has already been encountered
+                                if (uniqueVisitDetailIds.has(item.blocksId)) {
+                                    // If the visitDetailId is already in the set, return false to exclude it from the filtered data
+                                    return false;
+                                } else {
+                                    // If the visitDetailId is not in the set, add it to the set and return true to include it in the filtered data
+                                    uniqueVisitDetailIds.add(item.blocksId);
+                                    updatedData.push(item);
+                                    return true;
+                                    console.log("unique datas after filtering:", filteredData);
+                                }
+                            });
+
+                            // Update the table with the filtered data
+                            updateTable(updatedData);
+                            console.log(data, "datas");
+
+                        }
+                    }
+                    function updateTable(updatedData) {
+                        // Clear existing table rows
+                        var tableBody = $('#dataTable tbody');
+                        tableBody.empty();
+                        // Populate table with fetched data
+                        // Iterate through projectNames and create a new row for each project name
+                        updatedData.forEach(details => {
+                            $('#dataTable tbody').append(`
+<tr>
+<td>${new Date(details.paidDate).toLocaleDateString()}</td>
+<td>${details.customerName}</td>
+<td>${details.mobileNumber}</td>
+<td>${details.projectName}</td>
+<td>${details.blockEmpName}</td>
+<td>${details.plotNumber}</td>
+<td>${details.netAmount}</td>
+<td>${details.paidAmount}</td>
+</tr>
+`);
+                        });
+
+                        $('#companyModal').modal('hide');
+                    }
+                }
+
+                $('#search-button').on('click', function () {
+                    var mobile = $('#mobile').val(); // Get the mobile number
+                    var fromDate = $('#fromDate').val();
+                    var toDate = $('#toDate').val();
+                    var employeeNames = $('#filterEmployeeNames').val();
+                    var customerNames = $('#filtercustomerNames').val();
+                    // var filterProjectName = $('#filterProjectName').val();
+                    // Validate the input if needed
+
+                    fetchVisitDetails(mobile, fromDate, toDate, employeeNames, customerNames);
+                });
+
+                const MainMenus = localStorage.getItem('MainMenus');
+                const urlParams = new URLSearchParams(window.location.search);
+                const companyId = localStorage.getItem('companyId'); // Parse companyId to integer
+                const teamIdFromLocalStorage = localStorage.getItem('teamId');
+                const canEdit = MainMenus && MainMenus.includes('Employee List Edit');
+                const canView = MainMenus && MainMenus.includes('Employee List View');
+
+                // Parse teamIdFromLocalStorage into an array if it's not null
+                const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id)) : [];
+                const accessToken = localStorage.getItem('accessToken');
+                if (MainMenus && MainMenus.includes('Employee Form')) {
+                    $.ajax({
+                        url: 'http://localhost:8080/api/blockReleasedAutomatically/getBlockReleasedAutomaticallyByCompanyId/' + companyId,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                        success: function (blockData) {
+                            // Populate table with fetched data
+                            let blockStatus = 'Permanent Block';
+                            // Iterate over visit details
+                            blockData.forEach(blockEntry => {
+                                // Check if the visit is blocked
+                                if (blockEntry.paidAmount === 0 || blockEntry.paidAmount === null) {
+                                    blockStatus = 'Temporary Block';
+                                }
+                                else
+                                    blockStatus = 'Permanent Block';
+                                $('#dataTable tbody').append(`
+<tr>
+<td>${new Date(blockEntry.paidDate).toLocaleDateString()}</td>
+<td>${blockEntry.customerName}</td>
+<td>${blockEntry.mobileNumber}</td>
+<td>${blockEntry.projectName}</td>
+<td>${blockEntry.blockEmpName}</td>
+<td>${blockEntry.plotNumber}</td>
+<td>${blockEntry.netAmount}</td>
+<td>${blockEntry.paidAmount}</td>
+<td>${blockStatus}</td>
+
+</tr>
+`);
+                            });
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText); // Log the error response
+                            console.error(error); // Log the error message
+                            // showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+                        }
+                    });
+                }
+                else {
+                    $.ajax({
+                        url: 'http://localhost:8080/api/blockReleasedAutomatically/companyAndTeamId/' + companyId + teamIdFromLocalStorage,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                        success: function (blockData) {
+                            // Populate table with fetched data
+                            let blockStatus = 'Permanent Block';
+                            // Iterate over visit details
+                            blockData.forEach(blockEntry => {
+                                // Check if the visit is blocked
+                                if (blockEntry.paidAmount === 0 || blockEntry.paidAmount === null) {
+                                    blockStatus = 'Temporary Block';
+                                }
+                                else
+                                    blockStatus = 'Permanent Block';
+                                $('#dataTable tbody').append(`
+<tr>
+<td>${new Date(blockEntry.paidDate).toLocaleDateString()}</td>
+<td>${blockEntry.customerName}</td>
+<td>${blockEntry.mobileNumber}</td>
+<td>${blockEntry.projectName}</td>
+<td>${blockEntry.blockEmpName}</td>
+<td>${blockEntry.plotNumber}</td>
+<td>${blockEntry.netAmount}</td>
+<td>${blockEntry.paidAmount}</td>
+<td>${blockStatus}</td>
+
+</tr>
+`);
+                            });
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText); // Log the error response
+                            console.error(error); // Log the error message
+                            // showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+                        }
+                    });
+                }
+
+
+
+                function searchInput() {
+                    $('#searchInput').on('input', function () {
+                        var searchText = $(this).val().toLowerCase(); // Get the value of the input and convert it to lowercase for case-insensitive matching
+                        $('#dataTable tbody tr').each(function () {
+                            var rowData = $(this).text().toLowerCase(); // Get the text content of the current row and convert it to lowercase
+                            if (rowData.includes(searchText)) {
+                                $(this).show(); // If the row contains the search text, show it
+                            } else {
+                                $(this).hide(); // Otherwise, hide the row
+                            }
+                        });
+                    });
+                }
+                // Call the function to populate visit details when the page loads
+                $(document).ready(function () {
+                    searchInput();
+                    populateVisitDetails();
+
+                });
+
+                var currentCompanyId;
+
+                $(document).on('click', '.view-btn', function () {
+                    currentCompanyId = $(this).data('company-id');
+                    var visitId = $(this).data('company-id');
+                    const accessToken = localStorage.getItem('accessToken');
+                    $.ajax({
+                        url: 'http://localhost:8080/VisitPage/getVisitDetailsById/' + visitId,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                        success: function (visitData) {
+                            console.log(visitData);
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+
+                            $('#companyModal').modal('show');
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            console.error(error);
+                            // showalert('Error fetching company details. Please try again later.');
+                        }
+                    });
+                });
+            });
+        </script>
+        <!-- plugins:js -->
+      <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../../assets/js/off-canvas.js"></script>
+        <script src="../../assets/js/hoverable-collapse.js"></script>
+        <!-- <script src="../../assets/js/pagination.js"></script> -->
+        <script src="../../assets/js/menu_active.js"></script>
+      <!--<script src="../../assets/js/misc.js"></script> -->
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="../../assets/js/chart.js"></script>
+        <!-- End custom js for this page -->
+</body>
+
+</html>

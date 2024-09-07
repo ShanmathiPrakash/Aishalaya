@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Customer Form | Aishalaya</title>
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+    
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css"><!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- End layout styles -->
+  </head>
+  <body>
+    <div class="container-scroller">
+      
+      <!-- partial:../../partials/_navbar.html -->
+      <nav
+      class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+    >
+      <div
+        class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+      >
+      <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button
+          class="navbar-toggler navbar-toggler align-self-center"
+          type="button"
+          data-toggle="minimize"
+        >
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link"  onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button
+          class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+          type="button"
+          data-toggle="offcanvas"
+        >
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <!-- Preloader markup -->
+<div class="preloader">
+    <!-- You can use any kind of loading animation here, such as an animated gif or spinner -->
+    <!-- <img src="/assets/images/load.gif" alt="Loading..."> -->
+  </div>
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-profile">
+          <a href="#" class="nav-link">
+           <!-- <div class="nav-profile-image">
+              <img src="../../assets/images/faces/face1.jpg" alt="profile">
+              <span class="login-status online"></span>class="text-secondary text-small"
+              //change to offline or busy as needed
+            </div>-->
+            <div class="nav-profile-text d-flex flex-column">
+              <span class="font-weight-bold mb-2" id="employeeNameSpan"></span>
+              <span class="text-secondary text-small" id="employeeDesignation"></span>
+            </div>
+            <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">
+            <img src="../../assets/images/2.png" alt="logo" style="height: 15%;width: 15%;"/>
+            <span class="menu-title" style="margin-left: 10px;">Dashboard</span>
+          </a>
+        </li>
+       
+        <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+              <img src="../../assets/images/2.png" alt="logo" style="height: 15%;width: 15%;"/>
+              <span class="menu-title" style="margin-left: 10px;">Project</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+              <img src="../../assets/images/2.png" alt="logo" style="height: 15%;width: 15%;"/>
+              <span class="menu-title" style="margin-left: 10px;">Profile</span>
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">
+              <img src="../../assets/images/10.png" alt="logo" style="height: 15%;width: 15%;"/>
+              <span class="menu-title" style="margin-left: 10px;">Logout</span>
+             
+            </a>
+          </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title"> Customer Form </h3>
+              <nav aria-label="breadcrumb"></nav>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- <h4 class="card-title">Customer</h4> -->
+                    <form class="form-sample" id="customerForm">
+                      <!-- <p class="card-description">Customer Info</p> -->
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="date">Date</label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="date" id="date" name="date" required />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="customerName">Customer Name <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="text" id="customerName" name="customerName"  maxlength="50" oninput="validateInput('customerName')" placeholder="Customer Name" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="employeeCode">Employee Code <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="employeeCode" name="employeeCode" class="form-control" placeholder="Employee Code"  oninput="validateNo('employeeCode')" required/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="companyId">Company Id <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="text" id="companyId" name="companyId" placeholder="company code" oninput="validateNo('companyId')" required/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="mobileNumber">Mobile Number <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" maxlength="12" oninput="validateMobile(event)" placeholder="mobile number"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="location">Location <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="location" name="location" class="form-control" maxlength="100" placeholder="location"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="address">Address <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="address" name="address" class="form-control" maxlength="100" placeholder="address"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="streetName">Street Name <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="streetName" name="streetName" class="form-control" maxlength="100" placeholder="street name"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="area">Area <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="area" name="area" class="form-control" maxlength="50" placeholder="area"  oninput="validateInput('area')"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="city">City <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="city" name="city" class="form-control" maxlength="50" oninput="validateInput('city')" placeholder="city"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="district">District <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="district" name="district" class="form-control" maxlength="50" oninput="validateInput('district')" placeholder="district"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="state">State <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="state" name="state" class="form-control" maxlength="50"oninput="validateInput('state')"  placeholder="state" required/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="postalCode">Postal Code <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="postalCode" name="postalCode" class="form-control" maxlength="6" oninput="validatesInput(event)" placeholder="postal code" required/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="email">Email <span class="text-danger">*</span></label>
+                            <div class="col-sm-9">
+                              <input type="text" id="email" name="email" class="form-control" />
+                              <p id="validationMessage"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-9 col-form-label" for="employeeType">Employee Type</label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="text" id="employeeType" name="employeeType"  placeholder="Employee Type" maxlength="50" oninput="validateNo('employeeType')" required/>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="workPlace">Work Place</label>
+                            <div class="col-sm-9">
+                              <input class="form-control" type="text" id="workPlace" name="workPlace" maxlength="50" placeholder="Work Place" maxlength="50" oninput="validateNo('workPlace')" required/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">                      
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="image">Image</label>
+                            <div class="col-sm-9">
+                              <input type="file" id="image" name="image" class="form-control" placeholder="image"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                      <div class="d-flex justify-content-end">
+                        <!-- <button type="button" class="btn back custom-width" onclick="window.location.href='site_visit_form.html';">Back</button> -->
+                        <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                        <a href="customer_list.html" class="btn btn-light">Cancel</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Other code... -->
+
+          <!-- Other code... -->
+        </div>
+        
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="../../assets/js/customer_form.js"></script>
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->  
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+  </body>
+</html> 
+

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Employee Form | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico"/>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!--showalert Message-->
+  <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+  <!-- End layout styles -->
+  <style>
+    .custom-card-width {
+      width: 100%; /* Adjust the width as needed */
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png" alt="logo" style="height: 100%;"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link"  onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Team Form </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="employee_list.html">Team List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Team Form</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card custom-card-width">
+                <div class="card-body">
+                  <!-- <h4 class="card-title">Employee</h4> -->
+                  <form class="form-sample" id="employeeForm">
+                    <!-- <p class="card-description"> Personal info </p> -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-9 col-form-label" for="companyId">Company Name</label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="text" id="companyId" name="companyId" readonly />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-6 col-form-label" for="project">Team Name <span class="text-danger">*</span></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" type="text" id="teamName" name="teamName" placeholder="Team Name" /><br>
+                          </div>
+                        </div>
+                      </div>
+                     
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label" for="ManagerNames">Team Manager</label>
+                          <div class="col-sm-7">
+                            <select id="ManagerNames" name="ManagerNames[]" multiple required class="form-control">
+                              <option value="" disabled>Select Manager</option>
+                              <!-- Options will be dynamically populated here -->
+                            </select><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-5 col-form-label" for="employeeNames">Employee Name</label>
+                          <div class="col-sm-7">
+                            <select id="employeeNames" name="employeeNames[]" multiple required class="form-control">
+                              <option value="" disabled>Select Employee</option>
+                              <!-- Options will be dynamically populated here -->
+                            </select><br>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="projectNames">Project
+                                    Name</label>
+                                <div class="col-sm-7">
+                                    <select id="projectNames" name="projectNames[]" multiple
+                                         class="form-control">
+                                        <option value="" disabled>Select Project</option>
+                                        <!-- Options will be dynamically populated here -->
+                                    </select><br>
+                                </div>
+
+                            </div>
+                        </div>
+                      <div class="d-flex justify-content-end" style="margin-bottom: 20px;">
+                        <!-- <button type="button" class="btn back custom-width" onclick="window.location.href='employee_list.html';">Back</button> -->
+                        <button type="submit" class="btn btn-gradient-primary me-2" value="submit">Submit</button>
+                        <a href="employee_teamList.html" class="btn btn-light">Cancel</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- <div id="includeFooter"></div> -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+
+  <!-- Include jQuery library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Custom script -->
+  <script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+   
+let isContentLoaded = false;
+
+document.addEventListener('DOMContentLoaded', async function() {
+  const employeeEmail = localStorage.getItem('employeeEmail');
+  const currentCompanyId = localStorage.getItem('companyId');
+  console.log("currentCompanyId:", currentCompanyId);
+
+  if (isContentLoaded) return; // Prevent multiple executions
+  isContentLoaded = true;
+
+  try {
+    const accessToken = localStorage.getItem('accessToken');
+
+    // Fetch employee details to get associated company ID
+    const responseEmployee = await fetch('http://localhost:8080/api/employee/getEmployeeByEmail/' + employeeEmail, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': accessToken,
+      },
+    });
+
+    if (!responseEmployee.ok) {
+      throw new Error('Failed to fetch employee details');
+    }
+
+    const dataEmployee = await responseEmployee.json();
+
+    // Ensure that the company object and companyId are properly fetched
+    if (!dataEmployee.company || !dataEmployee.company.companyId) {
+      throw new Error('Company ID not found in employee details');
+    }
+
+    const companyId = dataEmployee.company.companyId;
+
+    // Store the companyId in localStorage
+    localStorage.setItem('companyId', companyId);
+
+    // Check if the current URL already contains the company ID parameter
+    if (!window.location.href.includes(`companyId=${companyId}`)) {
+      // Redirect to the EmployeeForm page with company ID query parameter
+      const formUrl = `employee_teamForm.html?companyId=${companyId}`;
+      window.location.href = formUrl;
+    }
+
+    // Fetch company details based on the companyId parameter
+    const companyIdParam = new URLSearchParams(window.location.search).get('companyId');
+    const responseCompany = await fetch(`http://localhost:8080/api/superAdmin/getCompanyById/${companyIdParam}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': accessToken,
+      },
+    });
+
+    if (!responseCompany.ok) {
+      throw new Error('Failed to fetch company details');
+    }
+
+    const dataCompany = await responseCompany.json();
+
+    // Populate the companyId input field with the fetched company name
+    const companyIdTextBox = document.getElementById('companyId');
+    companyIdTextBox.value = dataCompany.companyName; // Assuming the JSON response contains the field 'companyName'
+  } catch (error) {
+    console.error('Error:', error);
+    // Handle error
+  }
+});
+
+$(document).ready(function () {
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            console.error('Access token not found');
+            return;
+        }
+
+        const currentCompanyId = localStorage.getItem('companyId');
+        if (!currentCompanyId) {
+            console.error('Company ID not found');
+            return;
+        }
+
+        $.ajax({
+            url: 'http://localhost:8080/api/employee/getAllEmployeeDetails',
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken
+            },
+            success: function (employees) {
+                console.log("employees:", employees);
+
+                // Clear the dropdowns before populating
+                $('#employeeNames').empty();
+                $('#ManagerNames').empty();
+
+                employees.forEach(function (employee) {
+                    if (employee.company.companyId == currentCompanyId) {
+                        // Populate employee names (assume these are general employees)
+                        $('#employeeNames').append(`<option value="${employee.employeeName}">${employee.employeeName}</option>`);
+                        console.log('Employee:', employee.employeeName);
+
+                        // Populate manager names (assume these are managers as well)
+                        $('#ManagerNames').append(`<option value="${employee.employeeName}">${employee.employeeName}</option>`);
+                        console.log('Manager:', employee.employeeName);
+                    }
+                });
+            },
+              error: function (xhr, status, error) {
+                  console.error(xhr.responseText);
+                  console.error(error);
+              }
+          });
+    } catch (error) {
+        console.error('Error:', error);
+    }
+
+    $(document).ready(function () {
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            console.error('Access token not found');
+            return;
+        }
+        
+        const MainMenus = localStorage.getItem('MainMenus');
+        console.log(MainMenus);
+
+        const companyIdFromLocalStorage = localStorage.getItem('companyId');
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (MainMenus && MainMenus.includes('Employee Form')) {
+            // Fetch project details based on companyId in project table
+            $.ajax({
+                url: `http://localhost:8080/api/project/getAllProjectDetails`,
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken
+                },
+                success: function (projects) {
+                    console.log("projects:", projects);
+                    projects.forEach(function (project) {
+                        if (project.companyId == companyIdFromLocalStorage) {
+                            console.log("filteredCompanies:", project);
+                            $('#projectNames').append(`<option value="${project.id}">${project.projectName}</option>`);
+                            console.log(project.projectName);
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(error);
+                }
+            });
+        } else {
+          const teamIdFromLocalStorage = localStorage.getItem('teamId');
+            // Parse teamIdFromLocalStorage into an array if it's not null
+    const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id)) : [];
+
+            $.ajax({
+                url: `http://localhost:8080/api/teams/getAllTeamDetails`,
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken
+                },
+                success: function (teams) {
+                    console.log("teams:", teams);
+                    teams.forEach(function (team) {
+                        if (team.companyId == companyIdFromLocalStorage && teamIds.length === 0 || teamIds.includes(team.teamId)) {
+                            console.log("filteredCompanies and Teams:", team);
+                            if (team.projectNames && team.projectNames.length > 0) {
+                                team.projectNames.forEach(function (projectName) {
+                                    $('#projectNames').append(`<option value="${team.teamId}">${projectName}</option>`);
+                                    console.log(projectName);
+                                });
+                            }
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(error);
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+
+  
+    $('#employeeForm').on('submit', async function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        console.log('Form submit event triggered.');
+
+        try {
+            const accessToken = localStorage.getItem('accessToken');
+            if (!accessToken) {
+                console.error('Access token not found');
+                showalert('Access token not found. Please log in again.');
+                return;
+            }
+
+            // Collect selected manager and employee names
+            const managerNamesDropdown = document.getElementById('ManagerNames');
+            const employeeNamesDropdown = document.getElementById('employeeNames');
+            const projectNamesDropdown = document.getElementById('employeeNames');
+
+            const selectedManagers = Array.from(managerNamesDropdown.selectedOptions, option => option.textContent);
+            const selectedEmployees = Array.from(employeeNamesDropdown.selectedOptions, option => option.textContent);
+            const selectedProjects = Array.from(projectNamesDropdown.selectedOptions, option => option.textContent);
+
+            // Prepare the team data object
+            const teamData = {
+                companyName: document.getElementById('companyId').value,
+                companyId: new URLSearchParams(window.location.search).get('companyId'),
+                teamName: $('#teamName').val(),
+                managerNames: selectedManagers,
+                employeeNames: selectedEmployees,
+                employeeNames: selectedProjects
+            };
+
+            console.log('Sending data to server:', teamData);
+
+            const response = await fetch('http://localhost:8080/api/teams/addTeam', {
+                method: 'POST',
+                body: JSON.stringify(teamData),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create team.');
+            }
+
+            showalert('Team successfully created!',function(){
+            window.location.href = 'employee_teamList.html'; // Redirect on success
+            });
+        } catch (error) {
+            console.error('Error:', error);
+            showalert('Failed to create team. Please try again.');
+        }
+    });
+});
+  </script>
+  <!-- plugins:js -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="../../assets/js/pagination.js"></script> -->
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- End custom js for this page -->
+</body>
+</html>

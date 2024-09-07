@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Site Visit Form | Aishalaya</title>
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- End layout styles -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
+   <!--showalert Message-->
+   <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+    <style>
+        /* Custom styles for dropdown visibility */
+        #projectId {
+            color: black;
+        }
+
+        #projectId option {
+            color: black;
+            /* Change the color of dropdown items */
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+    <!-- DataTables JavaScript -->
+   
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png"
+                        alt="logo" style="height: 100%;" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png"
+                        alt="logo" style="height: 100%;" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" onclick="logout()">
+                            <i class="mdi mdi-power"></i>
+                        </a>
+                    </li>
+
+                </ul>
+               
+            </div>
+
+        </nav>
+        <!-- partial -->
+
+        <div class="container-fluid page-body-wrapper"> 
+            <!-- <div id="includeHtml"></div>  -->
+            <div id="includeHtml"></div>
+
+          
+          
+            <div class="modal fade" id="companyModal" tabindex="-1" role="dialog" aria-labelledby="companyModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog custom-width" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="companyModalLabel">Customer Information</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Your existing form goes here
+                            <form class="form-sample" id="customerForm">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="customerName1">Customer Name</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="customerName1"
+                                                    name="customerName1" placeholder="name" oninput="validateInput('customerName1')" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="date">Date</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="date" id="date" name="date" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="employeeId">Employee</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="employeeId" name="employeeId"
+                                                    class="form-control" placeholder="employee mail" readonly />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="companyId">Company Id</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="companyId" name="companyId"
+                                                    placeholder="company Mail" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="mobileNumber">Mobile</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="mobileNumber" name="mobileNumber"
+                                                    class="form-control" placeholder="mobile" oninput="validateMobile(event)" required />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="location">Location</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="location" name="location" class="form-control"
+                                                    placeholder="location" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="address">Address</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="address" name="address" class="form-control"
+                                                    placeholder="address" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="streetName">Street Name</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="streetName" name="streetName"
+                                                    class="form-control" placeholder="street" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="area">Area</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="area" name="area" class="form-control"
+                                                    placeholder="area"  oninput="validateInput('area')" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="city">City</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="city" name="city" class="form-control"
+                                                    placeholder="city"  oninput="validateInput('city')" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="district">District</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="district" name="district" class="form-control"
+                                                    placeholder="district" oninput="validateInput('district')" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="state">State</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="state" name="state" class="form-control"
+                                                    placeholder="state" oninput="validateInput('state')" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="postalCode">Postal Code</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="postalCode" name="postalCode"
+                                                    class="form-control" placeholder="postal code"  oninput="validatesInput(event)" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="email">Email <span class="text-danger">*</span></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="email" name="email" class="form-control"
+                                                    placeholder="email" required />
+                                                    <p id="validationMessage"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="employeeType">Occupation</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="employeeType"
+                                                    name="employeeType" placeholder="occupation"oninput="validateInput('occupation')" required />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="workPlace">Office</label>
+                                            <div class="col-sm-7">
+                                                <input class="form-control" type="text" id="workPlace" name="workPlace"
+                                                    placeholder="office" oninput="validateInput('workPlace')" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-5 col-form-label" for="image">Image</label>
+                                            <div class="col-sm-5  ">
+                                                <input type="file" id="image" name="image" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="save" class="btn btn-gradient-primary me-2" value="save">Save</button>
+                                    <a href="customer_list.html" class="btn btn-light">Cancel</a>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div> 
+
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <h3 class="page-title">Site Visit Form </h3>
+                        <nav aria-label="breadcrumb"></nav>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <form class="form-sample" id="companyForm">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-5  col-form-label" for="employeeName">Site Visit Employee Name </label>
+                                                    <div class="col-sm-7">
+                                                        <input class="form-control" type="text" id="employeeName"
+                                                            name="employeeName" value="" readonly />
+                                                        <div style="margin-top: 10px;">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div><br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-5 col-form-label" for="projectNames">Project
+                                                        Name</label>
+                                                    <div class="col-sm-7">
+                                                        <select id="projectNames" name="projectNames[]" multiple
+                                                            required class="form-control">
+                                                            <option value="" disabled>Select Project</option>
+                                                            <!-- Options will be dynamically populated here -->
+                                                        </select><br>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-5 col-form-label" for="phoneNumber">Customer
+                                                        Mobile No <span class="text-danger">*</span></label>
+                                                    <div class="col-sm-7">
+                                                        <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" placeholder="Mobile No" oninput="validateMobile(event)" required/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                      
+                                        <div class="accordion" id="formAccordion">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="formFieldsHeading">
+                                                    <button class="accordion-button" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#formFieldsCollapse"
+                                                        aria-expanded="true" aria-controls="formFieldsCollapse">
+                                                        Site Visit Details
+                                                    </button>
+                                                </h2>
+                                                <div id="formFieldsCollapse" class="accordion-collapse collapse"
+                                                    aria-labelledby="formFieldsHeading" data-bs-parent="#formAccordion">
+                                                    <div class="accordion-body">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label"
+                                                                        for="date">Date</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="date"
+                                                                            id="date" name="date" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="customerName">Customer Name <span class="text-danger">*</span></label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="customerName" name="customerName" oninput="validateInput('customerName')" placeholder="Customer Name" readonly required/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="startingTime">Starting Time</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="startingTime" name="startingTime" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+ <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="endingTime">Ending Time</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="endingTime" name="endingTime" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="cab">Cab</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text" id="cab"
+                                                                            name="cab" placeholder="Cab Details" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="driver">Driver Name</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="driver" name="driver"
+                                                                            placeholder="Driver Name" oninput="validateInput('driver')"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="startingKms">Starting KMs</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="startingKms" name="startingKms"
+                                                                            placeholder="starting Kms" oninput="validatesNumbersInput(event)"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="endKms">End KMs</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="endKms" name="endKms"
+                                                                            placeholder="Ending Kms" oninput="validatesNumbersInput(event)"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="vehicleType">Vehicle Type</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="text"
+                                                                            id="vehicleType" name="vehicleType"
+                                                                            placeholder="Vehicle Type" oninput="validateNo(event)" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-4 col-form-label"
+                                                                        for="fundingSource">Funding Source</label>
+                                                                    <div class="col-sm-9">
+                                                                        <select name="fundingSource"
+                                                                            class="form-control" id="fundingSource">
+                                                                            <option value="Self">Self</option>
+                                                                            <option value="Loan">Loan</option>
+                                                                            <option value="Jewel">Jewel</option>
+                                                                            <option value="Others">Others</option>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="buyingDuration">Buying Duration</label>
+                                                                    <div class="col-sm-9">
+                                                                        <select name="buyingDuration"
+                                                                            class="form-control" id="buyingDuration">
+                                                                            <option value="Self">1</option>
+                                                                            <option value="Loan">1-3</option>
+                                                                            <option value="Jewel">3-6</option>
+
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label"
+                                                                        for="status">Status</label>
+                                                                    <div class="col-sm-9">
+                                                                        <select name="status" class="form-control"
+                                                                            id="status">
+                                                                            <option value="Price Negotiation">Price
+                                                                                Negotiation</option>
+                                                                            <option
+                                                                                value="Comparing with the competators">
+                                                                                Comparing with the competators</option>
+                                                                            <option value="Discussing with family">
+                                                                                Discussing with family</option>
+                                                                            <option
+                                                                                value="Checking with Astrologer/ consultant">
+                                                                                Checking with Astrologer/ consultant
+                                                                            </option>
+                                                                            <option value="Broker/ Mediators">Broker/
+                                                                                Mediators</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-9 col-form-label"
+                                                                        for="photo">Site Image <span class="text-danger">*</span></label>
+                                                                    <div class="col-sm-9">
+                                                                        <input class="form-control" type="file"
+                                                                            id="photo" name="photo" required oninvalid="setCustomValidity('Please select an image.')" onchange="setCustomValidity('')"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-4 col-form-label"
+                                                                        for="employeeNotes">Employee Notes</label>
+                                                                    <div class="col-sm-15">
+                                                                        <textarea class="form-control" type="text"
+                                                                            id="employeeNotes" name="employeeNotes"
+                                                                            placeholder="Employee notes"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                       
+
+                                                    </div>
+                                                    <!-- Add similar blocks for other fields if needed -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-18 row-md-300" style="margin-top: 60px;">
+                                    <div class="d-flex justify-content-end">
+                                        <!-- <button type="button" class="btn back custom-width"
+                                            onclick="window.location.href='siteVisit_list.html';">Back</button> -->
+                                         <button type="submit" class="btn btn-gradient-primary me-2"
+                                            value="submit">Submit</button>
+                                        <a href="siteVisit_list.html" class="btn btn-light">Cancel</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>              
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+
+document.addEventListener('DOMContentLoaded', async function () {
+
+    
+
+function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    // Validate both fields
+    validateNo('area');
+    validateNo('employeeType');
+    validateNo('workPlace');
+    
+   // Prevent default form submission behavior
+    validateInput('customerName');              
+    
+    validateInput('driver');
+   
+    validateInput('workPlace');
+}
+   
+});
+
+
+$(document).ready(function () {
+    try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+            console.error('Access token not found');
+            return;
+        }
+        
+        const MainMenus = localStorage.getItem('MainMenus');
+        console.log(MainMenus);
+
+        const companyIdFromLocalStorage = localStorage.getItem('companyId');
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamIdFromLocalStorage = localStorage.getItem('teamId');
+
+        if (MainMenus && MainMenus.includes('Employee Form')) {
+            // Fetch project details based on companyId in project table
+            $.ajax({
+                url: `http://localhost:8080/api/project/getAllProjectDetails`,
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken
+                },
+                success: function (projects) {
+                    console.log("projects:", projects);
+                    projects.forEach(function (project) {
+                        if (project.companyId == companyIdFromLocalStorage) {
+                            console.log("filteredCompanies:", project);
+                            $('#projectNames').append(`<option value="${project.id}">${project.projectName}</option>`);
+                            console.log(project.projectName);
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(error);
+                }
+            });
+        } else {
+           // Parse teamIdFromLocalStorage into an array if it's not null
+    const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id)) : [];
+
+
+            $.ajax({
+                url: `http://localhost:8080/api/teams/getAllTeamDetails`,
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken
+                },
+                success: function (teams) {
+                    console.log("teams:", teams);
+                    teams.forEach(function (team) {
+                        if (team.companyId == companyIdFromLocalStorage && teamIds.length === 0 || teamIds.includes(team.teamId)) {
+                            console.log("filteredCompanies and Teams:", team);
+                            if (team.projectNames && team.projectNames.length > 0) {
+                                team.projectNames.forEach(function (projectName) {
+                                    $('#projectNames').append(`<option value="${team.teamId}">${projectName}</option>`);
+                                    console.log(projectName);
+                                });
+                            }
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(error);
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+    
+    $('#phoneNumber').change(function () {
+        var phoneNumber = $(this).val();
+        console.log("phone Number:",phoneNumber);
+    
+            const accessToken = localStorage.getItem('accessToken');
+          $.ajax({
+            url: `http://localhost:8080/api/customer/getCustomerByPhoneNumber/${phoneNumber}`,
+            type: 'GET',
+            headers:
+            {
+              'Authorization': accessToken// Specify the content type as JSON
+            },
+            success: async function (customerData) {
+                if (!customerData || !customerData.customerName)
+                 {
+                  showalert("No customers found in this Mobile number.");
+                    }  
+                    else
+                    {
+            console.log("customer Data:",customerData.customerName);
+             // document.getElementById('customerName').value=customereData.customerName;
+             $('#customerName').val(customerData.customerName);
+                    }
+            },
+            error: function (xhr, status, error) {
+              console.error('Error fetching total square footage:', error);
+              
+            }
+          });
+        
+        
+});
+
+
+
+
+
+
+});
+
+
+
+
+
+                function logout() {
+                    // Clear local storage
+                    localStorage.clear();
+                    
+                    // Redirect to the logout page or perform other logout actions
+                    window.location.href = '../../index.html';
+                }
+
+
+
+                const employeeEmailId = localStorage.getItem('employeeEmail');
+                // const employeeName = localStorage.getItem('employeeName');
+                // console.log(employeeName, 'employeename');
+                console.log(employeeEmailId, 'employeeEmail');
+                const initialEmployeeName = employeeName;
+                const initialEmployeeEmailId = employeeEmailId;
+
+                   // -- posting the customer Details In the customer Table 
+               
+                document.addEventListener('DOMContentLoaded', async function () {
+
+
+                    const photoInput = document.getElementById('photo');
+
+photoInput.addEventListener('invalid', function () {
+    this.setCustomValidity(''); // Reset the custom validity message
+    if (this.files.length === 0) {
+        this.classList.add('is-invalid'); // Add a CSS class to indicate invalid input
+    }
+});
+
+photoInput.addEventListener('change', function () {
+    this.classList.remove('is-invalid'); // Remove the CSS class when user selects a file
+});
+
+
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const companyId = urlParams.get('companyId');
+   
+    const employeeEmailIdnew = localStorage.getItem('employeeEmail');
+    const employeeNamenew = localStorage.getItem('employeeName');
+
+    const ProjectNamesDropdown = document.getElementById('projectNames');
+    const formData = new FormData();
+    document.getElementById('employeeName').value = employeeNamenew;
+    document.getElementById('employeeId').value = employeeEmailIdnew;
+    const photoFile = document.getElementById('photo');
+
+    let projectFile;
+    
+
+    document.getElementById('companyForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const employeeEmailValue = localStorage.getItem('employeeEmail');
+                  const companyIdFromLocalStorage=localStorage.getItem('companyId');
+        console.log("photoname",photoFile);
+                  if (photoFile.files.length === 0) {
+            showalert('Please upload a photo.');
+            return; // Stop form submission if photo is not uploaded
+        }
+      
+                  const selectedProjects = Array.from(ProjectNamesDropdown.selectedOptions, option => option.textContent); // Change option.value to option.textContent
+        const companyData = {
+            employeeName: employeeNamenew,
+            employeeCode: employeeEmailValue,
+            companyId: companyIdFromLocalStorage,
+            
+            projectNames: selectedProjects, // Send project names as an array
+            date: document.getElementById('date').value,
+            customerName: document.getElementById('customerName').value,
+            phoneNumber: document.getElementById('phoneNumber').value,
+            status: document.getElementById('status').value,
+            fundingSource: document.getElementById('fundingSource').value,
+            buyingDuration: document.getElementById('buyingDuration').value,
+            vehicleType: document.getElementById('vehicleType').value,
+            cab: document.getElementById('cab').value,
+            driver: document.getElementById('driver').value,
+            startingKms: document.getElementById('startingKms').value,
+            endKms: document.getElementById('endKms').value,
+            startingTime: document.getElementById('startingTime').value,
+            employeeNotes: document.getElementById('employeeNotes').value,
+            endingTime: document.getElementById('endingTime').value,
+            isBlock:1,
+            isBook:0
+           
+            // Add other fields as needed
+        };
+
+        formData.append('visitDetails', new Blob([JSON.stringify(companyData)], { type: 'application/json' }));
+
+        if (photoFile.files.length > 0) {
+            // Append avatar file to formData
+            formData.append('photo', photoFile.files[0]);
+        }
+
+        try {
+            const accessToken = localStorage.getItem('accessToken');
+            const response = await fetch('http://localhost:8080/api/visit/visitDetail', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Authorization': accessToken
+                },
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to add visit Details');
+            }
+            console.log("siteData:",formData);
+            showalert('visit Details added successfully',function(){
+            document.getElementById('companyForm').reset();
+            document.getElementById('employeeName').value = initialEmployeeName;
+            window.location.href=`siteVisit_list.html`;
+            });
+            // Optionally, redirect or perform any other action upon successful submission
+        } catch (error) {
+            console.error('Error:', error);
+            showalert('Failed to add Site Visit Details');
+        }
+    });
+});
+
+
+// const emailInput = document.getElementById('email');
+
+// const validationMessage = document.getElementById('validationMessage');
+// // Regular expression to validate email addresses for the specified domains
+// const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com|aol\.com|icloud\.com|protonmail\.com|zoho\.com|gmx\.com|yandex\.com|mail\.com)$/;
+
+// emailInput.addEventListener('input', validateEmail);
+// function validateEmail() {
+//     const email = emailInput.value;
+//     if (emailRegex.test(email)) {
+//         validationMessage.innerText = "Valid email address";
+//         validationMessage.style.color = "green";
+//     } else {
+//         validationMessage.innerText = "Invalid email address";
+//         validationMessage.style.color = "red";
+//     }
+// }
+// document.getElementById('submit').addEventListener('click', submitForm);
+
+// function submitForm(event) {
+//     event.preventDefault(); // Prevent default form submission behavior
+    
+//     // Validate both fields
+//     validateNo('companyId'); 
+// }
+
+function validateNo(inputId) {
+    const inputField = document.getElementById(inputId);
+ 
+    const NoRegex = /^[A-Za-z0-9\s]*$/; // Regular expression to allow alphabets, numbers, and spaces
+
+   }
+
+function validateMobile(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+    } else if (inputValue.length > 12) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Maximum length for mobile number is 12 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 12); // Truncate to 12 digits
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+
+
+
+function validateInput(inputId) {
+    const inputValue = document.getElementById(inputId).value;
+    const alphaRegex = /^[a-zA-Z\s]+$/; // Regular expression to match only alphabetic characters and spaces
+    const specialCharRegex = /[^a-zA-Z\s]/; // Regular expression to match any special characters
+    
+    if (specialCharRegex.test(inputValue) || !alphaRegex.test(inputValue)) {
+        document.getElementById(inputId).style.borderColor = 'red'; // Set border color to red
+        document.getElementById(inputId).setCustomValidity("Only alphabetic characters are allowed."); // Set validation message
+        document.getElementById(inputId).reportValidity(); // Show validation message
+    } else {
+        document.getElementById(inputId).style.borderColor = ''; // Reset border color
+        document.getElementById(inputId).setCustomValidity(""); // Clear validation message
+    }
+}
+                                                                     
+function validatesNumbersInput(event) 
+{
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+function validatesInput(event) {
+    const inputValue = event.target.value;
+    const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+    if (!numericRegex.test(inputValue)) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+    } else if (inputValue.length < 6) {
+        event.target.style.borderColor = 'red'; // Set border color to red
+        event.target.setCustomValidity("Minimum length is 6 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+    } else if (inputValue.length > 6) {
+        event.target.style.borderColor = ''; // Set border color to red
+        event.target.setCustomValidity("Maximum length is 6 digits."); // Set validation message
+        event.target.reportValidity(); // Show validation message
+        event.target.value = inputValue.slice(0, 6); // Truncate to 6 digits
+    } else {
+        event.target.style.borderColor = ''; // Reset border color
+        event.target.setCustomValidity(""); // Clear validation message
+    }
+}
+
+            </script>
+
+            <!-- Other code... -->
+
+            <!-- Other code... -->
+        </div>
+
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <!-- <script src="../../assets/js/pagination.js"></script> -->
+    <script src="../../assets/js/menu_active.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/chart.js"></script>
+</body>
+
+</html>

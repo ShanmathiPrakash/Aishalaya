@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Site Visit List | Aishalaya</title>
+    <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End Plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+    <!-- End layout styles -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!--showalert Message-->
+    <script src="http://127.0.0.1:5500/assets/js/alertMessages.js"></script>
+ 
+   
+    <style>
+        /* Adjust the modal size */
+        .modal-dialog {
+            max-width: 1100px;
+            /* Set your desired maximum width */
+        }
+
+        /* Adjust the form size */
+        .form-sample {
+            max-width: 100%;
+            /* Set your desired maximum width */
+        }
+
+        @media (min-width: 576px) {
+            .col-sm-9 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 auto;
+                flex: 0 0 auto;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.png"
+                        alt="logo" style="height: 100%;" /></a>
+                <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo.png"
+                        alt="logo" style="height: 100%;" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-logout d-none d-lg-block">
+                        <a class="nav-link" onclick="logout()">
+                            <i class="mdi mdi-power"></i>
+                        </a>
+                    </li>
+
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <div id="includeHtml"></div>
+
+
+            <!-- Company Form-->
+            <div class="modal fade" id="companyModal" tabindex="-1" role="dialog" aria-labelledby="companyModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="companyModalLabel">Site View Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                onclick="closeForm()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-5 offset-md-1 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">CUSTOMER DETAILS :</h4>
+
+                                            <form id="customerForm" class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="customerName" class="col-sm-4 col-form-label"
+                                                        style="margin-top: 30px;">Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="customerName"
+                                                            placeholder="Name" style="margin-top: 30px;">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="mobileNumber" class="col-sm-4 col-form-label">Mobile
+                                                        Number</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="mobileNumber"
+                                                            placeholder="mobileNumber">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="employeeType"
+                                                        class="col-sm-4 col-form-label">Occupation</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="employeeType"
+                                                            placeholder="occupation">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="workPlace" class="col-sm-4 col-form-label">Work
+                                                        Place</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="workPlace" class="form-control" id="workPlace"
+                                                            placeholder="workPlace">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <label for="address" class="col-sm-4 col-form-label">Address
+                                                        :</label>
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" id="address" rows="3"
+                                                            placeholder="address" style="width: 99%;"></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="email" class="col-sm-4 col-form-label">Email
+                                                        :</label>
+                                                    <div class="col-sm-8 input-group" d-flex>
+                                                        <input type="email" class="form-control" id="email"
+                                                            placeholder="email">
+                                                        <div class="input-group-append">
+                                                            <a href="mailto:recipient@example.com?subject=Subject%20Here&body=Body%20of%20the%20email"
+                                                                class="btn btn-primary">Compose</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5  grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">VISIT DETAILS :</h4>
+
+
+                                            <form id="companyForm" class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="cab" class="col-sm-4 col-form-label"
+                                                        style="margin-top: 30px;">Cab</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="cab"
+                                                            placeholder="cab" name="cab" style="margin-top: 30px;">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="driver" class="col-sm-4 col-form-label">Driver</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="driver"
+                                                            placeholder="Driver" name="driver">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="startingKms" class="col-sm-4 col-form-label">Starting
+                                                        Kms</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="startingKms"
+                                                            placeholder="startingKms" name="startingKms">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="endKms" class="col-sm-4 col-form-label">Ending
+                                                        Kms</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="endKms"
+                                                            placeholder="endKms" name="endKms">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="employeeNotes" class="col-sm-4 col-form-label">Employee
+                                                        Notes</label>
+
+                                                    <div class="col-sm-9">
+                                                        <textarea class="form-control" id="employeeNotes" rows="3"
+                                                            placeholder="employeeNotes" style="width: 99%;"
+                                                            name="employeeNotes"></textarea>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- Company Form -->
+                            <div class="row">
+                                <div class="col-md-5 offset-md-1 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">EMPLOYEE DETAILS :</h4>
+
+                                            <form class="forms-sample">
+                                                <div class="form-group row">
+                                                    <label for="employeeName" class="col-sm-4 col-form-label"
+                                                        style="margin-top: 30px;">Employee Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="employeeName"
+                                                            placeholder="projectNamecompanyName"
+                                                            style="margin-top: 30px;">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <label for="alterMobile"
+                                                        class="col-sm-4 col-form-label">Mobile</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="alterMobile"
+                                                            placeholder="Address">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="createdBy" class="col-sm-4 col-form-label">Created
+                                                        By</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="createdBy"
+                                                            placeholder="Password">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="prefLocation"
+                                                        class="col-sm-4 col-form-label">Location</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="prefLocation"
+                                                            placeholder="launchDate">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="employeeEmail" class="col-sm-4 col-form-label">Email
+                                                        :</label>
+                                                    <div class="col-sm-8 input-group" d-flex>
+                                                        <input type="email" class="form-control" id="employeeEmail"
+                                                            placeholder="email" style="width: 10%;">
+                                                        <div class="input-group-append">
+                                                            <a href="mailto:recipient@example.com?subject=Subject%20Here&body=Body%20of%20the%20email"
+                                                                class="btn btn-primary">Compose</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--   <div class="row">
+    <div class="col-5 offset-md-1 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Customer Details</h4>
+        
+          <form class="forms-sample">
+            <div class="form-group">
+              <label for="exampleInputName1">Name</label>
+              <div class="col-sm-9">
+              <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail3">Email address</label>
+              <div class="col-sm-9">
+              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+            </div></div>
+            <div class="form-group">
+              <label for="exampleInputPassword4">Password</label>
+              <div class="col-sm-9">
+              <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+            </div></div>
+            <div class="form-group">
+              <label for="exampleSelectGender">Gender</label>
+              <div class="col-sm-9">
+              <select class="form-control" id="exampleSelectGender">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div></div>
+            <div class="form-group">
+              <label>File upload</label>
+              <div class="col-sm-9">
+              <input type="file" name="img[]" class="file-upload-default">
+              <div class="input-group col-xs-12">
+                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                <span class="input-group-append">
+                  <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputCity1">City</label>
+              <div class="col-sm-9">
+              <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+            </div>
+            <div class="form-group">
+              <label for="exampleTextarea1">Textarea</label>
+              <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+            </div>
+          </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    </div>  -->
+                            <!-- <div class="col-md-5 grid-margin stretch-card">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">SITE IMAGE :</h4>
+              <img id="siteImage" class="img-fluid" alt="Site Image">
+          </div>
+      </div>
+  </div>-->
+                            <!--  <div class="col-md-5 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">SITE IMAGE :</h4>
+            <img id="siteImage" class="img-fluid" alt="Site Image">
+        </div>
+    </div>
+</div>-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <h3 class="page-title"> SITE VISIT LIST </h3><br />
+                    <!-- <button type="button" class="btn btn-gradient-danger btn-rounded btn-fw"
+                        style="margin-left: 70rem;margin-right:-20rem;border-radius: 0;margin-top:-70px;"
+                        onclick="window.location.href='siteVisit_form.html';">Add New</button> -->
+
+                    <div class="page-header">
+                        <!--<h3 class="page-title">Site Visit List</h3><br/>-->
+
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <button class="btn btn-info btn-sm edit-btn" id="filterButton">Filter</button>
+                                <div id="filterFields" style="display: none;">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="date" class="form-control" aria-label="From Date"
+                                                id="fromDate">
+                                        </div>
+                                        <div class="col">
+                                            <input type="date" class="form-control" aria-label="To Date" id="toDate"
+                                                placeholder="To">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" aria-label="mobile" id="mobile"
+                                                placeholder="Mobile No">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" aria-label="customerNames"
+                                                id="customerNames" placeholder="customerNames">
+                                        </div>
+                                        <!-- Add more input fields here -->
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col">
+                                            <select class="form-control custom-select" id="statusFilter"
+                                                aria-label="statusFilter">
+                                                <option value="">Select Status</option>
+                                                <option value="Price Negotiation">Price Negotiation</option>
+                                                <option value="Compare with competitors">Compare with competitors
+                                                </option>
+                                                <option value="Discussing with family">Discussing with family</option>
+
+                                                <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control custom-select" id="buyingDurationFilter"
+                                                aria-label="buyingDurationFilter">
+                                                <option value="">Select Buying Duration</option>
+                                                <option value="1 Month">1 Months</option>
+                                                <option value="3 Months">3 Months</option>
+                                                <option value="3-6 Months">3-6 Months</option>
+
+                                                <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control custom-select" id="fundingResourceFilter"
+                                                aria-label="fundingResourceFilter">
+                                                <option value="">Select Funding Resource</option>
+                                                <option value="Self">Self</option>
+                                                <option value="Jewel">Jewel</option>
+                                                <option value="Loan">Loan</option>
+                                                <option value="others">others</option>
+                                                <!-- Add more options as needed -->
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control custom-select"
+                                                placeholder="Search..." aria-label="Search"
+                                                aria-describedby="search-button" id="searchInput">
+                                        </div>
+                                        <div class="col">
+                                            <button class="btn btn-outline-secondary" type="button"
+                                                id="search-button">Search</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </ol>
+
+                        </nav>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="template-demo">
+
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table id="dataTable" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Customer</th>
+                                                    <th>Phone</th>
+                                                    <th>Project</th>
+                                                    <th>Employee</th>
+                                                    <th>Status</th>
+                                                    <th>Funding Source</th>
+                                                    <th>Buying Duration</th>
+                                                    <th>Actions</th>
+                                                    <!-- <th>View</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Your table content -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <ul id="pagination" class="pagination"></ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <div id="includeFooder"></div>
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!--  -->
+
+    <!-- Your custom JavaScript code here -->
+
+    <div class="container-fluid page-body-wrapper">
+        <div id="includeHtml"></div>
+
+        <div class="modal fade" id="visitDetailModal" tabindex="-1" role="dialog"
+            aria-labelledby="visitDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="visitDetaiModalLabel">Edit Project</h5>
+                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeForm()">-->
+
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Employee Form -->
+                        <form class="forms-sample" id="visitDetailForm">
+
+                            <div class="row">
+                                <div class="col-md-10">
+
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label" for="editEmployeeName">Site Visit
+                                            Employee Name </label>
+                                        <div class="col-sm-7 d-flex">
+                                            <input class="form-control" type="text" id="editEmployeeName"
+                                                name="editEmployeeName" value="" readonly />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-5  col-form-label" for="employeeCode">Site
+                                            Visit Employee Id </label>
+                                        <div class="col-sm-7">
+                                            <input class="form-control" type="text" id="employeeCode"
+                                                name="employeeCode" value="" readonly />
+                                            <div style="margin-top: 10px;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-5 col-form-label" for="editProjectNames">Project
+                                            Name</label>
+                                        <div class="col-sm-7">
+                                            <select id="editProjectNames" name="editProjectNames[]" multiple required
+                                                class="form-control">
+                                                <option value="" disabled>Select Project</option>
+                                                <!-- Options will be dynamically populated here -->
+                                            </select><br>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-5 col-form-label" for="phoneNumber">Customer
+                                            Mobile No</label>
+                                        <div class="col-sm-7">
+                                            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber"
+                                                placeholder="Mobile No" oninput="validateMobile(event)" required />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion" id="formAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="formFieldsHeading">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#formFieldsCollapse" aria-expanded="true"
+                                            aria-controls="formFieldsCollapse">
+                                            Site Visit Details
+                                        </button>
+                                    </h2>
+                                    <div id="formFieldsCollapse" class="accordion-collapse collapse"
+                                        aria-labelledby="formFieldsHeading" data-bs-parent="#formAccordion">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label" for="date">Date</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="date" id="date"
+                                                                name="date" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label"
+                                                            for="editcustomerName">Customer Name</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text"
+                                                                id="editcustomerName" name="editcustomerName" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label"
+                                                            for="editStatus">Status</label>
+                                                        <div class="col-sm-9">
+                                                            <select name="editStatus" class="form-control"
+                                                                id="editStatus">
+                                                                <option value="Price Negotiation">Price
+                                                                    Negotiation</option>
+                                                                <option value="Comparing with the competators">
+                                                                    Comparing with the competators</option>
+                                                                <option value="Discussing with family">
+                                                                    Discussing with family</option>
+                                                                <option value="Checking with Astrologer/ consultant">
+                                                                    Checking with Astrologer/ consultant
+                                                                </option>
+                                                                <option value="Broker/ Mediators">Broker/
+                                                                    Mediators</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label"
+                                                            for="editStartingTime">Starting Time</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="Text"
+                                                                id="editStartingTime" name="editStartingTime" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label" for="editCab">Cab</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text" id="editCab"
+                                                                name="editCab" placeholder="Cab Details" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label"
+                                                            for="editDriver">Driver</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text" id="editDriver"
+                                                                name="editDriver" placeholder="Driver Name"
+                                                                oninput="validateInput('driver')" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label"
+                                                            for="editStartingKms">Starting KMs</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text" id="editStartingKms"
+                                                                name="editStartingKms" placeholder="starting Kms"
+                                                                oninput="validatesNumbersInput(event)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label" for="editEndKms">End
+                                                            KMs</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text" id="editEndKms"
+                                                                name="editEndKms" placeholder="Ending Kms"
+                                                                oninput="validatesNumbersInput(event)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label" for="vehicleType">Vehicle
+                                                            Type</label>
+                                                        <div class="col-sm-9">
+                                                            <input class="form-control" type="text" id="vehicleType"
+                                                                name="vehicleType" placeholder="starting Kms"
+                                                                oninput="validateNo(event)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-4 col-form-label"
+                                                                for="editFundingSource">Funding Source</label>
+                                                            <div class="col-sm-9">
+                                                                <select name="editFundingSource" class="form-control"
+                                                                    id="editFundingSource">
+                                                                    <option value="Self">Self</option>
+                                                                    <option value="Loan">Loan</option>
+                                                                    <option value="Jewel">Jewel</option>
+                                                                    <option value="Others">Others</option>
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-4 col-form-label"
+                                                                for="editBuyingDuration">Buying Duration</label>
+                                                            <div class="col-sm-9">
+                                                                <select name="editBuyingDuration" class="form-control"
+                                                                    id="editBuyingDuration">
+                                                                    <option value="Self">1</option>
+                                                                    <option value="Loan">1-3</option>
+                                                                    <option value="Jewel">3-6</option>
+
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-3 col-form-label" for="photo">Site
+                                                                Image</label>
+                                                            <div class="col-sm-9">
+                                                                <input class="form-control" type="file" id="photo"
+                                                                    name="photo" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-10">
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-4 col-form-label"
+                                                                for="editEmployeeNotes">Employee Notes</label>
+                                                            <div class="col-sm-15">
+                                                                <textarea class="form-control" type="text"
+                                                                    id="editEmployeeNotes" name="editEmployeeNotes"
+                                                                    placeholder="Employee notes"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- Add similar blocks for other fields if needed -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form buttons -->
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-gradient-primary me-2"
+                                    value="submit">Submit</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal"
+                                    onclick="closeForm()">Cancel</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+            let isContentLoaded = false;
+
+            document.addEventListener('DOMContentLoaded', async function () {
+                if (isContentLoaded) return; // Prevent multiple executions
+                isContentLoaded = true;
+
+                try {
+                    const accessToken = localStorage.getItem('accessToken');
+                    const employeeEmail = localStorage.getItem('employeeEmail');
+
+                    // Fetch employee details to get associated company ID
+                    const responseEmployee = await fetch('http://localhost:8080/api/employee/getEmployeeByEmail/' + employeeEmail, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                    });
+
+                    if (!responseEmployee.ok) {
+                        throw new Error('Failed to fetch employee details');
+                    }
+
+                    const dataEmployee = await responseEmployee.json();
+
+                    // Ensure that the company object and companyId are properly fetched
+                    if (!dataEmployee.company || !dataEmployee.company.companyId) {
+                        throw new Error('Company ID not found in employee details');
+                    }
+
+                    const companyId = dataEmployee.company.companyId;
+
+                    // Check if the current URL already contains the company ID parameter
+                    if (!window.location.href.includes(`companyId=${companyId}`)) {
+                        // Redirect to the EmployeeForm page with company ID query parameter
+                        const formUrl = `siteVisit_list.html?companyId=${companyId}`;
+                        window.location.href = formUrl;
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Handle error
+                }
+            });
+
+
+            $(document).ready(function () {
+    const accessToken = localStorage.getItem('accessToken');
+    const urlParams = new URLSearchParams(window.location.search);
+    const companyId = parseInt(urlParams.get('companyId')); // Parse companyId to integer
+    const teamIdFromLocalStorage = localStorage.getItem('teamId');
+    const MainMenus = localStorage.getItem('MainMenus');
+
+     // Check permissions
+     const canEdit = MainMenus && MainMenus.includes('Site Visit List Edit');
+    const canView = MainMenus && MainMenus.includes('Site Visit List View');
+    const canBlockBook = MainMenus && MainMenus.includes('Site Visit List BlockBook');
+
+    // Parse teamIdFromLocalStorage into an array if it's not null
+    const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id)) : [];
+
+
+    // Construct the AJAX URL
+    const ajaxUrl = 'http://localhost:8080/api/visit/getVisitDetail';
+
+    // Perform the AJAX request
+    $.ajax({
+        url: ajaxUrl,
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Authorization': accessToken,
+        },
+        success: function (visitDetails) {
+            console.log('All visitDetails:', visitDetails);
+
+            // Filter visitDetails based on whether "Employee Form" is in MainMenus
+            const filteredVisitDetails = visitDetails.filter(visitDetail => {
+                if (MainMenus && MainMenus.includes('Employee Form')) {
+                    // Filter by companyId only
+                    return visitDetail.companyId === companyId;
+                } else {
+                    // Check if the project teamId matches any of the teamIds
+              return visitDetail.companyId === companyId && (teamIds.length === 0 || teamIds.includes(visitDetail.teamId));
+                }
+            });
+
+            console.log('Filtered visitDetails:', filteredVisitDetails);
+
+            // Clear existing table rows
+            $('#dataTable tbody').empty();
+         //   console.log("visit table:",visitDetail);
+            // Populate table with fetched data
+            filteredVisitDetails.forEach(function (visitDetail) {
+                visitDetail.projectNames.forEach(function (projectName) {
+
+                    let buttons = '';
+
+if (canEdit) {
+    buttons += `
+         <button type="button" class="btn btn-info btn-sm update-btn" 
+                                        data-toggle="modal" 
+                                        data-target="#visitDetailModal" 
+                                        data-visit-id="${visitDetail.visitDetailId}">
+                                    Edit
+                                </button>
+    `;
+}
+
+if (canView) {
+    buttons += `
+         <button type="button" class="btn btn-info btn-sm edit-btn" 
+                                        data-toggle="modal" 
+                                        data-target="#companyModals" 
+                                        data-company-id="${visitDetail.visitDetailId}">
+                                    View
+                                </button>
+    `;
+}
+
+if (canBlockBook) {
+    buttons += `
+          <button type="button" class="btn btn-info btn-sm block-btn" 
+                                        data-company-id="${visitDetail.visitDetailId}" 
+                                        data-phone-number="${visitDetail.phoneNumber}" 
+                                        data-project-name="${projectName}" 
+                                        ${visitDetail.isBlock === false? 'disabled' : '' }>
+                                    Block
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm book-btn" 
+                                        data-company-id="${visitDetail.visitDetailId}" 
+                                        data-phone-number="${visitDetail.phoneNumber}" 
+                                        data-project-name="${projectName}"
+                                        ${visitDetail.isBook === false? 'disabled' : ''}>
+                                    Book
+                                </button>
+    `;
+}
+
+                    // Construct HTML for each projectName and associated visitDetail data
+                    $('#dataTable tbody').append(`
+                        <tr>       
+                            <td>${new Date(visitDetail.date).toLocaleDateString()}</td>
+                            <td>${visitDetail.customerName}</td>
+                            <td>${visitDetail.phoneNumber}</td>     
+                            <td>${projectName}</td>  
+                            <td>${visitDetail.employeeName}</td>
+                            <td>${visitDetail.status}</td>
+                            <td>${visitDetail.fundingSource}</td>
+                            <td>${visitDetail.buyingDuration}</td>
+                             <td>${buttons}</td>
+                        </tr>
+                    `);
+                });
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText); // Log the error response
+            console.error(error); // Log the error message
+            // Optionally display an error message to the user
+            // showalert('Error fetching data from the server. Please try again later.');
+        }
+    });
+});
+
+
+
+            function logout() {
+                // Clear local storage
+                localStorage.clear();
+
+                // Redirect to the logout page or perform other logout actions
+                window.location.href = '../../index.html';
+            }
+            function searchInput() {
+                $('#searchInput').on('input', function () {
+                    var searchText = $(this).val().toLowerCase(); // Get the value of the input and convert it to lowercase for case-insensitive matching
+                    $('#dataTable tbody tr').each(function () {
+                        var rowData = $(this).text().toLowerCase(); // Get the text content of the current row and convert it to lowercase
+                        if (rowData.includes(searchText)) {
+                            $(this).show(); // If the row contains the search text, show it
+                        } else {
+                            $(this).hide(); // Otherwise, hide the row
+                        }
+                    });
+                });
+            }
+
+            function closeForm() {
+                // Assuming 'employeeModal' is the ID of your modal
+
+                $('#companyModal').modal('hide');
+            }
+            var formData = new FormData();
+
+
+
+            jQuery(document).ready(function ($) {
+
+
+                $('#filterButton').click(function () {
+                    $('#filterFields').toggle();
+                });
+
+                function redirectToBlockPage(visitDetailId) {
+                    // Construct the URL with the visitDetailId parameter
+                    const url = `block.html?id=${visitDetailId}`;
+                    // Redirect to the new URL
+                    window.location.href = url;
+                }
+
+                $(document).on('click', '.block-btn', function () {
+
+                    var visiterId = $(this).data('company-id');
+                    var phoneNo = $(this).data('phone-number');
+                    var project = $(this).data('project-name');
+
+                    window.location.href = `../plot_blocked/block.html?visitId=${visiterId}&phoneNumber=${phoneNo}&projectName=${project}`;
+                });
+
+                $(document).on('click', '.book-btn', function () {
+
+                    var visiterId = $(this).data('company-id');
+                    var phoneNo = $(this).data('phone-number');
+                    var project = $(this).data('project-name');
+                    console.log(phoneNo, project);
+                    window.location.href = `../plot_booking/booking.html?visitId=${visiterId}&phoneNumber=${phoneNo}&projectName=${project}`;
+                });
+
+
+                var accumulatedData = [];
+
+
+                function fetchVisitDetails(mobile, startDate, endDate, employeeNames, customerNames, statusFilter, buyingDurationFilter, fundingResourceFilter) {
+                    // Fetch data by date range
+                    accumulatedData = [];
+                    var requests = [];
+
+
+                    if (startDate && endDate) {
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/api/visit/getByDateRange?startDate=${startDate}&endDate=${endDate}`,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+                            success: function (dateRangeData) {
+                                console.log("1");
+                                accumulateData(dateRangeData);
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for date range data
+                            }
+                        }));
+                    }
+                    // Fetch data by date range
+                    if (mobile) {
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+                            url: 'http://localhost:8080/api/visit/getByPhoneNumbers',
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+                            data: { phoneNumber: mobile },
+                            success: function (phoneNumberData) {
+                                console.log("hi");
+                                accumulateData(phoneNumberData);
+
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error('Error in getByPhoneNumbers AJAX request:');
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    if (employeeNames) {
+                        // Fetch data by date range
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/api/visit/getByEmployeeNames`,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+                            data: { employeeName: employeeNames },
+                            success: function (employeedata) {
+                                console.log("3");
+
+                                accumulateData(employeedata);
+
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    if (customerNames) {
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/api/visit/getByCustomerNames`,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+
+                            data: { customerName: customerNames },
+                            success: function (customerdata) {
+                                accumulateData(customerdata);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    if (statusFilter) {
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/api/visit/getByStatus`,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+
+                            data: { status: statusFilter },
+                            success: function (statusData) {
+                                accumulateData(statusData);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+                    }
+                    if (buyingDurationFilter) {
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+                            url: `http://localhost:8080/api/visit/getByBuyingDurations`,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+
+                            data: { buyingDuration: buyingDurationFilter },
+                            success: function (buyingDurationData) {
+                                accumulateData(buyingDurationData);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data   
+                            }
+                        }));
+                    }
+                    if (fundingResourceFilter) {
+                        const accessToken = localStorage.getItem('accessToken');
+                        requests.push($.ajax({
+
+                            url: `http://localhost:8080/api/visit/getByFundingSources`,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+
+                            data: { fundingSource: fundingResourceFilter },
+                            success: function (fundingResourceData) {
+                                accumulateData(fundingResourceData);
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                // Handle error for phone number data
+                            }
+                        }));
+
+                    }
+                    $.when.apply($, requests).then(function () {
+                        // Collect data from all responses
+                        $.each(arguments, function (index, responseData) {
+                            accumulateData(responseData[0]);
+                        });
+                        // Apply filters after all AJAX requests have completed
+
+                    });
+                    function accumulateData(data) {
+                        // Combine the new data with the accumulated data
+                        accumulatedData = accumulatedData.concat(data);
+                        applyFilters();
+                        // Apply filters to the accumulated data
+
+                    }
+                    function applyFilters() {
+                        // Apply filters to the accumulated data and update the table
+
+                        var encounteredPhoneNumbers = new Set();
+
+
+                        var filteredData = accumulatedData.filter(item => typeof item === 'object' && item !== undefined && item !== null);
+
+                        // Check if there are any filtered results
+                        if (filteredData.length === 0) {
+                            // If no results, clear the table body
+                            var tableBody = $('#dataTable tbody');
+                            tableBody.empty();
+                            return;
+                        }
+
+                        if (filteredData && filteredData.length > 0) {
+                            if (mobile && filteredData.length > 0) {
+                                var mobileNumbers = mobile.split(',');
+                                filteredData = filteredData.filter(item =>
+                                    mobileNumbers.includes(item.phoneNumber)
+                                );
+
+                                console.log("shanuuu");
+                            }
+                            if (startDate && endDate && filteredData.length > 0) {
+                                filteredData = filteredData.filter(item => {
+                                    const visitDate = new Date(item.date);
+                                    return visitDate >= new Date(startDate) && visitDate <= new Date(endDate);
+                                });
+                            }
+
+                            // Filter by employee names
+                            if (employeeNames && filteredData.length > 0) {
+                                filteredData = filteredData.filter((item, index, self) =>
+                                    index === self.findIndex(t => t.visitDetailId === item.visitDetailId) &&
+                                    item.employeeName === employeeNames
+                                );
+                            }
+
+                            // Filter by customer names
+                            if (customerNames && filteredData.length > 0) {
+                                filteredData = filteredData.filter((item, index, self) =>
+                                    index === self.findIndex(t => t.visitDetailId === item.visitDetailId) &&
+                                    item.customerName === customerNames
+                                );
+                            }
+
+                            // Filter by status
+                            if (statusFilter && filteredData.length > 0) {
+                                filteredData = filteredData.filter((item, index, self) =>
+                                    index === self.findIndex(t => t.visitDetailId === item.visitDetailId) &&
+                                    item.status === statusFilter);
+                            }
+
+                            // Filter by buying duration
+                            if (buyingDurationFilter && filteredData.length > 0) {
+                                filteredData = filteredData.filter((item, index, self) =>
+                                    index === self.findIndex(t => t.visitDetailId === item.visitDetailId) &&
+                                    item.buyingDuration === buyingDurationFilter);
+                            }
+
+                            // Filter by funding resource
+                            if (fundingResourceFilter && filteredData.length > 0) {
+                                filteredData = filteredData.filter((item, index, self) =>
+                                    index === self.findIndex(t => t.visitDetailId === item.visitDetailId) &&
+                                    item.fundingSource === fundingResourceFilter);
+                            }
+                            console.log("Filtered data after filtering:", filteredData);
+                            var data = [];
+
+                            var uniqueVisitDetailIds = new Set();
+                            var uniqueProjectNames = new Set();
+                            filteredData = filteredData.filter(item => {
+                                // Check if the current visitDetailId has already been encountered
+                                if (uniqueVisitDetailIds.has(item.visitDetailId) && uniqueProjectNames.has(item.projectName)) {
+                                    // If the visitDetailId is already in the set, return false to exclude it from the filtered data
+                                    return false;
+                                } else {
+                                    // If the visitDetailId is not in the set, add it to the set and return true to include it in the filtered data
+                                    uniqueVisitDetailIds.add(item.visitDetailId);
+                                    uniqueProjectNames.add(item.projectName);
+                                    data.push(item);
+                                    return true;
+                                }
+                            });
+
+
+
+                            // Update the table with the filtered data
+                            updateTable(data);
+
+
+
+                        }
+                    }
+                    function updateTable(data) {
+                        var newdata = [];
+                        console.log("data", data);
+                        let uniqueVisitDetailId = new Set();
+                        let uniqueProjectName = new Set();
+                        // Clear existing table rows
+                        var tableBody = $('#dataTable tbody');
+                        tableBody.empty();
+                        var ajaxCounter = 0;
+                        var totalAjaxRequests = data.length;
+
+                        // Create a map to store block details for each visitDetailId
+                        var blockDetailsMap = {};
+
+                        // Function to append row to table
+                        function appendRow(details, projectName, isBlocked) {
+                            $('#dataTable tbody').append(`
+                    <tr>       
+                        <td>${new Date(details.date).toLocaleDateString()}</td>
+                        <td>${details.customerName}</td>
+                        <td>${details.phoneNumber}</td>        
+                        <td>${details.employeeName}</td>
+                        <td>${details.employeeName}</td>
+                        <td>${details.status}</td>
+                        <td>${details.fundingSource}</td>
+                        <td>${details.buyingDuration}</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm block-btn" data-company-id="${visitDetail.visitDetailId}" data-phone-number="${visitDetail.phoneNumber}" data-project-name="${projectName}" ${visitDetail.isBlock === true ? 'disabled' : ''}>Block</button>
+                            <button type="button" class="btn btn-info btn-sm book-btn" data-company-id="${visitDetail.visitDetailId}" data-phone-number="${visitDetail.phoneNumber}" data-project-name="${projectName}"${visitDetail.isBook === true ? 'disabled' : ''}>Book</button>
+                            <button type="button" class="btn btn-info btn-sm update-btn" data-toggle="modal" data-target="#visitDetailModal" data-visit-id="${visitDetail.visitDetailId}">Edit</button>
+                         </td> 
+                        <td>  
+                            <button type="button" class="btn btn-info btn-sm edit-btn" data-toggle="modal" data-target="#companyModals" data-company-id="${details.visitDetailId}">View</button>
+                        </td>
+                    </tr>
+                `);
+                        }
+
+                        // Populate table with fetched data
+                        $.each(data, function (index, details) {
+                            var status = details.isActive == 1 ? 'Active' : 'Inactive';
+                            var projectNames = details.projectNames; // Assuming projectNames is an array
+
+                            // Iterate through projectNames and create a new row for each project name
+                            projectNames.forEach(function (projectName, projectIndex) {
+                                // Check if the current visitDetailId and projectName combination has already been encountered
+                                if (!uniqueVisitDetailId.has(details.visitDetailId) || !uniqueProjectName.has(projectName)) {
+                                    uniqueVisitDetailId.add(details.visitDetailId);
+                                    uniqueProjectName.add(projectName);
+
+                                    let isBlocked = false; // Initialize isBlocked to false
+                                    if (blockDetailsMap[details.visitDetailId] && blockDetailsMap[details.visitDetailId][projectName]) {
+                                        isBlocked = true; // Set isBlocked to true if payment is greater than 0 or time is less than 24 hours
+                                    }
+
+                                    appendRow(details, projectName, isBlocked);
+                                }
+                            });
+                        });
+
+                        $('#companyModal').modal('hide');
+                    }
+                }
+
+
+
+
+                $('#search-button').on('click', function () {
+                    var mobile = $('#mobile').val(); // Get the mobile number
+                    var fromDate = $('#fromDate').val();
+                    var toDate = $('#toDate').val();
+                    var employeeNames = $('#employeeNames').val();
+                    var customerNames = $('#customerNames').val();
+                    var statusFilter = $('#statusFilter').val();
+                    var buyingDurationFilter = $('#buyingDurationFilter').val();
+                    var fundingResourceFilter = $('#fundingResourceFilter').val();
+
+                    // Validate the input if needed
+
+                    fetchVisitDetails(mobile, fromDate, toDate, employeeNames, customerNames, statusFilter, buyingDurationFilter, fundingResourceFilter);
+                });
+                var currentCompanyId;
+
+                $(document).on('click', '.edit-btn', function () {
+                    currentCompanyId = $(this).data('company-id');
+                    var visitId = $(this).data('company-id');
+
+                    const accessToken = localStorage.getItem('accessToken');
+                    $.ajax({
+                        url: 'http://localhost:8080/api/visit/getVisitDetailsById/' + visitId,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                        success: function (visitData) {
+                            console.log(visitData);
+                            populateCompanyForm(visitData, formData)
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+
+                            $('#companyModal').modal('show');
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            console.error(error);
+                            //   showalert('Error fetching company details. Please try again later.');
+                        }
+                    });
+
+                });
+
+                function populateCompanyForm(visitData, formData) {
+                    // const logoPreview = document.getElementById('logoPreview');
+                    //const signaturePreview = document.getElementById('signaturePreview');
+                    //const companySealPreview = document.getElementById('companySealPreview');
+
+                    //const formattedPincode = visitData.pincode ? visitData.pincode.toString() : '';
+
+                    console.log(visitData.project, "shan");
+                    $('#cab').val(visitData.cab);
+                    $('#driver').val(visitData.driver);
+                    $('#startingKms').val(visitData.startingKms);
+                    $('#endKms').val(visitData.endKms);
+                    $('#employeeNotes').val(visitData.employeeNotes);
+                    //const siteImageElement = document.getElementById('siteImage');
+                    //siteImageElement.src = 'http://localhost:8080/' //+ visitData.supervisorsignImages; 
+                    //const siteImageElement = document.getElementById('siteImage');
+                    //siteImageElement.src = visitData.siteImage;
+                    //console.log(siteImageElement);
+
+                    /*  $.ajax({
+                        url: 'http://localhost:8080/getProjectByProjectName/' + visitData.project,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (projectData) {
+                        console.log(projectData);
+                        populateProjectForm(projectData,formData)
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+                            
+                            $('#companyModal').modal('show');
+                            
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            console.error(error);
+                        //   showalert('Error fetching company details. Please try again later.');
+                        }
+                    });
+                    */
+                    const accessToken = localStorage.getItem('accessToken');
+                    $.ajax({
+                        url: 'http://localhost:8080/api/employee/getEmployeeByEmail/' + visitData.employeeCode,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                        success: function (employeeData) {
+                            console.log(employeeData);
+                            populateEmployeeForm(employeeData, visitData)
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+
+                            $('#companyModal').modal('show');
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            console.error(error);
+                            //   showalert('Error fetching company details. Please try again later.');
+                        }
+                    });
+
+                }
+
+                function populateEmployeeForm(employeeData, visitData) {
+                    // const logoPreview = document.getElementById('logoPreview');
+                    //const signaturePreview = document.getElementById('signaturePreview');
+                    //const companySealPreview = document.getElementById('companySealPreview');
+
+                    //const formattedPincode = companyData.pincode ? companyData.pincode.toString() : '';
+                    console.log(visitData.phoneNumber, "shan");
+                    $('#employeeName').val(employeeData.employeeName);
+                    $('#employeeEmail').val(employeeData.employeeEmail);
+                    $('#alterMobile').val(employeeData.alterMobile);
+                    $('#createdBy').val(employeeData.createdBy);
+                    $('#prefLocation').val(employeeData.prefLocation);
+
+                    const accessToken = localStorage.getItem('accessToken');
+                    $.ajax({
+                        url: 'http://localhost:8080/api/customer/getCustomerByPhoneNumber/' + visitData.phoneNumber,
+                        type: 'GET',
+                        dataType: 'json',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': accessToken,
+                        },
+                        success: function (customerData) {
+                            console.log(customerData, "customerData");
+                            populateCustomerForm(customerData, formData)
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+
+                            $('#companyModal').modal('show');
+
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            console.error(error);
+                            //   showalert('Error fetching company details. Please try again later.');
+                        }
+                    });
+                }
+
+                function populateCustomerForm(customerData, formData) {
+                    // const logoPreview = document.getElementById('logoPreview');
+                    //const signaturePreview = document.getElementById('signaturePreview');
+                    //const companySealPreview = document.getElementById('companySealPreview');
+
+                    //const formattedPincode = companyData.pincode ? companyData.pincode.toString() : '';
+                    console.log(customerData.customerName, "shanma");
+                    $('#customerName').val(customerData.customerName);
+                    $('#mobileNumber').val(customerData.mobileNumber);
+                    $('#email').val(customerData.email);
+                    $('#employeeType').val(customerData.employeeType);
+                    $('#workPlace').val(customerData.workPlace);
+                    $('#address').val(customerData.address);
+
+                }
+            });
+
+            // Wrap your JavaScript code inside the DOMContentLoaded event listener
+            document.addEventListener('DOMContentLoaded', function () {
+                $(document).on('click', '.update-btn', function () {
+                    // Retrieve the visit ID from the clicked button's data attribute
+                    const currentId = $(this).data('visit-id');
+
+                    // Check if the visit ID is defined
+                    if (currentId !== undefined) {
+                        // Set current visit detail ID
+                        currentVisitDetailId = currentId;
+
+                        // Proceed with the AJAX request
+                        const accessToken = localStorage.getItem('accessToken');
+                        // Proceed with the AJAX request
+                        $.ajax({
+                            url: 'http://localhost:8080/api/visit/getVisitDetailsById/' + currentId,
+                            type: 'GET',
+                            dataType: 'json',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': accessToken,
+                            },
+                            success: function (visitDetailData) {
+                                console.log(visitDetailData);
+                                populateUpdateForm(visitDetailData);
+                                $('#visitDetailModal').modal('show');
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText);
+                                console.error(error);
+                                showalert('Error fetching visit details. Please try again later.');
+                            }
+                        });
+                    } else {
+                        // Handle the case where the visit ID is undefined
+                        console.error('Visit ID is undefined');
+                        showalert('Error: Visit ID is missing.');
+                    }
+                });
+
+                // Inside the populateUpdateForm function
+                function populateUpdateForm(visitDetailData) {
+                    const DateDate = new Date(visitDetailData.date); // Corrected variable name
+                    const formattedDate = DateDate.toISOString().split('T')[0];
+
+                    $('#editEmployeeName').val(visitDetailData.employeeName);
+                    $('#employeeCode').val(visitDetailData.employeeCode);
+
+                    // Clear existing options
+                    $('#editProjectNames').empty();
+
+                    // Populate dropdown with project names
+                    visitDetailData.projectNames.forEach(function (projectName) {
+                        $('#editProjectNames').append(`<option value="${projectName}">${projectName}</option>`);
+                    });
+
+                    $('#phoneNumber').val(visitDetailData.phoneNumber);
+                    $('#date').val(formattedDate);
+                    $('#editcustomerName').val(visitDetailData.customerName);
+                    $('#editSstatus').val(visitDetailData.status);
+                    $('#editStartingTime').val(visitDetailData.startingTime);
+                    $('#editCab').val(visitDetailData.cab);
+                    $('#editDriver').val(visitDetailData.driver);
+                    $('#editStartingKms').val(visitDetailData.startingKms);
+                    $('#editEndKms').val(visitDetailData.endKms);
+                    $('#vehicleType').val(visitDetailData.vehicleType);
+                    $('#editFundingSource').val(visitDetailData.fundingSource);
+                    $('#editBuyingDuration').val(visitDetailData.buyingDuration);
+                    $('#editEmployeeNotes').val(visitDetailData.employeeNotes);
+                }
+
+                $(document).ready(function () {
+    // Add an event listener to the editProjectNames dropdown
+    $('#editProjectNames').on('focus', async function () {
+        $('#editProjectNames').empty();
+        
+        try {
+            const accessToken = localStorage.getItem('accessToken');
+            if (!accessToken) {
+                console.error('Access token not found');
+                return;
+            }
+            
+            const MainMenus = localStorage.getItem('MainMenus');
+            console.log(MainMenus);
+
+            const companyIdFromLocalStorage = localStorage.getItem('companyId');
+            const teamIdFromLocalStorage = localStorage.getItem('teamId');
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (MainMenus && MainMenus.includes('Employee Form')) {
+                // Fetch project details based on companyId in project table
+                $.ajax({
+                    url: `http://localhost:8080/api/project/getAllProjectDetails`,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': accessToken
+                    },
+                    success: function (projects) {
+                        console.log("projects:", projects);
+                        projects.forEach(function (project) {
+                            if (project.companyId == companyIdFromLocalStorage) {
+                                console.log("filteredCompanies:", project);
+                                $('#editProjectNames').append(`<option value="${project.id}">${project.projectName}</option>`);
+                                console.log(project.projectName);
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                        console.error(error);
+                    }
+                });
+            } else {
+                
+                 // Parse teamIdFromLocalStorage into an array if it's not null
+    const teamIds = teamIdFromLocalStorage ? teamIdFromLocalStorage.split(',').map(id => parseInt(id)) : [];
+
+                $.ajax({
+                    url: `http://localhost:8080/api/teams/getAllTeamDetails`,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': accessToken
+                    },
+                    success: function (teams) {
+                        console.log("teams:", teams);
+                        teams.forEach(function (team) {
+                            if (team.companyId == companyIdFromLocalStorage && teamIds.length === 0 || teamIds.includes(team.teamId)) {
+                                console.log("filteredCompanies and Teams:", team);
+                                if (team.projectNames && team.projectNames.length > 0) {
+                                    team.projectNames.forEach(function (projectName) {
+                                        $('#editProjectNames').append(`<option value="${team.teamId}">${projectName}</option>`);
+                                        console.log(projectName);
+                                    });
+                                }
+                            }
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                        console.error(error);
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+});
+            });
+
+        
+            document.getElementById('visitDetailForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                // Extract visitDetailId from wherever it's stored in your code
+                const visitDetailId = currentVisitDetailId; // Assuming you have a global variable storing the visitDetailId
+                const companyIdFromLocalStorage=localStorage.getItem('companyId');
+                // Rest of the code for form submission remains the same
+                const formData = new FormData();
+                const selectedProjects = Array.from(document.getElementById('editProjectNames').selectedOptions, option => option.textContent);
+                const visitDetailData = {
+                    employeeName: document.getElementById('editEmployeeName').value,
+                    companyId: companyIdFromLocalStorage,
+                    employeeCode: document.getElementById('employeeCode').value,
+                    projectNames: selectedProjects,
+                    date: document.getElementById('date').value,
+                    customerName: document.getElementById('editcustomerName').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    status: document.getElementById('editStatus').value,
+                    fundingSource: document.getElementById('editFundingSource').value,
+                    buyingDuration: document.getElementById('editBuyingDuration').value,
+                    vehicleType: document.getElementById('vehicleType').value,
+                    cab: document.getElementById('editCab').value,
+                    driver: document.getElementById('editDriver').value,
+                    startingKms: document.getElementById('editStartingKms').value,
+                    endKms: document.getElementById('editEndKms').value,
+                    startingTime: document.getElementById('editStartingTime').value,
+                    employeeNotes: document.getElementById('editEmployeeNotes').value
+                };
+
+                formData.append('visitDetails', new Blob([JSON.stringify(visitDetailData)], { type: 'application/json' }));
+
+                const photoFile = document.getElementById('photo');
+                if (photoFile.files.length > 0) {
+                    formData.append('photo', photoFile.files[0]);
+                }
+
+                try {
+                    const accessToken = localStorage.getItem('accessToken');
+                    const response = await fetch('http://localhost:8080/api/visit/editVisitDetail/' + visitDetailId, {
+                        method: 'PUT',
+                        body: formData,
+                        headers: {
+
+                            'Authorization': accessToken,
+                        },
+                        credentials: 'include'
+                    });
+
+                    if (!response.ok) 
+                    {
+                        throw new Error('Failed to update visit detail');
+                    }
+
+                    const updatedVisitDetail = await response.json();
+                    console.log('visit detail updated successfully:', updatedVisitDetail);
+
+                    // Optionally, perform any other action upon successful update
+
+                    showalert('Visit detail updated successfully',function()
+                    {
+                    window.location.href='siteVisit_list.html';
+                    });
+                } catch (error) {
+                    console.error('Error updating visit detail:', error);
+                    showalert('Failed to update visit detail. Please try again.');
+                }
+            });
+
+
+
+            const emailInput = document.getElementById('email');
+
+            // const validationMessage = document.getElementById('validationMessage');
+            // // Regular expression to validate email addresses for the specified domains
+            // const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|outlook\.com|hotmail\.com|aol\.com|icloud\.com|protonmail\.com|zoho\.com|gmx\.com|yandex\.com|mail\.com)$/;
+
+            // emailInput.addEventListener('input', validateEmail);
+
+            // function validateEmail() {
+            //     const email = emailInput.value;
+
+            //     if (emailRegex.test(email)) {
+            //         validationMessage.innerText = "Valid email address";
+            //         validationMessage.style.color = "green";
+            //     } else {
+            //         validationMessage.innerText = "Invalid email address";
+            //         validationMessage.style.color = "red";
+            //     }
+            // }
+
+
+
+            // document.getElementById('submit').addEventListener('click', submitForm);
+
+            // function submitForm(event) {
+            //     event.preventDefault(); // Prevent default form submission behavior
+
+            //     // Validate both fields
+            //     validateNo('companyId');
+
+
+            // }
+
+            function validateNo(inputId) {
+                const inputField = document.getElementById(inputId);
+                const inputValue = inputField.value;
+                const NoRegex = /^[A-Za-z0-9\s]*$/; // Regular expression to allow alphabets, numbers, and spaces
+
+                if (!NoRegex.test(inputValue)) {
+                    inputField.style.borderColor = 'red'; // Set border color to red
+                    inputField.setCustomValidity("Please enter numbers and alphabets only."); // Set custom validation message
+                    inputField.reportValidity(); // Show validation message
+                } else {
+                    inputField.style.borderColor = ''; // Reset border color
+                    inputField.setCustomValidity(""); // Clear custom validation message
+                }
+            }
+
+            function validateMobile(event) {
+                const inputValue = event.target.value;
+                const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+                if (!numericRegex.test(inputValue)) {
+                    event.target.style.borderColor = 'red'; // Set border color to red
+                    event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+                    event.target.reportValidity(); // Show validation message
+                    event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+                } else if (inputValue.length > 12) {
+                    event.target.style.borderColor = 'red'; // Set border color to red
+                    event.target.setCustomValidity("Maximum length for mobile number is 12 digits."); // Set validation message
+                    event.target.reportValidity(); // Show validation message
+                    event.target.value = inputValue.slice(0, 12); // Truncate to 12 digits
+                } else {
+                    event.target.style.borderColor = ''; // Reset border color
+                    event.target.setCustomValidity(""); // Clear validation message
+                }
+            }
+
+
+            function submitForm(event) {
+                event.preventDefault(); // Prevent default form submission behavior
+                validateInput('customerName');
+
+
+
+                validateInput('driver');
+
+                validateInput('workPlace');
+            }
+
+            function validateInput(inputId) {
+                const inputValue = document.getElementById(inputId).value;
+                const alphaRegex = /^[a-zA-Z\s]+$/; // Regular expression to match only alphabetic characters and spaces
+                const specialCharRegex = /[^a-zA-Z\s]/; // Regular expression to match any special characters
+
+                if (specialCharRegex.test(inputValue) || !alphaRegex.test(inputValue)) {
+                    document.getElementById(inputId).style.borderColor = 'red'; // Set border color to red
+                    document.getElementById(inputId).setCustomValidity("Only alphabetic characters are allowed."); // Set validation message
+                    document.getElementById(inputId).reportValidity(); // Show validation message
+                } else {
+                    document.getElementById(inputId).style.borderColor = ''; // Reset border color
+                    document.getElementById(inputId).setCustomValidity(""); // Clear validation message
+                }
+            }
+
+
+
+
+            function validatesNumbersInput(event) {
+                const inputValue = event.target.value;
+                const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+                if (!numericRegex.test(inputValue)) {
+                    event.target.style.borderColor = 'red'; // Set border color to red
+                    event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+                    event.target.reportValidity(); // Show validation message
+                } else {
+                    event.target.style.borderColor = ''; // Reset border color
+                    event.target.setCustomValidity(""); // Clear validation message
+                }
+            }
+
+            function validatesInput(event) {
+                const inputValue = event.target.value;
+                const numericRegex = /^[0-9]*$/; // Regular expression to match numeric characters
+
+                if (!numericRegex.test(inputValue)) {
+                    event.target.style.borderColor = 'red'; // Set border color to red
+                    event.target.setCustomValidity("Only numeric characters are allowed."); // Set validation message
+                    event.target.reportValidity(); // Show validation message
+                    event.target.value = inputValue.replace(/\D/g, ''); // Remove non-numeric characters
+                } else if (inputValue.length < 6) {
+                    event.target.style.borderColor = 'red'; // Set border color to red
+                    event.target.setCustomValidity("Minimum length is 6 digits."); // Set validation message
+                    event.target.reportValidity(); // Show validation message
+                } else if (inputValue.length > 6) {
+                    event.target.style.borderColor = ''; // Set border color to red
+                    event.target.setCustomValidity("Maximum length is 6 digits."); // Set validation message
+                    event.target.reportValidity(); // Show validation message
+                    event.target.value = inputValue.slice(0, 6); // Truncate to 6 digits
+                } else {
+                    event.target.style.borderColor = ''; // Reset border color
+                    event.target.setCustomValidity(""); // Clear validation message
+                }
+            }
+
+
+
+            // // $(document).ready(function(){
+            // //         $('#location,#address,#streetName').on('input', function(){
+            // //             var inputValue = $(this).val();
+            // //             // Check if the input contains any numeric characters
+
+            // //           // Check if the input length exceeds the limit
+            // //           if(inputValue.length > 100){
+            // //               showalert('Maximum length exceeded. Please enter up to 50 characters.');
+            // //               // Trim the input to the maximum length
+            // //               $(this).val(inputValue.slice(0,100));           
+            // //         }
+            // //     });
+            // // });
+
+
+            function submitForm(event) {
+                event.preventDefault(); // Prevent default form submission behavior
+
+                // Validate both fields
+                validateNo('area');
+                validateNo('employeeType');
+                validateNo('workPlace');
+
+
+            }
+            function validateNo(inputId) {
+                const inputField = document.getElementById(inputId);
+                const inputValue = inputField.value;
+                const NoRegex = /^[A-Za-z0-9\s]*$/; // Regular expression to allow alphabets, numbers, and spaces
+
+                if (!NoRegex.test(inputValue)) {
+                    inputField.style.borderColor = 'red'; // Set border color to red
+                    inputField.setCustomValidity("Please enter numbers and alphabets only."); // Set custom validation message
+                    inputField.reportValidity(); // Show validation message
+                } else {
+                    inputField.style.borderColor = ''; // Reset border color
+                    inputField.setCustomValidity(""); // Clear custom validation message
+                }
+            }
+
+        </script>
+        <!-- plugins:js -->
+      <script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ 
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../../assets/js/off-canvas.js"></script>
+        <script src="../../assets/js/hoverable-collapse.js"></script>
+        <!-- <script src="../../assets/js/pagination.js"></script> -->
+        <script src="../../assets/js/menu_active.js"></script>
+      <!--<script src="../../assets/js/misc.js"></script> -->
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="../../assets/js/chart.js"></script>
+        <!-- End custom js for this page -->
+</body>
+
+</html>

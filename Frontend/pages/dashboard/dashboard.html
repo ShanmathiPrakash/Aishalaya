@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Dashboard | Aishalaya</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End Plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+        <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+          
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      <div id="includeHtml"></div>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title"> Dashboard</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="page-title" style="margin-bottom: 1em;">Project List</h4>
+                  <div class="table-responsive">
+                    <table id="dataTableForProjectList" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Project Name</th>
+                          <th>Launch Date</th>
+                          <th>District</th>
+                          <th>Taluk</th>
+                          <th>Village</th>
+                          <th>Total Plot</th>
+                          <th>View</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content will be populated here -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="page-title" style="margin-bottom: 1em;">Employee List</h4>
+                  <div class="table-responsive">
+                    <table id="dataTableForEmployeeList" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Name</th>
+                          <th>Designation</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="page-title" style="margin-bottom: 1em;">Site Visit List</h4>
+                  <div class="table-responsive">
+                    <table id="dataTableForSiteVisitList" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Emploee</th>
+                          <th>Customer</th>
+                          <th>Employee Mail</th>
+                          <th>Customer Mobile</th>
+                          <th>Status</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="page-title" style="margin-bottom: 1em;">Block List</h4>
+                  <div class="table-responsive">
+                    <table id="dataTableForBlockList" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Project</th>
+                          <th>Plot No</th>
+                          <th>Project</th>
+                          <th>Employee</th>
+                          <th>Employee Email</th>
+                          <th>Customer</th>
+                          <th>Customer Mobile</th>
+                          <th>Paid</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="page-title" style="margin-bottom: 1em;">Booking List</h4>
+                  <div class="table-responsive">
+                    <table id="dataTableForBookingList" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                         <th>Employee</th> 
+                          <th>Customer</th>
+                         
+                          <th>Project</th>
+                          <th>Plot</th>
+                          <th>Net Amount</th>
+                          <th>Paid</th>
+                          <th>Balance</th>
+                          <th>Customer Mobile</th>
+                          <th>Employee Email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="page-title" style="margin-bottom: 1em;">Customer List</h4>
+                  <div class="table-responsive">
+                    <table id="dataTableForCustomerList" class="table table-hover">
+                      <thead>
+                        <tr>
+                         
+                          <th>Customer</th>
+                          <th>Email</th>
+                          <th>Mobile</th>
+                          <th>Working</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Your table content -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <div id="includeFooder"></div>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  
+  <!-- plugins:js -->
+  <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="http://127.0.0.1:5500/assets/js/dashboard.js"></script>
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <script src="../../assets/js/menu_active.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="../../assets/js/chart.js"></script>
+  <!-- End custom js for this page -->
+
+  <script>
+    function closeForm() {
+      // Assuming 'employeeModal' is the ID of your modal
+      $('#projectModal').modal('hide');
+    }
+
+    function logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Replace current state with a new state to prevent going back
+    window.history.replaceState(null, "", window.location.href);
+
+    // Add an event listener to handle the popstate event
+    window.onpopstate = function (event) {
+        // Push another state to forward the user
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    // Redirect to the logout page or perform other logout actions
+    window.location.href = '../../index.html';
+   }
+    var formData = new FormData();
+    const accessToken = localStorage.getItem('accessToken');
+    $(document).ready(function () 
+    {
+      $.ajax({
+        url: 'http://localhost:8080/api/project/getAllProjectDetails',
+        type: 'GET',
+        dataType: 'json',
+        headers: 
+        {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (data) {
+          // Populate table with fetched data
+          $.each(data, function (index, project) 
+          {
+
+            $('#dataTableForProjectList tbody').append(`
+                                <tr>
+                                    <td>${project.projectName}</td>
+                                    <td>${project.launchDate}</td>
+                                    <td>${project.district}</td>
+                                    <td>${project.taluk}</td>
+                                    <td>${project.village}</td>
+                                    <td>${project.totalPlots}</td>
+                                </tr>
+                            `);
+          });
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+      $.ajax({
+        url: 'http://localhost:8080/api/employee/getAllEmployeeDetails',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (data) {
+          // Populate table with fetched data
+          $.each(data, function (index, employee) 
+          {
+            $('#dataTableForEmployeeList tbody').append(`
+                                <tr>
+                                  <td>${employee.employeeCode}</td>
+                                    <td>${employee.employeeName}</td>
+                                   
+                                    <td>${employee.role.role}</td>
+                                    <td>${employee.employeeEmail}</td>
+                                    <td>${employee.employeeMobile}</td>
+                                  
+                                  
+      
+                                </tr>
+                            `);
+          });
+
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+
+      $.ajax({
+        url: 'http://localhost:8080/api/visit/getVisitDetail',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (data) {
+          // Populate table with fetched data
+          $.each(data, function (index, employee) {
+
+            const dateStr = employee.date;
+            const date = new Date(dateStr);
+
+            // Format the date as "YYYY-MM-DD"
+            const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+
+            $('#dataTableForSiteVisitList tbody').append(`
+                                <tr>
+                                  <td>${formattedDate}</td>
+                                    <td>${employee.employeeName}</td>
+                                   
+                                    <td>${employee.customerName}</td>
+                                    <td>${employee.employeeCode}</td>
+                                    <td>${employee.phoneNumber}</td>
+                                    <td>${employee.status}</td>
+                                  
+                                  
+      
+                                </tr>
+                            `);
+          });
+
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+
+      $.ajax({
+        url: 'http://localhost:8080/api/blocks/blocksDetails',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (data) {
+          // Populate table with fetched data
+          $.each(data, function (index, employee) {
+
+            const dateStr = employee.cdtDate;
+            const date = new Date(dateStr);
+
+            // Format the date as "YYYY-MM-DD"
+            const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+
+            $('#dataTableForBlockList tbody').append(`
+                                <tr>
+                                  <td>${formattedDate}</td>
+                                    <td>${employee.projectName}</td>
+                                   
+                                    <td>${employee.plotNumber}</td>
+                                    <td>${employee.siteVisitEmpName}</td>
+                                    <td>${employee.employeeCode}</td>
+                                    <td>${employee.customerName}</td>
+                                    <td>${employee.mobileNumber}</td>
+                                    <td>${employee.paidAmount}</td>
+                                    <td>${employee.status}</td>
+                                    
+                                  
+      
+                                </tr>
+                            `);
+          });
+
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+      $.ajax({
+        url: 'http://localhost:8080/api/booking/getAllBookingDetails',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (data) {
+          // Populate table with fetched data
+          $.each(data, function (index, employee) {
+
+            const dateStr = employee.paidDate;
+            const date = new Date(dateStr);
+
+            // Format the date as "YYYY-MM-DD"
+            const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+const netAmount=employee.netAmount;
+const paidAmount=employee.paidAmount;
+const balance=netAmount-paidAmount;
+            $('#dataTableForBookingList tbody').append(`
+                                <tr>
+                                  <td>${formattedDate}</td>
+                                  <td>${employee.bookingEmpNAme}</td>
+                                    <td>${employee.customerName}</td>
+                                   
+                                   
+                                    <td>${employee.projectName}</td>
+                                    <td>${employee.plotNumber}</td>
+                                    <td>${employee.netAmount}</td>
+                                 
+                                    <td>${employee.paidAmount}</td>
+                                    <td>${balance}</td>
+                                    <td>${employee.mobileNumber}</td>
+                                    <td>${employee.bookingEmpId}</td>
+                                  
+      
+                                </tr>
+                            `);
+          });
+
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+
+      $.ajax({
+        url: 'http://localhost:8080/api/customer/getAllCustomerDetails',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': accessToken,
+        },
+        success: function (data) {
+          // Populate table with fetched data
+          $.each(data, function (index, employee) {
+
+          
+            $('#dataTableForCustomerList tbody').append(`
+                                <tr>
+                                 
+                                  <td>${employee.customerName}</td>
+                                    <td>${employee.mobileNumber}</td>
+                                    <td>${employee.email}</td>
+                                    <td>${employee.workPlace}</td>
+                                   
+                                </tr>
+                            `);
+
+          });
+console.log("mainmenus:",localStorage.getItem('MainMenus'));
+        },
+        error: function (xhr, status, error) {
+          console.error(xhr.responseText); // Log the error response
+          console.error(error); // Log the error message
+          showalert('Error fetching data from the server. Please try again later.'); // Display an error message to the user
+        }
+      });
+
+
+
+
+    })</script>
+</body>
+
+</html>

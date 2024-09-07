@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Block Invoice - Aishalaya</title>
+  <link rel="stylesheet" href="style.css" media="all" />
+</head>
+<body>
+  <header class="clearfix">
+    <div id="logo">
+      <img src="logo.png" alt="Company Logo">
+    </div>
+    <div id="company">
+      <h2 id="companyName"></h2>
+      <div id="address"></div>
+      <!-- <div id="address2"></div>
+      <div id="area"></div> -->
+      <div id="district"></div>
+      <!-- <div id="pincode"></div> -->
+      <div id="contact"></div>
+      <!-- <div id="email"></div> -->
+    </div>
+  </header>
+  <main>
+    <div id="details" class="clearfix">
+      <div id="client">
+        <div class="to">INVOICE TO:</div>
+        <h2 id="customerName" class="name"></h2>
+        <div id="customerAddress" class="address"></div>
+        <div id="customerNumber" class="number"></div>
+        <div id="customerEmail" class="email"></div>
+      </div>
+      <div id="invoice">
+        <h1 id="receiptNo"></h1>
+        <div id="invoiceDate"></div>
+      </div>
+    </div>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="no">#</th>
+          <th class="desc">DESCRIPTION</th>
+          <th class="unit">TOTAL SQFT</th>
+          <th class="qty">RATE</th>
+          <th class="total">TOTAL AMOUNT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="plotNumber"></td>
+          <td class="desc">
+            <h3 id="plotNumberDesc"></h3>
+            <div id="projectNameDesc"></div>
+            <div id="village"></div>
+            
+          </td>
+          <td class="totalSqft"></td>
+          <td class="rate"></td>
+          <td class="totalValue"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="to" style="font-weight: 600;">Payment Details:</div>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="no">#</th>
+          <th class="desc">PARTICULARS</th>
+          <th class="unit">DETAILS</th>
+          <th class="total">TOTAL AMOUNT</th>
+        </tr>
+      </thead>
+      <tbody id="paymentDetails">
+        <tr>
+          <td class="no">01</td>
+          <td><h3 id="paymentModeReceived"></h3></td>
+          <td id="paymentTypeDetails"></td>
+          <td class="totalValue" id="paymentTotalValue">$1,200.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="thanks">Thank you!</div>
+    <div id="notices">
+      <div style="font-weight: bold;">INSTRUCTIONS:</div>
+      <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days. Payment of an advance implies that the customer agrees to be bound by the terms and conditions of Aishalaya Properties Private Limited, and by those that may be updated on the company website.</div>
+      <br>
+      <div class="notice">Any advance paid will NEVER be refunded under any circumstances, but can be transferred to another Projects owned by the company or person of the payee's choice.</div>
+      <br>
+      <div class="notice">The allotment of site is subject to change in case of alteration in the layout plan mandated by the need to meet the Governmental requirement. The payment of an advance does not mean that the sale has been concluded, and the registration of the sale deed in favour of the customer would be executed only after all monies due to the company are paid in full.</div>
+      <br>
+      <div class="notice">The customer agrees to pay the balance sale consideration due within the stipulated time and have the registration done in his/her name, failing which the agreement would be considered void and the advance paid would be forfeited.</div>
+    </div>
+  </main>
+  <footer>
+    Invoice was created on a computer and is valid without the signature and seal.
+  </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const mobileNumber = urlParams.get('mobileNumber');
+      const receiptNo = urlParams.get('receiptNo');
+      const dateStr = urlParams.get('dateStr');
+      const plotNumber = urlParams.get('plotNumber');
+      const projectName = urlParams.get('projectName');
+      const bookingId = urlParams.get('bookingId');
+      const blocksId = urlParams.get('currentBlockedIds');
+      const bookPayId = urlParams.get('bookPayId');
+
+      if (receiptNo) {
+        document.getElementById('receiptNo').textContent = `Receipt No: ${receiptNo}`;
+      } else {
+        console.error("Receipt number is missing in the URL parameters.");
+      }
+
+      if (dateStr) {
+        document.getElementById('invoiceDate').textContent = `Date of Invoice: ${dateStr}`;
+      } else {
+        console.error("Date string is missing in the URL parameters.");
+      }
+
+      if (mobileNumber) {
+        fetchCustomerDetails(mobileNumber);
+      } else {
+        console.error("Mobile number is missing in the URL parameters.");
+      }
+
+      if (plotNumber && projectName) {
+        fetchPlotDetails(plotNumber, projectName);
+        fetchProjectDetailsByProjectName(projectName);
+      } else {
+        console.error("Plot number or project name is missing in the URL parameters.");
+      }
+
+      if (bookingId) {
+        fetchBookingDetails(bookingId);
+      } else {
+        console.error("Booking ID is missing in the URL parameters.");
+      }
+
+      if (blocksId) {
+        fetchBlockDetails(blocksId);
+      } else {
+        console.error("Block ID is missing in the URL parameters.");
+      }
+
+      if (bookPayId) {
+        fetchBookPayIdDetails(bookPayId);
+      } else {
+        console.error("bookPay Id is missing in the URL parameters.");
+      }
+
+      function fetchCompanyDetails() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const companyId = urlParams.get('companyId');
+  const accessToken = localStorage.getItem('accessToken');
+
+  if (!companyId) {
+    console.error("Company ID is missing in the URL.");
+    return;
+  }
+
+  if (!accessToken) {
+    console.error("Access token is missing. Please log in.");
+    return;
+  }
+
+  const apiUrl = `http://localhost:8080/api/company/getCompanyById/${companyId}`;
+
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': accessToken
+    }
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById("companyName").textContent = data.companyName;
+    document.getElementById("address").textContent = `${data.address1} ${data.address2} ${data.area}`;
+    // document.getElementById("address2").textContent = data.address2;
+    // document.getElementById("area").textContent = data.area;
+    document.getElementById("district").textContent =`${data.district} - ${data.pincode}`;
+    // document.getElementById("pincode").textContent = data.pincode;
+    document.getElementById("contact").textContent = `${data.contact} | ${data.email}`;
+    // document.getElementById("email").textContent = data.email;
+
+    // After fetching company details, trigger print
+    window.print();
+  })
+  .catch(error => {
+    console.error("Error fetching company details:", error);
+    console.error(error.response ? error.response.json() : error.message);
+  });
+}
+
+// Call the function to fetch company details
+fetchCompanyDetails();
+
+
+      function fetchCustomerDetails(mobileNumber) {
+        const accessToken = localStorage.getItem('accessToken');
+        const apiUrl = `http://localhost:8080/api/customer/getCustomerByPhoneNumber/${mobileNumber}`;
+
+        if (!accessToken) {
+          console.error("Access token is missing. Please log in.");
+          return;
+        }
+
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById("customerName").textContent = data.customerName;
+          document.getElementById("customerAddress").textContent = `${data.address}, ${data.area}, ${data.district}, ${data.postalCode}`;
+          document.getElementById("customerNumber").textContent = data.mobileNumber;
+          document.getElementById("customerEmail").textContent = data.customerEmail;
+        })
+        .catch(error => {
+          console.error("Error fetching customer details:", error);
+          console.error(error.response ? error.response.json() : error.message);
+        });
+      }
+
+      function fetchPlotDetails(plotNumber, projectName) {
+        const accessToken = localStorage.getItem('accessToken');
+        const apiUrl = `http://localhost:8080/api/project/getProjectLayoutByPlotNo/${plotNumber}`;
+
+        if (!accessToken) {
+          console.error("Access token is missing. Please log in.");
+          return;
+        }
+
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.querySelector(".plotNumber").textContent = plotNumber;
+          document.getElementById("plotNumberDesc").textContent = `Plot No: ${plotNumber}`;
+          document.getElementById("projectNameDesc").textContent = projectName;
+          document.querySelector(".totalSqft").textContent = data.totalSqft;
+          document.querySelector(".rate").textContent = data.rate;
+          document.querySelector(".totalValue").textContent = data.totalValue;
+        })
+        .catch(error => {
+          console.error("Error fetching plot details:", error);
+          console.error(error.response ? error.response.json() : error.message);
+        });
+      }
+
+      function fetchProjectDetailsByProjectName(projectName) {
+        const accessToken = localStorage.getItem('accessToken');
+        const apiUrl = `http://localhost:8080/api/project/getProjectByProjectName/${projectName}`;
+
+        if (!accessToken) {
+          console.error("Access token is missing. Please log in.");
+          return;
+        }
+
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById("village").textContent = data.village;
+        })
+        .catch(error => {
+          console.error("Error fetching project details by project name:", error);
+          console.error(error.response ? error.response.json() : error.message);
+        });
+      }
+
+      function fetchBookingDetails(bookingId) {
+        const accessToken = localStorage.getItem('accessToken');
+        const apiUrl = `http://localhost:8080/api/booking/getBookingDetailsById/${bookingId}`;
+
+        if (!accessToken) {
+          console.error("Access token is missing. Please log in.");
+          return;
+        }
+
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById("paymentModeReceived").textContent = `${data.paymentMode} RECEIVED FROM ${data.paidBy}`;
+          document.getElementById("paymentTypeDetails").textContent = `${data.paymentType} 500 x ${data.denoTotalNotes} = ${data.denoTotalAmount}`;
+          document.getElementById("paymentTotalValue").textContent = data.denoTotalAmount;
+        })
+        .catch(error => {
+          console.error("Error fetching booking details:", error);
+          console.error(error.response ? error.response.json() : error.message);
+        });
+      }
+
+      function fetchBlockDetails(blocksId) {
+        const accessToken = localStorage.getItem('accessToken');
+        const apiUrl = `http://localhost:8080/api/blocks/getBlocksById/${blocksId}`;
+
+        if (!accessToken) {
+          console.error("Access token is missing. Please log in.");
+          return;
+        }
+
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById("paymentModeReceived").textContent = `${data.paymentMode} RECEIVED FROM ${data.paidBy}`;
+          document.getElementById("paymentTypeDetails").textContent = `${data.paymentType} 500 x ${data.denoTotalNotes} = ${data.denoTotalAmount}`;
+          document.getElementById("paymentTotalValue").textContent = data.denoTotalAmount;
+        })
+        .catch(error => {
+          console.error("Error fetching block details:", error);
+          console.error(error.response ? error.response.json() : error.message);
+        });
+      }
+
+      function fetchBookPayIdDetails(bookPayId) {
+        const accessToken = localStorage.getItem('accessToken');
+        const apiUrl = `http://localhost:8080/api/booking/getBookPayById/${bookPayId}`;
+
+        if (!accessToken) {
+          console.error("Access token is missing. Please log in.");
+          return;
+        }
+
+        fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken
+          }
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById("paymentModeReceived").textContent = `${data.paymentMode} RECEIVED FROM ${data.paidBy}`;
+          document.getElementById("paymentTypeDetails").textContent = `${data.paymentType} 500 x ${data.denoTotalNotes} = ${data.denoTotalAmount}`;
+          document.getElementById("paymentTotalValue").textContent = data.denoTotalAmount;
+        })
+        .catch(error => {
+          console.error("Error fetching block details:", error);
+          console.error(error.response ? error.response.json() : error.message);
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Book List | Aishalaya</title>
+  <link rel="shortcut icon" href="../../assets/images/aishLogo.ico" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="http://127.0.0.1:5500/assets/css/style.css">
+ 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- Navbar and Sidebar -->
+    <!-- ... -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+        <a class="navbar-brand brand-logo-mini" href="/pages/dashboard/dashboard.html"><img
+            src="../../assets/images/logo.png" alt="logo" style="height: 100%;" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <a class="nav-link" onclick="logout()">
+              <i class="mdi mdi-power"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="modal fade" id="editModal" tabindex="-10" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Payment History</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            onclick="closeForm()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+          </div>
+          <div class="modal-body">
+            <div class="tab-pane" id="icon-tabpanel-4" role="tabpanel" aria-labelledby="icon-tab-4">
+              <!-- <h4 class="card-title" style="margin-top: 2em;margin-bottom: 2em;">Payment History </h4> -->
+              <div class="container mt-5" style="margin-bottom: 2em;">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTableForPaymentHistory">
+                    <thead>
+                      <tr>  					
+                        <th>Receipt No</th>
+                        <th>Receipt Date</th>
+                        <th>Paid Amount ₹</th>
+                        <th>Paid By</th>
+                        <th>Total Values</th>
+                        <th>Received By</th>
+                        <th>Print Receipt </th>
+                      </tr>
+                    </thead>
+                    <tbody>                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- Content Section -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <!-- Page Header and Breadcrumb -->
+        <!-- ... -->
+        
+        <div class="row">
+          <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <!-- Button to Add New Customer -->
+                <div class="template-demo">
+                  <button type="button" class="btn btn-gradient-danger btn-rounded btn-fw" onclick="window.location.href='customer_masterForm.html';">Add New</button>
+                </div>
+
+                <!-- Table to Display Customers -->
+                <div class="table-responsive">
+                  <table id="dataTable" class="table table-hover">
+                    <thead>
+                      <tr>                        
+                        <th>customer Name</th>                            
+                        <th>employee Code</th>
+                        <th>customCode</th>
+                        <th>mobileNumber</th>
+                        <th>location</th>
+                        <th>Payment History</th>                          
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Customer data will be dynamically added here -->
+                    </tbody>
+                  </table>
+                </div>
+                <ul id="pagination" class="pagination"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Footer Section -->
+      <div id="includeFooter"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> <!-- Ensure this is the correct version matching your Bootstrap CSS -->
+  <script>
+    $(document).ready(function () {
+    const accessToken = localStorage.getItem('accessToken');
+
+    // Function to fetch customer data
+    $.ajax({
+        url: 'http://192.168.0.139:8080/api/customer/getAllCustomerDetails',
+        type: 'GET',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': accessToken,
+        },
+        success: function (customerData) {
+            // On success, fetch blocks data
+            $.ajax({
+                url: 'http://192.168.0.139:8080/api/blocks/blocksDetails',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': accessToken,
+                },
+                success: function (blockdata) {
+                    const currentCompanyId = localStorage.getItem('companyId');
+                    $.each(customerData, function (index, customer) {
+                        if (currentCompanyId == customer.companyId) {
+                            $.each(blockdata, function (index, block) {
+                                if (customer.mobileNumber == block.mobileNumber) {
+                                    console.log("blockId:", block.blocksId);
+                                    $('#dataTable tbody').append(`
+                                        <tr> 
+                                            <td>${customer.customerName}</td>
+                                            <td>${customer.employeeCode}</td>
+                                            <td>${customer.customCode}</td>
+                                            <td>${customer.mobileNumber}</td>
+                                            <td>${customer.location}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-info btn-sm view-btn" 
+                                                        data-toggle="modal" data-target="#editModal" 
+                                                        data-blocks-id="${block.blocksId}">
+                                                    View
+                                                </button>
+                                            </td>                     
+                                        </tr>
+                                    `);
+                                }
+                            });
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error(error);
+                    showalert('Error fetching data from the server. Please try again later.');
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            console.error(error);
+            showalert('Error fetching data from the server. Please try again later.');
+        }
+    });
+
+    // Event handler for clicking the "View" button
+    $(document).on('click', '.view-btn', function () {
+        var blocksId = $(this).data('blocks-id');
+        console.log("blockId:", blocksId); // Log to check if blocksId is correctly retrieved
+
+        if (blocksId !== undefined && blocksId !== "undefined") {
+            paymentTable(blocksId);
+            $('#editModal').modal('show');
+        } else {
+            console.error("blocksId is undefined or 'undefined'. Cannot proceed.");
+            // Handle the error or inform the user appropriately
+        }
+    });
+
+    // Function to fetch payment table data
+    function paymentTable(blocksId) {
+        // Implement your AJAX call to fetch payment table data based on blocksId
+        $.ajax({
+            url: 'http://192.168.0.139:8080/api/blocks/getBlocksById/' + blocksId,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+            },
+            success: function (blockData) {
+                // Update the payment history table with fetched data
+                $('#dataTableForPaymentHistory tbody').empty(); // Clear existing rows
+                $('#dataTableForPaymentHistory tbody').append(`
+                    <tr> 
+                        <td>receiptName</td>
+                        <td>${blockData.cdtDate}</td>
+                        <td>${blockData.paidAmount}</td>
+                        <td>${blockData.paidBy}</td>
+                        <td>${blockData.plotTotalAmount}</td>
+                        <td>${blockData.receivedBy}</td>
+                        <td>Print</td>                     
+                    </tr>
+                `);
+                PaymentHistoryFromBookTable(blocksId);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(error);
+                // Handle the error or inform the user appropriately
+            }
+        });
+    }
+
+    function PaymentHistoryFromBookTable(blocksId)
+    {
+      $.ajax({
+            url: 'http://192.168.0.139:8080/api/booking/getBookingDetailsByBlockId/' + blocksId,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+            },
+            success: function (bookData) {
+                // Update the payment history table with fetched data
+                 // Clear existing rows
+                $('#dataTableForPaymentHistory tbody').append(`
+                    <tr> 
+                        <td>receiptName</td>
+                        <td>${bookData.cdtDate}</td>
+                        <td>${bookData.paidAmount}</td>
+                        <td>${bookData.paidBy}</td>
+                        <td>${bookData.plotTotalAmount}</td>
+                        <td>${bookData.receivedBy}</td>
+                        <td>Print</td>                     
+                    </tr>
+                `);
+                PaymentHistoryFromBookPayTable(bookData.bookingId);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(error);
+                // Handle the error or inform the user appropriately
+            }
+        });
+    }
+    function PaymentHistoryFromBookPayTable(bookingId)
+    {
+      console.log("bookinbgId:",bookingId);
+      $.ajax({
+            url: 'http://192.168.0.139:8080/api/booking/getAllBookPayDetailsByBookingId/' + bookingId,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+            },
+            success: function (bookData) {
+                // Update the payment history table with fetched data
+                 // Clear existing rows
+                 console.log("boking DAta:",bookData);
+                 bookData.forEach(function(book) {
+                $('#dataTableForPaymentHistory tbody').append(`
+                    <tr> 
+                        <td>receiptName</td>
+                        <td>${book.cdtDate}</td>
+                        <td>${book.paidAmount}</td>
+                        <td>${book.paidBy}</td>
+                        <td>${book.netAmount}</td>
+                        <td>${book.receivedBy}</td>
+                        <td>Print</td>                     
+                    </tr>
+                `);
+                 });
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                console.error(error);
+                // Handle the error or inform the user appropriately
+            }
+        });
+    }
+
+    // Function to handle closing modal form
+    function closeForm() {
+      location.reload();
+      window.location.href = 'paidCustomers_list.html';
+    }
+
+    // Logout function
+    function logout() {
+        localStorage.clear();
+        window.location.href = '../../index.html';
+    }
+});
+  </script>
+
+  <!-- Other JavaScript -->
+<script src="../../assets/vendors/js/vendor.bundle.base.js"></script></script>
+ */
+  <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+  <script src="../../assets/js/off-canvas.js"></script>
+  <script src="../../assets/js/hoverable-collapse.js"></script>
+  <script src="../../assets/js/menu_active.js"></script>
+  <script src="../../assets/js/misc.js"></script>
+  <script src="../../assets/js/chart.js"></script>
+</body>
+</html>
+
